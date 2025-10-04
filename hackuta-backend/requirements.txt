@@ -1,0 +1,14 @@
+"fastapi[standard]"
+uvicorn[standard]
+pydantic
+sqlalchemy
+psycopg2-binary
+cockroachdb
+requests
+python-multipart
+aiohttp
+pillow
+transformers
+torch
+openai
+google-generativeai
