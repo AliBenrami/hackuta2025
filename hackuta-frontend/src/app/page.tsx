@@ -1,3 +1,4 @@
+import { Header } from "@/components/Header";
 import { ScrollHint } from "@/components/ScrollHint";
 import { JSX } from "react";
 
@@ -75,31 +76,7 @@ export default function Home() {
         className="relative flex min-h-screen flex-col"
       >
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,#2563EB22,transparent_55%)]" />
-        <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-8 sm:px-8 lg:px-12">
-          <a href="#hero" className="flex items-center gap-2 select-none" aria-label="AdSett Home">
-            <span className="text-2xl font-heading font-semibold tracking-wide text-navy">
-              AdSett
-              <span className="text-accent">.</span>
-            </span>
-          </a>
-          <div className="flex items-center gap-3">
-            <a
-              href="/dashboard"
-              className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-hover"
-            >
-              {/* Dummy: placeholder header CTA */}
-              Try Demo
-            </a>
-            {/* TODO [frontend]: connect Log In → auth route after backend setup */}
-            <a
-              href="#login"
-              className="rounded-full border border-accent px-5 py-2 text-sm font-semibold text-accent transition-colors hover:bg-accent/10"
-            >
-              {/* Dummy: placeholder header CTA */}
-              Log In
-            </a>
-          </div>
-        </header>
+        <Header />
         <div className="flex min-h-[80vh] flex-1 flex-col items-center justify-center px-6 text-center sm:px-8 lg:px-12">
           <h1 className="max-w-3xl text-balance font-heading text-4xl font-semibold tracking-tight text-navy sm:text-5xl md:text-6xl">
             Smarter Ads. Sharper Insights.

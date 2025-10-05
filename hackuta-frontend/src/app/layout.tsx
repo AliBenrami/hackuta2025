@@ -3,6 +3,7 @@ import { Inter, Lexend } from "next/font/google";
 
 import "./globals.css";
 
+import { AuthProvider } from "@/context/AuthContext";
 import { CampaignProvider } from "@/context/CampaignContext";
 
 const lexend = Lexend({
@@ -45,15 +46,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${lexend.variable} ${inter.variable}`}>
       <body className="antialiased bg-background text-foreground font-body">
-        <CampaignProvider>
-          <div className="relative min-h-screen overflow-x-hidden">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,#2563EB1a,transparent_55%)]"
-            />
-            <main>{children}</main>
-          </div>
-        </CampaignProvider>
+        <AuthProvider>
+          <CampaignProvider>
+            <div className="relative min-h-screen overflow-x-hidden">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,#2563EB1a,transparent_55%)]"
+              />
+              <main>{children}</main>
+            </div>
+          </CampaignProvider>
+        </AuthProvider>
       </body>
     </html>
   );
