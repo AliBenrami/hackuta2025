@@ -23,6 +23,11 @@ aiohttp
 python-jose[cryptography]
 python-multipart
 
+# OAuth and session management
+authlib
+itsdangerous
+httpx
+
 # ML stuff (for future use)
 # pillow==10.1.0
 # transformers==4.36.0
