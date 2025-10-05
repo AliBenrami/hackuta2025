@@ -33,3 +33,7 @@ pillow
 google-generativeai
 langchain
 langchain-google-genai
+
+
+#ocr 
+easyocr
