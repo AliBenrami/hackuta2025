@@ -312,3 +312,29 @@ export async function updateCampaign(
     throw new Error("Failed to update campaign");
   }
 }
+
+export async function deleteImage(imageId: number): Promise<void> {
+  const response = await authorizedFetch(`${API_BASE_URL}/images/${imageId}`, {
+    method: "DELETE",
+  });
+  if (!response.ok) {
+    throw new Error("Failed to delete image");
+  }
+}
+
+export async function updateImage(
+  imageId: number,
+  updates: { filename?: string }
+): Promise<Image> {
+  const response = await authorizedFetch(`${API_BASE_URL}/images/${imageId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updates),
+  });
+  if (!response.ok) {
+    const errorBody = await response.text();
+    console.error("Failed to update image:", errorBody);
+    throw new Error("Failed to update image");
+  }
+  return (await response.json()) as Image;
+}

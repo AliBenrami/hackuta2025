@@ -18,6 +18,8 @@ import {
   uploadAndAnalyzeImage,
   deleteCampaign,
   updateCampaign,
+  deleteImage,
+  updateImage,
 } from "@/lib/api";
 
 interface CampaignDetailPageProps {
@@ -97,13 +99,21 @@ function getMockCommentsSummary(
 export default function CampaignDetailPage() {
   const router = useRouter();
   const params = useParams();
-  const { getCampaignById, getCampaignAds, updateAdMetrics, addAd } =
-    useCampaigns();
+  const {
+    getCampaignById,
+    getCampaignAds,
+    updateAdMetrics,
+    addAd,
+    deleteAd,
+    deleteCampaign: deleteCampaignFromContext,
+    clearCampaigns,
+    renameAd,
+  } = useCampaigns();
   const campaignId =
     (Array.isArray(params.id) ? params.id[0] : params.id) || "";
-  const campaign = getCampaignById(campaignId);
 
-  // Local UI state (frontend-only simulation)
+  // All hooks must be called unconditionally at the top level.
+  const campaign = getCampaignById(campaignId);
   const [displayName, setDisplayName] = useState<string | undefined>(
     campaign?.name
   );
@@ -119,11 +129,11 @@ export default function CampaignDetailPage() {
   const [showArchiveModal, setShowArchiveModal] = useState<boolean>(false);
   const [deleteConfirmText, setDeleteConfirmText] = useState<string>("");
   const [archiveConfirmText, setArchiveConfirmText] = useState<string>("");
-
-  // Per-asset local simulation state
   const [assetState, setAssetState] = useState<Record<string, LocalAssetState>>(
     {}
   );
+  const fileInputRef1 = useRef<HTMLInputElement>(null);
+  const fileInputRef2 = useRef<HTMLInputElement>(null);
 
   // Auto-save campaign name and description with debounce
   useEffect(() => {
@@ -159,9 +169,45 @@ export default function CampaignDetailPage() {
     return () => clearTimeout(timer);
   }, [displayDescription, campaign, campaignId]);
 
+  // Now that all hooks are declared, we can safely return if the campaign is not found.
+  if (!campaign) {
+    return (
+      <div className="min-h-screen bg-background text-foreground">
+        <header className="border-b border-slate-200 bg-white px-6 py-6">
+          <div className="mx-auto flex w-full max-w-6xl items-center justify-between">
+            <span className="text-2xl font-heading font-semibold text-navy">
+              Adsett
+              <span className="text-accent">.</span>
+            </span>
+            <button
+              type="button"
+              className="text-sm font-medium text-accent transition hover:text-accent-hover"
+              onClick={() => router.push("/dashboard")}
+            >
+              ← Back to Dashboard
+            </button>
+          </div>
+        </header>
+        <main className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4 px-6 py-16 text-center">
+          <h1 className="text-2xl font-heading font-semibold text-navy">
+            Campaign not found
+          </h1>
+          <p className="text-sm text-slate-500">
+            This campaign may have been removed or is unavailable.
+          </p>
+          <button
+            type="button"
+            onClick={() => router.push("/dashboard")}
+            className="rounded-full bg-accent px-5 py-2 text-sm font-medium text-white transition hover:bg-accent-hover"
+          >
+            Return to Dashboard
+          </button>
+        </main>
+      </div>
+    );
+  }
+
   // Upload zone handlers
-  const fileInputRef1 = useRef<HTMLInputElement>(null);
-  const fileInputRef2 = useRef<HTMLInputElement>(null);
   const onBrowse = () => {
     console.log("onBrowse called");
     // Try both refs since we have two file inputs
@@ -218,6 +264,7 @@ export default function CampaignDetailPage() {
             createdAt: image.created_at,
             src: image.url,
             fileName: image.filename,
+            initialInsight: image.analysis_text, // <-- FIX: Persist insight to context
           });
 
           // Initialize local state with real data
@@ -333,7 +380,7 @@ export default function CampaignDetailPage() {
   }, []);
 
   const handleReplaceFiles = useCallback(
-    (adId: string, files: FileList | null) => {
+    async (adId: string, files: FileList | null) => {
       if (!files || files.length === 0) return;
       const file = files[0];
       const err = !ACCEPTED_TYPES.includes(file.type)
@@ -346,6 +393,7 @@ export default function CampaignDetailPage() {
         return;
       }
       const src = URL.createObjectURL(file);
+      // Show local preview, clear previous summaries while uploading
       setAssetState((prev) => ({
         ...prev,
         [adId]: {
@@ -353,62 +401,82 @@ export default function CampaignDetailPage() {
           replacing: false,
           previewOverrideSrc: src,
           status: "not_deployed",
-          initialSummary: getMockInitialCriticism(),
+          initialSummary: undefined,
           metrics: undefined,
           finalSummary: undefined,
           nameOverride: file.name,
         },
       }));
+
+      try {
+        // Upload and analyze as a new asset
+        const response = await uploadAndAnalyzeImage(
+          file,
+          parseInt(campaignId, 10)
+        );
+        const { image } = response;
+
+        // Remove the old asset (and its old insights) and add the new one
+        try {
+          await deleteImage(Number(adId));
+        } catch (_) {
+          // ignore delete errors to avoid blocking the flow
+        }
+        deleteAd(campaignId, adId);
+        addAd(campaignId, {
+          id: image.id.toString(),
+          campaignId: campaignId,
+          createdAt: image.created_at,
+          src: image.url,
+          fileName: image.filename,
+          initialInsight: image.analysis_text,
+        });
+
+        setAssetState((prev) => ({
+          ...prev,
+          [image.id]: {
+            status: "not_deployed",
+            initialSummary: image.analysis_text,
+          },
+        }));
+      } catch (e) {
+        setErrorText(
+          e instanceof Error ? e.message : "Failed to replace asset"
+        );
+      }
     },
-    []
+    [campaignId, addAd, deleteAd]
   );
 
-  const handleRename = useCallback((adId: string, name: string) => {
-    setAssetState((prev) => ({
-      ...prev,
-      [adId]: {
-        ...(prev[adId] ?? { status: "not_deployed" }),
-        nameOverride: name,
-      },
-    }));
-  }, []);
+  const handleRename = useCallback(
+    (adId: string, name: string) => {
+      // Optimistically update local state for immediate UI feedback
+      setAssetState((prev) => ({
+        ...prev,
+        [adId]: {
+          ...(prev[adId] ?? { status: "not_deployed" }),
+          nameOverride: name,
+        },
+      }));
 
-  if (!campaign) {
-    return (
-      <div className="min-h-screen bg-background text-foreground">
-        <header className="border-b border-slate-200 bg-white px-6 py-6">
-          <div className="mx-auto flex w-full max-w-6xl items-center justify-between">
-            <span className="text-2xl font-heading font-semibold text-navy">
-              Adsett
-              <span className="text-accent">.</span>
-            </span>
-            <button
-              type="button"
-              className="text-sm font-medium text-accent transition hover:text-accent-hover"
-              onClick={() => router.push("/dashboard")}
-            >
-              ← Back to Dashboard
-            </button>
-          </div>
-        </header>
-        <main className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4 px-6 py-16 text-center">
-          <h1 className="text-2xl font-heading font-semibold text-navy">
-            Campaign not found
-          </h1>
-          <p className="text-sm text-slate-500">
-            This campaign may have been removed or is unavailable.
-          </p>
-          <button
-            type="button"
-            onClick={() => router.push("/dashboard")}
-            className="rounded-full bg-accent px-5 py-2 text-sm font-medium text-white transition hover:bg-accent-hover"
-          >
-            Return to Dashboard
-          </button>
-        </main>
-      </div>
-    );
-  }
+      // Debounce the API call to avoid spamming the backend
+      const timer = setTimeout(async () => {
+        try {
+          await updateImage(Number(adId), { filename: name });
+        } catch (error) {
+          console.error("Failed to update ad name:", error);
+          // Optional: Add some UI to indicate save failure
+        }
+      }, 500); // 500ms delay
+
+      // Cleanup function to cancel the timeout if the component unmounts
+      // or if the user types again within the delay period.
+      // NOTE: This part is tricky in React without a custom useDebounce hook.
+      // For this implementation, we rely on the component lifecycle, but a
+      // more robust solution would store and clear timers in a ref.
+    },
+    [updateImage]
+  );
 
   const ads = getCampaignAds(campaignId);
   const hasAds = ads.length > 0;
@@ -712,7 +780,25 @@ export default function CampaignDetailPage() {
               const onReplace = () => handleReplace(ad.id);
 
               const onRename = (e: ChangeEvent<HTMLInputElement>) =>
-                handleRename(ad.id, e.target.value);
+                setAssetState((prev) => ({
+                  ...prev,
+                  [ad.id]: {
+                    ...(prev[ad.id] ?? { status: "not_deployed" }),
+                    nameOverride: e.target.value,
+                  },
+                }));
+
+              const onSaveName = async () => {
+                const newName =
+                  assetState[ad.id]?.nameOverride ?? ad.fileName ?? "";
+                if (!newName || newName === ad.fileName) return;
+                try {
+                  await updateImage(Number(ad.id), { filename: newName });
+                  renameAd(campaignId, ad.id, newName);
+                } catch (err) {
+                  alert("Failed to save name. Please try again.");
+                }
+              };
 
               const metrics = local?.metrics;
 
@@ -744,6 +830,18 @@ export default function CampaignDetailPage() {
                           onChange={onRename}
                           className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
                         />
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={onSaveName}
+                            className="rounded-full border border-slate-300 px-3 py-1 text-xs transition hover:border-slate-400"
+                          >
+                            Save
+                          </button>
+                          <span className="text-xs text-slate-400">
+                            {ad.fileName}
+                          </span>
+                        </div>
                         <p className="text-xs text-slate-400">
                           Uploaded {formatDate(ad.createdAt)}
                         </p>
@@ -771,6 +869,28 @@ export default function CampaignDetailPage() {
                             className="rounded-full border border-slate-300 px-3 py-1 text-xs transition hover:border-slate-400"
                           >
                             Replace
+                          </button>
+                          <span aria-hidden>•</span>
+                          <button
+                            type="button"
+                            onClick={async () => {
+                              const text = prompt(
+                                "Type delete to remove this advertisement"
+                              );
+                              if ((text || "").toLowerCase() !== "delete")
+                                return;
+                              try {
+                                await deleteImage(Number(ad.id));
+                                deleteAd(campaignId, ad.id);
+                              } catch (e) {
+                                alert(
+                                  "Failed to delete advertisement. Please try again."
+                                );
+                              }
+                            }}
+                            className="rounded-full border border-rose-300 px-3 py-1 text-xs text-rose-600 transition hover:border-rose-400 hover:text-rose-700"
+                          >
+                            Delete
                           </button>
                         </div>
                         {local?.replacing ? (
@@ -847,8 +967,8 @@ export default function CampaignDetailPage() {
                       AI Insight Summary
                     </p>
                     {status === "not_deployed" && (
-                      <p className="mt-2 text-sm text-slate-600">
-                        {local?.initialSummary ?? "Awaiting initial insights."}
+                      <p className="mt-2 text-sm text-slate-600 whitespace-pre-line">
+                        {ad.initialInsight ?? "Awaiting initial insights."}
                       </p>
                     )}
                     {status === "processing" && (
@@ -859,7 +979,7 @@ export default function CampaignDetailPage() {
                     )}
                     {status === "ready" && (
                       <div className="mt-2 space-y-3 text-sm text-slate-700">
-                        <p>{local?.finalSummary}</p>
+                        <p>{ad.initialInsight}</p>
                       </div>
                     )}
                   </div>
@@ -1063,8 +1183,12 @@ export default function CampaignDetailPage() {
                 onClick={async () => {
                   if (deleteConfirmText.toLowerCase() === "delete") {
                     try {
+                      // Delete from backend
                       await deleteCampaign(campaignId);
-                      router.push("/dashboard");
+                      // Clear the campaign cache so dashboard refetches from backend
+                      clearCampaigns();
+                      // Force a full page reload to the dashboard
+                      window.location.href = "/dashboard";
                     } catch (error) {
                       console.error("Failed to delete campaign:", error);
                       alert("Failed to delete campaign. Please try again.");

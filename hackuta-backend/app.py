@@ -255,6 +255,61 @@ async def get_image(
 
 
 
+@app.delete("/images/{image_id}")
+async def delete_image(
+    image_id: int,
+    request: Request,
+    db: AsyncSession = Depends(get_db)
+):
+    """
+    Delete a specific image (ad asset) owned by the current user
+    """
+    current_user = await get_current_user_from_session(request, db)
+    result = await db.execute(
+        select(Image).where(
+            Image.id == image_id,
+            Image.user_id == current_user.id,
+        )
+    )
+    image = result.scalar_one_or_none()
+    if not image:
+        raise HTTPException(status_code=404, detail="Image not found")
+
+    await db.delete(image)
+    await db.commit()
+    return {"success": True}
+
+
+class ImageUpdateRequest(BaseModel):
+    filename: str
+
+@app.patch("/images/{image_id}", response_model=ImageResponse)
+async def update_image_filename(
+    image_id: int,
+    request: Request,
+    payload: ImageUpdateRequest,
+    db: AsyncSession = Depends(get_db),
+):
+    """
+    Update an image's filename (for renaming assets)
+    """
+    current_user = await get_current_user_from_session(request, db)
+    result = await db.execute(
+        select(Image).where(
+            Image.id == image_id,
+            Image.user_id == current_user.id,
+        )
+    )
+    image = result.scalar_one_or_none()
+    if not image:
+        raise HTTPException(status_code=404, detail="Image not found")
+
+    image.filename = payload.filename
+    await db.commit()
+    await db.refresh(image)
+    return image
+
+
 @app.post("/analyze/image", response_model=AnalyzeImageResponse)
 async def analyze_image(
     request: Request,
@@ -272,11 +327,15 @@ async def analyze_image(
     if not image.content_type or not image.content_type.startswith("image/"):
         raise HTTPException(status_code=400, detail="File must be an image")
     
+    # Read image bytes once (before any processing)
+    image_bytes = await image.read()
+    
     # Upload image directly to S3
     bucket_name = os.getenv("S3_BUCKET_NAME", "your-default-bucket-name")
     try:
+        from io import BytesIO
         image_info = upload_image(
-            file_obj=image.file,
+            file_obj=BytesIO(image_bytes),
             bucket=bucket_name,
             filename=image.filename or "image",
             content_type=image.content_type,
@@ -284,9 +343,22 @@ async def analyze_image(
     except RuntimeError as e:
         raise HTTPException(status_code=500, detail=f"Failed to upload image: {str(e)}")
     
+    # Create a temporary UploadFile-like object for analysis
+    from io import BytesIO
+    from fastapi import UploadFile
+    temp_file = BytesIO(image_bytes)
+    temp_upload = UploadFile(
+        file=temp_file,
+        filename=image.filename,
+        headers={"content-type": image.content_type}
+    )
+    
     # Analyze the image
-    analysis_result = get_analyze_image(image)
+    analysis_result = await get_analyze_image(temp_upload)
     analyze_text = analysis_result.get("analysis_text", "")
+    # If Gemini failed, propagate a clean error marker rather than mock text
+    if analyze_text.startswith("[AI_ERROR]"):
+        analyze_text = "[AI_ERROR] Analysis failed"
     analytics_dict = analysis_result.get("analytics", {})
     
     # Create image record in database

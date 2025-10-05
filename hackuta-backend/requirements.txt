@@ -28,9 +28,8 @@ authlib
 itsdangerous
 httpx
 
-# ML stuff (for future use)
-# pillow==10.1.0
-# transformers==4.36.0
-# torch==2.1.0
-# openai==1.3.0
-# google-generativeai==0.3.0
+# ML stuff
+pillow
+google-generativeai
+langchain
+langchain-google-genai

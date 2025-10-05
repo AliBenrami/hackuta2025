@@ -31,7 +31,8 @@ function CreateCampaignCTA({ onClick }: { onClick: () => void }) {
 }
 
 export default function DashboardPage() {
-  const { campaigns, addCampaign } = useCampaigns();
+  const { campaigns, addCampaign, clearCampaigns, setCampaignList } =
+    useCampaigns();
   const { user } = useAuth();
   const router = useRouter();
   const hasCampaigns = campaigns.length > 0;
@@ -39,47 +40,36 @@ export default function DashboardPage() {
   useEffect(() => {
     const loadCampaigns = async () => {
       try {
-        const campaigns = await getCampaigns();
-        if (campaigns.length === 0) {
-          // Fallback to images
-          const images = await getImages();
-          if (!images || images.length === 0) return;
-          addCampaign({
-            id: "my-uploads",
-            name: "My Uploads",
-            description: "Images you’ve analyzed",
-            createdAt: new Date().toISOString(),
-            ads: images.map((img) => ({
-              id: `image-${img.id}`,
-              campaignId: "my-uploads",
-              createdAt: img.created_at,
-              src: img.url,
-              fileName: img.filename,
-            })),
-          });
-          return;
-        }
-        campaigns.forEach((c) =>
-          addCampaign({
-            id: String(c.id),
-            name: c.name,
-            description: c.description,
-            contextAnswers: {
-              emotion: c.emotion ?? undefined,
-              success: c.success ?? undefined,
-              inspiration: c.inspiration ?? undefined,
-            },
-            createdAt: c.created_at,
-          })
-        );
+        const apiCampaigns = await getCampaigns();
+        const mapped = apiCampaigns.map((c) => ({
+          id: String(c.id),
+          name: c.name,
+          description: c.description,
+          contextAnswers: {
+            emotion: c.emotion ?? undefined,
+            success: c.success ?? undefined,
+            inspiration: c.inspiration ?? undefined,
+          },
+          createdAt: c.created_at,
+          ads: (c.images || []).map((img) => ({
+            id: String(img.id),
+            campaignId: String(c.id),
+            createdAt: img.created_at,
+            src: img.url,
+            fileName: img.filename,
+            initialInsight: img.analysis_text,
+          })),
+        }));
+        setCampaignList(mapped);
       } catch (e) {
         // noop: keep empty state on failure
       }
     };
-    if (!hasCampaigns && user) {
+    // Always load campaigns when user is authenticated, regardless of cached data
+    if (user) {
       loadCampaigns();
     }
-  }, [hasCampaigns, user, addCampaign]);
+  }, [user, setCampaignList]);
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-background text-foreground">

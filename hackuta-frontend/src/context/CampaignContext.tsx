@@ -15,6 +15,7 @@ export interface AdCreative {
   createdAt: string;
   src: string; // Dummy: client-only URL; replace with real storage URL later.
   fileName?: string;
+  initialInsight?: string;
   width?: number;
   height?: number;
   metrics?: {
@@ -51,6 +52,7 @@ interface CampaignContextValue {
   campaigns: CampaignEntry[];
   addCampaign: (campaign: CampaignEntry) => void;
   addAd: (campaignId: string, ad: AdCreative) => void;
+  deleteAd: (campaignId: string, adId: string) => void;
   updateAdMetrics: (
     campaignId: string,
     adId: string,
@@ -58,7 +60,10 @@ interface CampaignContextValue {
   ) => void;
   getCampaignAds: (campaignId: string) => AdCreative[];
   getCampaignById: (campaignId: string) => CampaignEntry | undefined;
+  deleteCampaign: (campaignId: string) => void;
   clearCampaigns: () => void;
+  setCampaignList: (list: CampaignEntry[]) => void;
+  renameAd: (campaignId: string, adId: string, newName: string) => void;
 }
 
 const CampaignContext = createContext<CampaignContextValue | undefined>(
@@ -173,6 +178,16 @@ export function CampaignProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  const deleteAd = useCallback((campaignId: string, adId: string) => {
+    setCampaigns((prev) =>
+      prev.map((c) => {
+        if (c.id !== campaignId) return c;
+        const ads = (c.ads ?? []).filter((a) => a.id !== adId);
+        return computeCampaignAverages({ ...c, ads });
+      })
+    );
+  }, []);
+
   const updateAdMetrics = useCallback(
     (
       campaignId: string,
@@ -194,8 +209,39 @@ export function CampaignProvider({ children }: { children: React.ReactNode }) {
     []
   );
 
+  const renameAd = useCallback(
+    (campaignId: string, adId: string, newName: string) => {
+      setCampaigns((prev) =>
+        prev.map((campaign) => {
+          if (campaign.id !== campaignId) return campaign;
+          const ads = (campaign.ads ?? []).map((ad) =>
+            ad.id === adId ? { ...ad, fileName: newName } : ad
+          );
+          return computeCampaignAverages({ ...campaign, ads });
+        })
+      );
+    },
+    []
+  );
+
+  const deleteCampaign = useCallback((campaignId: string) => {
+    setCampaigns((prev) =>
+      prev.filter((campaign) => campaign.id !== campaignId)
+    );
+  }, []);
+
   const clearCampaigns = useCallback(() => {
     setCampaigns([]);
+    if (typeof window !== "undefined") {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  }, []);
+
+  const setCampaignList = useCallback((list: CampaignEntry[]) => {
+    const normalized = list.map((c) =>
+      computeCampaignAverages({ ...c, ads: c.ads ?? [] })
+    );
+    setCampaigns(dedupeCampaigns(normalized));
   }, []);
 
   const getCampaignAds = useCallback(
@@ -215,19 +261,27 @@ export function CampaignProvider({ children }: { children: React.ReactNode }) {
       campaigns,
       addCampaign,
       addAd,
+      deleteAd,
       updateAdMetrics,
       getCampaignAds,
       getCampaignById,
+      deleteCampaign,
       clearCampaigns,
+      setCampaignList,
+      renameAd,
     }),
     [
       campaigns,
       addCampaign,
       addAd,
+      deleteAd,
       updateAdMetrics,
       getCampaignAds,
       getCampaignById,
+      deleteCampaign,
       clearCampaigns,
+      setCampaignList,
+      renameAd,
     ]
   );
 
