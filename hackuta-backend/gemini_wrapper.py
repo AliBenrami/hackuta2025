@@ -75,6 +75,63 @@ def analyze_ad_image_with_gemini(image_bytes: bytes, mime_type: str = "image/png
         print(f"Error analyzing image with Gemini: {str(e)}")
         # Return a simple error marker used by the backend/frontend
         return { 'analysis_text': f"[AI_ERROR] {str(e)}" }
+    
+
+
+
+def gemini_ocr(image_bytes: bytes, mime_type: str = "image/png") -> Dict[str, Any]:
+    """
+    Analyze an advertisement image using Gemini Vision API with LangChain.
+    
+    Args:
+        image_bytes: Raw bytes of the image file
+        
+    Returns:
+        Dictionary containing:
+        - criticism: Initial critical analysis
+        - strengths: Identified strengths
+        - weaknesses: Identified weaknesses
+        - suggestions: Improvement suggestions
+    """
+    try:
+        # Initialize Gemini
+        api_key = initialize_gemini()
+        
+        # Prepare image data directly (avoid PIL to prevent stream issues)
+        image_data = image_bytes
+
+        # Create Gemini model for vision (Flash) and ask for final formatted text directly
+        vision_model = genai.GenerativeModel('gemini-flash-latest')
+
+        format_prompt = (
+            "You are an AI social media simulator. Your task is to extract visible text from the provided advertisement image, "
+            "then generate synthetic user comments reacting to it.\n\n"
+            "Return your output EXACTLY in this format with exact line breaks:\n\n"
+            "Extracted Text:\n"
+            "[All readable text detected in the image. Preserve punctuation and casing.]\n\n"
+            "Generated Comments:\n"
+            "1. [Realistic human-like reaction to the ad]\n"
+            "2. [Different style of comment]\n"
+            "3. [Another comment]\n"
+            "4. [Another comment]\n"
+            "5. [Another comment]\n\n"
+            "Each comment should reflect natural social media behavior — mix of positive, neutral, and negative tones, "
+            "and reference details from the extracted text when possible."
+        )
+
+
+        image_part = {"mime_type": mime_type or "image/png", "data": image_data}
+        response = vision_model.generate_content([format_prompt, image_part])
+        text = (response.text or "").strip()
+        
+        if not text:
+            raise ValueError("Empty response from Gemini")
+        return { 'ocr_text': text }
+        
+    except Exception as e:
+        print(f"Error analyzing image with Gemini: {str(e)}")
+        # Return a simple error marker used by the backend/frontend
+        return { 'ocr_text': f"[AI_ERROR] {str(e)}" }
 
 
 def parse_structured_response(response: str) -> Dict[str, str]:
