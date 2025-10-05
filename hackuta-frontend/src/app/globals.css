@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --muted: #e2e8f0;
+  --accent: #2563eb;
+  --accent-hover: #3b82f6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-navy: #0f172a;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-border: #dce3ef;
+  --font-heading: var(--font-lexend);
+  --font-body: var(--font-inter);
+}
+
+body {
+  background: radial-gradient(circle at top, rgba(37, 99, 235, 0.1), transparent 45%),
+    radial-gradient(circle at bottom, rgba(14, 165, 233, 0.06), transparent 55%), var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  scroll-behavior: smooth;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes rollAcross {
+  0% {
+    transform: translateX(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(100vw) rotate(720deg);
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(110vw) rotate(1080deg);
+    opacity: 0;
+  }
+}
+
+.animate-tumbleweed {
+  animation: rollAcross 18s linear infinite;
+  animation-delay: var(--tumble-delay, 0s);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background-color: rgba(37, 99, 235, 0.2);
+  color: var(--foreground);
+}
