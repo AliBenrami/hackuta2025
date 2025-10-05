@@ -36,19 +36,29 @@ def verify_session_token(token: str) -> Optional[dict]:
 def set_session_cookie(response: Response, user_data: dict):
     """Set session cookie on response"""
     token = create_session_token(user_data)
+    
+    # For localhost development, we need to set the cookie so frontend can access it
+    # Chrome/modern browsers block samesite=none without secure flag
+    # So we use secure=True even on localhost (browsers allow this for localhost specifically)
     response.set_cookie(
         key=SESSION_COOKIE_NAME,
         value=token,
         max_age=SESSION_MAX_AGE,
         httponly=True,
-        secure=os.getenv("ENVIRONMENT") == "production",
-        samesite="lax",
+        secure=True,  # Required for samesite=none (browsers allow for localhost)
+        samesite="none",  # Allow cross-origin between ports
+        path="/",
     )
 
 
 def clear_session_cookie(response: Response):
     """Clear session cookie"""
-    response.delete_cookie(key=SESSION_COOKIE_NAME)
+    response.delete_cookie(
+        key=SESSION_COOKIE_NAME,
+        path="/",
+        samesite="none",
+        secure=True,
+    )
 
 
 async def get_session_user(request: Request) -> Optional[dict]:
@@ -64,14 +74,24 @@ async def get_current_user_from_session(
     db: AsyncSession
 ) -> User:
     """
-    Get current user from session cookie
+    Get current user from session token in Authorization header
     Dependency for protected routes
     """
-    session_data = await get_session_user(request)
-    if not session_data:
+    # Check Authorization header
+    auth_header = request.headers.get("Authorization")
+    if not auth_header or not auth_header.startswith("Bearer "):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Not authenticated"
+        )
+    
+    token = auth_header.replace("Bearer ", "")
+    session_data = verify_session_token(token)
+    
+    if not session_data:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or expired session"
         )
     
     user_id = session_data.get("sub")
