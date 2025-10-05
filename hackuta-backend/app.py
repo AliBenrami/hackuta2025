@@ -107,6 +107,9 @@ async def auth_callback(request: Request, response: Response, db: AsyncSession =
             user.name = name
             await db.commit()
         
+        # Clear OAuth session data (no longer needed)
+        request.session.clear()
+        
         # Create session
         session_data = {
             'sub': user_id,
@@ -114,14 +117,23 @@ async def auth_callback(request: Request, response: Response, db: AsyncSession =
             'name': name,
         }
         
-        # Redirect to frontend with session cookie
+        # Create session token
+        from session import create_session_token
+        token = create_session_token(session_data)
+        
+        # Redirect to frontend with token in URL (simpler than cookies for localhost)
         frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
-        redirect = RedirectResponse(url=f"{frontend_url}/")
-        set_session_cookie(redirect, session_data)
+        redirect = RedirectResponse(url=f"{frontend_url}/?token={token}")
+        
+        print(f"DEBUG /auth/callback - Created session token for user: {email}")
+        print(f"DEBUG /auth/callback - Redirecting to: {frontend_url}/?token=...")
         
         return redirect
         
     except Exception as e:
+        # Clear OAuth session on error too
+        request.session.clear()
+        
         # Redirect to frontend with error
         frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
         return RedirectResponse(url=f"{frontend_url}/?error={str(e)}")
@@ -130,31 +142,45 @@ async def auth_callback(request: Request, response: Response, db: AsyncSession =
 @app.get("/auth/logout")
 async def logout(request: Request):
     """
-    Logout user by clearing session cookie
-    Redirects to Auth0 logout and then back to frontend
+    Logout user
+    Since we use localStorage tokens, just clear server session and redirect to frontend
+    Frontend already cleared the token before calling this
     """
     frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
-    auth0_domain = os.getenv("AUTH0_DOMAIN")
     
-    # Clear session cookie
-    response = RedirectResponse(
-        url=f"https://{auth0_domain}/v2/logout?returnTo={frontend_url}"
-    )
-    clear_session_cookie(response)
+    # Clear Starlette session (used by OAuth)
+    request.session.clear()
     
-    return response
+    # Simple redirect back to frontend
+    # Frontend has already cleared localStorage token
+    return RedirectResponse(url=frontend_url)
 
 
 @app.get("/auth/me")
 async def get_current_user_info(request: Request):
     """
-    Get current user information from session
+    Get current user information from session token
+    Accepts token via Authorization header: Bearer <token>
     Returns user data or null if not authenticated
     """
-    session_data = await get_session_user(request)
-    if not session_data:
+    # Check Authorization header
+    auth_header = request.headers.get("Authorization")
+    print(f"DEBUG /auth/me - Auth header: {auth_header[:50] if auth_header else 'NOT FOUND'}")
+    
+    if not auth_header or not auth_header.startswith("Bearer "):
+        print(f"DEBUG /auth/me - No valid auth header")
         return JSONResponse(content={"user": None})
     
+    token = auth_header.replace("Bearer ", "")
+    
+    from session import verify_session_token
+    session_data = verify_session_token(token)
+    
+    if not session_data:
+        print(f"DEBUG /auth/me - Invalid or expired token")
+        return JSONResponse(content={"user": None})
+    
+    print(f"DEBUG /auth/me - Session data found for user: {session_data.get('email')}")
     return JSONResponse(content={"user": session_data})
 
 @app.post("/images", response_model=ImageResponse)
