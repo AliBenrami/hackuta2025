@@ -34,11 +34,14 @@ class Image(Base):
     content_type = Column(String(100), nullable=True)
     analysis_text = Column(Text, nullable=True)  # AI analysis results
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    campaign_id = Column(Integer, ForeignKey("campaigns.id"), nullable=True) # Allow null if not in a campaign
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
     # Relationship to user
     owner = relationship("User", back_populates="images")
+    # Relationship to campaign
+    campaign = relationship("Campaign", back_populates="images")
 
 
 class Campaign(Base):
@@ -57,3 +60,10 @@ class Campaign(Base):
     
     # Relationship to user
     owner = relationship("User", back_populates="campaigns")
+    # Relationship to images
+    images = relationship(
+        "Image",
+        back_populates="campaign",
+        cascade="all, delete-orphan",
+        lazy="selectin",
+    )

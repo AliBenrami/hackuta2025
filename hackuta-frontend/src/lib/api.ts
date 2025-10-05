@@ -18,6 +18,7 @@ export interface Image {
   content_type: string;
   analysis_text?: string;
   created_at: string;
+  campaign_id?: number;
 }
 
 export interface Analytics {
@@ -50,6 +51,7 @@ export interface CampaignResponse {
   inspiration?: string | null;
   created_at: string;
   updated_at: string;
+  images: Image[];
 }
 
 export interface ImageData {
@@ -233,15 +235,19 @@ export async function createImage(imageData: ImageData): Promise<Image> {
 }
 
 export async function uploadAndAnalyzeImage(
-  file: File
+  file: File,
+  campaignId: number
 ): Promise<AnalyzeImageResponse> {
   const formData = new FormData();
   formData.append("image", file);
 
-  const response = await authorizedFetch(`${API_BASE_URL}/analyze/image`, {
-    method: "POST",
-    body: formData,
-  });
+  const response = await authorizedFetch(
+    `${API_BASE_URL}/analyze/image?campaign_id=${campaignId}`,
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
 
   if (!response.ok) {
     throw new Error("Failed to upload image");
@@ -276,4 +282,33 @@ export async function createCampaign(
     throw new Error("Failed to create campaign");
   }
   return (await response.json()) as CampaignResponse;
+}
+
+export async function deleteCampaign(campaignId: string): Promise<void> {
+  const response = await authorizedFetch(
+    `${API_BASE_URL}/campaigns/${campaignId}`,
+    {
+      method: "DELETE",
+    }
+  );
+  if (!response.ok) {
+    throw new Error("Failed to delete campaign");
+  }
+}
+
+export async function updateCampaign(
+  campaignId: string,
+  updates: { name?: string; description?: string; archived?: boolean }
+): Promise<void> {
+  const response = await authorizedFetch(
+    `${API_BASE_URL}/campaigns/${campaignId}`,
+    {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updates),
+    }
+  );
+  if (!response.ok) {
+    throw new Error("Failed to update campaign");
+  }
 }

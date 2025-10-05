@@ -1,7 +1,11 @@
+"use client";
+
 import { Header } from "@/components/Header";
 import { ScrollHint } from "@/components/ScrollHint";
+import { useAuth } from "@/context/AuthContext";
 import { getLoginUrl } from "@/lib/api";
-import { JSX } from "react";
+import { useRouter } from "next/navigation";
+import { JSX, useEffect } from "react";
 
 const features = [
   {
@@ -41,7 +45,7 @@ function Icon({ name }: { name: string }) {
         <path
           fill="currentColor"
           d="M12 3a6 6 0 0 0-5.856 4.8A5 5 0 0 0 6 21h12a5 5 0 0 0 1.855-9.638 6.001 6.001 0 0 0-7.61-7.359A6 6 0 0 0 12 3Zm-1 9v4a1 1 0 1 0 2 0v-4h1.586a1 1 0 0 0 .707-1.707l-3.293-3.293a1 1 0 0 0-1.414 0L8.293 10.293A1 1 0 0 0 9 12h2Z"
-          className="fill-accent"
+          className="text-accent"
         />
       </svg>
     ),
@@ -50,7 +54,7 @@ function Icon({ name }: { name: string }) {
         <path
           fill="currentColor"
           d="M5 3h2v4h4v2H7v4H5V9H1V7h4V3Zm11-1 1.8 4.2L22 8l-4.2 1.8L16 14l-1.8-4.2L10 8l4.2-1.8L16 2Zm-7.5 9.5 1.2 2.8 2.8 1.2-2.8 1.2-1.2 2.8-1.2-2.8-2.8-1.2 2.8-1.2 1.2-2.8Z"
-          className="fill-accent"
+          className="text-accent"
         />
       </svg>
     ),
@@ -59,7 +63,7 @@ function Icon({ name }: { name: string }) {
         <path
           fill="currentColor"
           d="M21 19a1 1 0 1 0 0-2h-1v-7a1 1 0 0 0-1-1h-3a1 1 0 0 0-1 1v7h-2v-4a1 1 0 0 0-1-1h-3a1 1 0 0 0-1 1v4H7v-2a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h2v2a1 1 0 0 0 1 1h16Z"
-          className="fill-accent"
+          className="text-accent"
         />
       </svg>
     ),
@@ -73,6 +77,26 @@ function Icon({ name }: { name: string }) {
 }
 
 export default function Home() {
+  const { user, isLoading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      router.push("/dashboard");
+    }
+  }, [user, isLoading, router]);
+
+  // Prevent flash of content while redirecting
+  if (isLoading || user) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center bg-background">
+        <div className="text-center">
+          <p className="text-lg font-semibold text-slate-700">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative flex min-h-screen flex-col bg-background text-foreground">
       <section id="hero" className="relative flex min-h-screen flex-col">
@@ -90,10 +114,10 @@ export default function Home() {
             {/* TODO [frontend]: link Demo → /dashboard */}
             <a
               className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-transform duration-200 hover:-translate-y-0.5 hover:bg-accent-hover"
-              href="/dashboard"
+              href={getLoginUrl()}
             >
               {/* Dummy: placeholder hero CTA */}
-              Try Demo
+              Sign Up
             </a>
             <a
               className="inline-flex items-center justify-center rounded-lg border border-accent bg-white px-6 py-3 text-sm font-semibold text-accent shadow-md shadow-accent/10 transition-colors duration-200 hover:bg-accent/10"

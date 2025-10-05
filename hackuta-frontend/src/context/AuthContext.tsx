@@ -22,7 +22,7 @@ import {
 
 interface AuthContextValue {
   user: User | null;
-  loading: boolean;
+  isLoading: boolean;
   error: string | null;
   login: () => void;
   signup: () => void;
@@ -38,7 +38,10 @@ interface AuthProviderProps {
   initialUser?: User | null;
 }
 
-export function AuthProvider({ children, initialUser = null }: AuthProviderProps) {
+export function AuthProvider({
+  children,
+  initialUser = null,
+}: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(initialUser);
   const [loading, setLoading] = useState(!initialUser);
   const [error, setError] = useState<string | null>(null);
@@ -51,7 +54,8 @@ export function AuthProvider({ children, initialUser = null }: AuthProviderProps
       const currentUser = await getCurrentUser();
       setUser(currentUser);
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Failed to fetch user";
+      const message =
+        err instanceof Error ? err.message : "Failed to fetch user";
       setError(message);
       setUser(null);
     } finally {
@@ -69,7 +73,7 @@ export function AuthProvider({ children, initialUser = null }: AuthProviderProps
       await persistSession(token);
       await loadUser();
     },
-    [loadUser],
+    [loadUser]
   );
 
   useEffect(() => {
@@ -86,7 +90,9 @@ export function AuthProvider({ children, initialUser = null }: AuthProviderProps
       setError(decodeURIComponent(authError));
       url.searchParams.delete("error");
       const newSearch = url.searchParams.toString();
-      const cleanedUrl = `${url.pathname}${newSearch ? `?${newSearch}` : ""}${url.hash}`;
+      const cleanedUrl = `${url.pathname}${newSearch ? `?${newSearch}` : ""}${
+        url.hash
+      }`;
       window.history.replaceState({}, "", cleanedUrl);
     }
 
@@ -97,7 +103,9 @@ export function AuthProvider({ children, initialUser = null }: AuthProviderProps
         url.searchParams.delete("token");
         url.searchParams.delete("redirect");
         const newSearch = url.searchParams.toString();
-        const cleanedUrl = `${url.pathname}${newSearch ? `?${newSearch}` : ""}${url.hash}`;
+        const cleanedUrl = `${url.pathname}${newSearch ? `?${newSearch}` : ""}${
+          url.hash
+        }`;
         window.history.replaceState({}, "", cleanedUrl);
 
         if (redirectPath && redirectPath.startsWith("/")) {
@@ -140,7 +148,7 @@ export function AuthProvider({ children, initialUser = null }: AuthProviderProps
   const value = useMemo<AuthContextValue>(
     () => ({
       user,
-      loading,
+      isLoading: loading,
       error,
       login,
       signup,
@@ -148,7 +156,7 @@ export function AuthProvider({ children, initialUser = null }: AuthProviderProps
       refreshUser: loadUser,
       setSessionToken,
     }),
-    [user, loading, error, login, signup, logout, loadUser, setSessionToken],
+    [user, loading, error, login, signup, logout, loadUser, setSessionToken]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
@@ -161,4 +169,3 @@ export function useAuth() {
   }
   return context;
 }
-

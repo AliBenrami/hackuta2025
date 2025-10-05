@@ -25,13 +25,21 @@ export function InsightRing({
   colorClass = "text-blue-600",
   size = "lg",
 }: InsightRingProps) {
-  const percent = value !== undefined && max > 0 ? Math.min(1, Math.max(0, value / max)) : 0;
-  const displayValue = value !== undefined ? (max <= 10 ? `${value}` : `${Math.round(value)}%`) : "—";
+  const percent =
+    value !== undefined && max > 0 ? Math.min(1, Math.max(0, value / max)) : 0;
+  const displayValue =
+    value !== undefined
+      ? max <= 10
+        ? `${value}`
+        : `${Math.round(value)}%`
+      : "—";
 
   const dimensions = SIZE_MAP[size];
 
   return (
-    <div className={`flex flex-col items-center ${disabled ? "opacity-60" : ""}`}>
+    <div
+      className={`flex flex-col items-center ${disabled ? "opacity-60" : ""}`}
+    >
       <div
         className={`relative flex items-center justify-center rounded-full shadow-[0_0_12px_rgba(37,99,235,0.08)] transition-transform ${
           disabled ? "" : "hover:scale-105"

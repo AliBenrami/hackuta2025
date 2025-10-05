@@ -10,18 +10,20 @@ import { Header } from "@/components/Header";
 import { useAuth } from "@/context/AuthContext";
 import { useCampaigns } from "@/context/CampaignContext";
 import { getCampaigns, getImages } from "@/lib/api";
+import { CampaignResponse } from "@/lib/api";
+import { logout } from "@/lib/api";
 
 function CreateCampaignCTA({ onClick }: { onClick: () => void }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="w-full max-w-6xl mx-auto mt-8 flex h-36 flex-col items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-white text-center shadow-sm transition hover:border-blue-300 hover:bg-slate-50 hover:shadow-md"
+      className="w-full max-w-6xl mx-auto mt-8 flex h-36 flex-col items-center justify-center rounded-2xl border-2 border-dashed border-accent/30 bg-white text-center shadow-sm transition hover:border-accent hover:bg-accent/5 hover:shadow-md"
     >
-      <span className="flex h-12 w-12 items-center justify-center rounded-full border border-blue-200 bg-white text-blue-600 shadow-sm">
+      <span className="flex h-12 w-12 items-center justify-center rounded-full border border-accent/20 bg-accent/10 text-accent shadow-sm">
         <PlusCircle className="h-6 w-6" />
       </span>
-      <span className="mt-1 text-sm font-medium text-blue-700">
+      <span className="mt-1 text-sm font-medium text-accent">
         Create a New Campaign
       </span>
     </button>
@@ -81,9 +83,9 @@ export default function DashboardPage() {
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-background text-foreground">
-      <Header />
+      <DashboardHeader />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 pt-28 sm:px-8 lg:px-12">
+      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 pt-12 sm:px-8 lg:px-12">
         <main className="flex flex-1 flex-col">
           <section className="flex flex-col gap-4">
             <h1 className="text-3xl font-heading font-semibold text-navy sm:text-4xl">
@@ -145,3 +147,29 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+const DashboardHeader = () => {
+  const { user } = useAuth();
+
+  return (
+    <header className="bg-gradient-to-r from-slate-50 via-white to-blue-50 border-b border-slate-200">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6 sm:px-8 lg:px-12">
+        <span className="text-2xl font-heading font-semibold text-navy">
+          Adsett
+          <span className="text-accent">.</span>
+        </span>
+        <div className="flex items-center gap-4">
+          <span className="text-sm text-slate-600">
+            Welcome, {user?.name ?? "User"}
+          </span>
+          <button
+            onClick={() => logout()}
+            className="rounded-lg bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-200"
+          >
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+};

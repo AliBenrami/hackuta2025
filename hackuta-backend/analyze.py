@@ -1,5 +1,6 @@
 from fastapi import UploadFile, File
 from typing import Dict, Any
+import random
 
 
 def get_analyze_image(image: UploadFile = File(...)) -> Dict[str, Any]:
@@ -10,11 +11,12 @@ def get_analyze_image(image: UploadFile = File(...)) -> Dict[str, Any]:
     # Placeholder implementation – replace with real model inference
     analysis_text = ""
 
+    # Return whole-number dummy metrics for UI display
     analytics = {
-        "quality": 0.0,
-        "hostility": 0.0,
-        "engagement": 0.0,
-        "resonance": 0.0,
+        "quality": int(random.random() * 10),
+        "hostility": int(random.random() * 10),
+        "engagement": int(random.random() * 100),
+        "resonance": int(random.random() * 10),                        
     }
 
     return {

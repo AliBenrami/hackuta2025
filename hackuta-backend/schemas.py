@@ -20,6 +20,7 @@ class ImageResponse(BaseModel):
     content_type: Optional[str]
     analysis_text: Optional[str]
     user_id: int
+    campaign_id: Optional[int] = None
     created_at: datetime
     updated_at: datetime
     
@@ -71,6 +72,7 @@ class CampaignResponse(BaseModel):
     inspiration: Optional[str]
     created_at: datetime
     updated_at: datetime
+    images: list[ImageResponse] = []
     
     class Config:
         from_attributes = True

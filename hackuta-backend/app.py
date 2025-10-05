@@ -6,7 +6,7 @@ from starlette.middleware.sessions import SessionMiddleware
 from pydantic import BaseModel
 from typing import Annotated, List
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, select
-from sqlalchemy.orm import sessionmaker, relationship, declarative_base
+from sqlalchemy.orm import sessionmaker, relationship, declarative_base, selectinload
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from dotenv import load_dotenv
 from analyze import get_analyze_image
@@ -42,6 +42,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # Initialize database on startup
 @app.on_event("startup")
@@ -257,6 +258,7 @@ async def get_image(
 @app.post("/analyze/image", response_model=AnalyzeImageResponse)
 async def analyze_image(
     request: Request,
+    campaign_id: int,
     image: UploadFile = File(...),
     db: AsyncSession = Depends(get_db)
 ):
@@ -270,16 +272,14 @@ async def analyze_image(
     if not image.content_type or not image.content_type.startswith("image/"):
         raise HTTPException(status_code=400, detail="File must be an image")
     
-    # Get S3 bucket name from environment
-    bucket_name = os.getenv("S3_BUCKET_NAME", "your-default-bucket-name")
-    
     # Upload image directly to S3
+    bucket_name = os.getenv("S3_BUCKET_NAME", "your-default-bucket-name")
     try:
         image_info = upload_image(
             file_obj=image.file,
             bucket=bucket_name,
             filename=image.filename or "image",
-            content_type=image.content_type
+            content_type=image.content_type,
         )
     except RuntimeError as e:
         raise HTTPException(status_code=500, detail=f"Failed to upload image: {str(e)}")
@@ -291,11 +291,12 @@ async def analyze_image(
     
     # Create image record in database
     image_record = Image(
-        url=image_info.url,
+        url=image_info['url'],
         filename=image.filename,
         content_type=image.content_type,
         analysis_text=analyze_text,
-        user_id=current_user.id
+        user_id=current_user.id,
+        campaign_id=campaign_id
     )
     
     db.add(image_record)
@@ -351,9 +352,75 @@ async def list_campaigns(
     List campaigns for the current user
     """
     current_user = await get_current_user_from_session(request, db)
-    result = await db.execute(select(Campaign).where(Campaign.user_id == current_user.id).order_by(Campaign.created_at.desc()))
+    result = await db.execute(select(Campaign).where(Campaign.user_id == current_user.id).options(selectinload(Campaign.images)).order_by(Campaign.created_at.desc()))
     campaigns = result.scalars().all()
     return campaigns
+
+@app.delete("/campaigns/{campaign_id}")
+async def delete_campaign(
+    campaign_id: int,
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+):
+    """
+    Delete a campaign (must be owned by current user)
+    """
+    current_user = await get_current_user_from_session(request, db)
+    
+    # Get campaign and verify ownership
+    result = await db.execute(select(Campaign).where(Campaign.id == campaign_id))
+    campaign = result.scalar_one_or_none()
+    
+    if not campaign:
+        raise HTTPException(status_code=404, detail="Campaign not found")
+    
+    if campaign.user_id != current_user.id:
+        raise HTTPException(status_code=403, detail="Not authorized to delete this campaign")
+    
+    # Delete campaign (images will be cascade deleted if configured)
+    await db.delete(campaign)
+    await db.commit()
+    
+    return {"success": True, "message": "Campaign deleted successfully"}
+
+@app.patch("/campaigns/{campaign_id}")
+async def update_campaign(
+    campaign_id: int,
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+):
+    """
+    Update a campaign (name, description, or archive status)
+    """
+    current_user = await get_current_user_from_session(request, db)
+    
+    # Get campaign and verify ownership
+    result = await db.execute(select(Campaign).where(Campaign.id == campaign_id))
+    campaign = result.scalar_one_or_none()
+    
+    if not campaign:
+        raise HTTPException(status_code=404, detail="Campaign not found")
+    
+    if campaign.user_id != current_user.id:
+        raise HTTPException(status_code=403, detail="Not authorized to update this campaign")
+    
+    # Parse request body
+    body = await request.json()
+    
+    # Update fields if provided
+    if "name" in body:
+        campaign.name = body["name"]
+    if "description" in body:
+        campaign.description = body["description"]
+    if "archived" in body:
+        # Add archived field if it doesn't exist (we'll handle this gracefully)
+        if hasattr(campaign, 'archived'):
+            campaign.archived = body["archived"]
+    
+    await db.commit()
+    await db.refresh(campaign)
+    
+    return {"success": True, "message": "Campaign updated successfully"}
 
 if __name__ == "__main__":
     import uvicorn

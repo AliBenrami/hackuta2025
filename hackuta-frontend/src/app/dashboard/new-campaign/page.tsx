@@ -19,6 +19,8 @@ export default function NewCampaignPage() {
     success: "",
     inspiration: "",
   });
+  const [isCreating, setIsCreating] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const nameError = name.trim().length < 3 || name.trim().length > 50;
   const descriptionError = description.trim().length < 50;
@@ -31,6 +33,8 @@ export default function NewCampaignPage() {
     if (isInvalid) {
       return;
     }
+    setError(null);
+    setIsCreating(true);
 
     try {
       const created = await createCampaign({
@@ -53,7 +57,9 @@ export default function NewCampaignPage() {
       });
       router.push("/dashboard");
     } catch (e) {
-      // Optional: surface an error toast
+      setError("Failed to create campaign. Please try again.");
+    } finally {
+      setIsCreating(false);
     }
   };
 
@@ -229,15 +235,18 @@ export default function NewCampaignPage() {
 
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <p className="text-xs text-slate-400">
-              We’ll use this information to personalize critique
-              recommendations.
+              {error ? (
+                <span className="text-red-500">{error}</span>
+              ) : (
+                "We’ll use this information to personalize critique recommendations."
+              )}
             </p>
             <button
               type="submit"
               className="w-full rounded-full bg-accent px-8 py-3 text-base font-medium text-white transition hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60 md:w-auto"
-              disabled={isInvalid}
+              disabled={isInvalid || isCreating}
             >
-              Create Campaign
+              {isCreating ? "Creating..." : "Create Campaign"}
             </button>
           </div>
         </form>
