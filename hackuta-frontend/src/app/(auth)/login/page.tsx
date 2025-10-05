@@ -24,7 +24,7 @@ export default function LoginPage() {
             <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest">
               Secure Access
             </span>
-            <h1 className="mt-8 text-4xl font-heading font-semibold">Welcome back to AdSett.</h1>
+            <h1 className="mt-8 text-4xl font-heading font-semibold">Welcome back to Adsett.</h1>
             <p className="mt-4 text-sm text-white/80">
               Analyze creatives, get AI feedback, and publish to your channels in one streamlined workspace.
             </p>
@@ -40,7 +40,7 @@ export default function LoginPage() {
       <div className="flex flex-col justify-center space-y-10 p-10">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-2xl font-heading font-semibold text-navy">
-            AdSett
+            Adsett
             <span className="text-accent">.</span>
           </Link>
           <LoginMenu />

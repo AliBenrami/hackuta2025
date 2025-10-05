@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 export interface AdCreative {
   id: string;
@@ -44,12 +51,19 @@ interface CampaignContextValue {
   campaigns: CampaignEntry[];
   addCampaign: (campaign: CampaignEntry) => void;
   addAd: (campaignId: string, ad: AdCreative) => void;
+  updateAdMetrics: (
+    campaignId: string,
+    adId: string,
+    metrics: NonNullable<AdCreative["metrics"]>
+  ) => void;
   getCampaignAds: (campaignId: string) => AdCreative[];
   getCampaignById: (campaignId: string) => CampaignEntry | undefined;
   clearCampaigns: () => void;
 }
 
-const CampaignContext = createContext<CampaignContextValue | undefined>(undefined);
+const CampaignContext = createContext<CampaignContextValue | undefined>(
+  undefined
+);
 
 const STORAGE_KEY = "adsett_campaigns_v1";
 
@@ -108,10 +122,18 @@ function computeCampaignAverages(campaign: CampaignEntry): CampaignEntry {
   });
 
   const insights = {
-    quality: counts.quality ? Math.round((totals.quality / counts.quality) * 10) / 10 : undefined,
-    hostility: counts.hostility ? Math.round((totals.hostility / counts.hostility) * 10) / 10 : undefined,
-    engagement: counts.engagement ? Math.round(totals.engagement / counts.engagement) : undefined,
-    resonance: counts.resonance ? Math.round((totals.resonance / counts.resonance) * 10) / 10 : undefined,
+    quality: counts.quality
+      ? Math.round((totals.quality / counts.quality) * 10) / 10
+      : undefined,
+    hostility: counts.hostility
+      ? Math.round((totals.hostility / counts.hostility) * 10) / 10
+      : undefined,
+    engagement: counts.engagement
+      ? Math.round(totals.engagement / counts.engagement)
+      : undefined,
+    resonance: counts.resonance
+      ? Math.round((totals.resonance / counts.resonance) * 10) / 10
+      : undefined,
   };
 
   return { ...campaign, insights };
@@ -120,35 +142,21 @@ function computeCampaignAverages(campaign: CampaignEntry): CampaignEntry {
 export function CampaignProvider({ children }: { children: React.ReactNode }) {
   const [campaigns, setCampaigns] = useState<CampaignEntry[]>([]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        const parsed = dedupeCampaigns(JSON.parse(stored) as CampaignEntry[]);
-        setCampaigns(parsed.map(computeCampaignAverages));
-      }
-    } catch (error) {
-      console.error("Failed to read campaigns from storage", error);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(dedupeCampaigns(campaigns)));
-    } catch (error) {
-      console.error("Failed to persist campaigns", error);
-    }
-  }, [campaigns]);
+  // Persistence disabled: campaigns only live in memory for this session.
+  // Deliberately do not read or write localStorage to avoid saving in browser storage.
 
   const addCampaign = useCallback((campaign: CampaignEntry) => {
     setCampaigns((prev) => {
       const exists = prev.some(
-        (entry) => entry.id === campaign.id || entry.name.trim().toLowerCase() === campaign.name.trim().toLowerCase()
+        (entry) =>
+          entry.id === campaign.id ||
+          entry.name.trim().toLowerCase() === campaign.name.trim().toLowerCase()
       );
       if (exists) return prev;
-      const withDefaults = computeCampaignAverages({ ...campaign, ads: campaign.ads ?? [] });
+      const withDefaults = computeCampaignAverages({
+        ...campaign,
+        ads: campaign.ads ?? [],
+      });
       return dedupeCampaigns([withDefaults, ...prev]);
     });
   }, []);
@@ -165,26 +173,69 @@ export function CampaignProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  const updateAdMetrics = useCallback(
+    (
+      campaignId: string,
+      adId: string,
+      metrics: NonNullable<AdCreative["metrics"]>
+    ) => {
+      setCampaigns((prev) => {
+        return prev.map((campaign) => {
+          if (campaign.id !== campaignId) return campaign;
+          const ads = (campaign.ads ?? []).map((ad) =>
+            ad.id === adId
+              ? { ...ad, metrics: { ...ad.metrics, ...metrics } }
+              : ad
+          );
+          return computeCampaignAverages({ ...campaign, ads });
+        });
+      });
+    },
+    []
+  );
+
   const clearCampaigns = useCallback(() => {
     setCampaigns([]);
-    if (typeof window !== "undefined") {
-      window.localStorage.removeItem(STORAGE_KEY);
-    }
   }, []);
 
   const getCampaignAds = useCallback(
-    (campaignId: string) => campaigns.find((campaign) => campaign.id === campaignId)?.ads ?? [],
+    (campaignId: string) =>
+      campaigns.find((campaign) => campaign.id === campaignId)?.ads ?? [],
     [campaigns]
   );
 
-  const getCampaignById = useCallback((campaignId: string) => campaigns.find((campaign) => campaign.id === campaignId), [campaigns]);
-
-  const value = useMemo(
-    () => ({ campaigns, addCampaign, addAd, getCampaignAds, getCampaignById, clearCampaigns }),
-    [campaigns, addCampaign, addAd, getCampaignAds, getCampaignById, clearCampaigns]
+  const getCampaignById = useCallback(
+    (campaignId: string) =>
+      campaigns.find((campaign) => campaign.id === campaignId),
+    [campaigns]
   );
 
-  return <CampaignContext.Provider value={value}>{children}</CampaignContext.Provider>;
+  const value = useMemo(
+    () => ({
+      campaigns,
+      addCampaign,
+      addAd,
+      updateAdMetrics,
+      getCampaignAds,
+      getCampaignById,
+      clearCampaigns,
+    }),
+    [
+      campaigns,
+      addCampaign,
+      addAd,
+      updateAdMetrics,
+      getCampaignAds,
+      getCampaignById,
+      clearCampaigns,
+    ]
+  );
+
+  return (
+    <CampaignContext.Provider value={value}>
+      {children}
+    </CampaignContext.Provider>
+  );
 }
 
 export function useCampaigns() {

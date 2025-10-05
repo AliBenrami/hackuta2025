@@ -21,6 +21,8 @@ class User(Base):
     
     # Relationship to images
     images = relationship("Image", back_populates="owner", cascade="all, delete-orphan")
+    # Relationship to campaigns
+    campaigns = relationship("Campaign", back_populates="owner", cascade="all, delete-orphan")
 
 class Image(Base):
     """Image model - stores image URLs and metadata"""
@@ -37,3 +39,21 @@ class Image(Base):
     
     # Relationship to user
     owner = relationship("User", back_populates="images")
+
+
+class Campaign(Base):
+    """Campaign model - stores campaign data for a user"""
+    __tablename__ = "campaigns"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    name = Column(String(255), nullable=False)
+    description = Column(Text, nullable=False)
+    emotion = Column(String(255), nullable=True)
+    success = Column(String(255), nullable=True)
+    inspiration = Column(String(255), nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
+    # Relationship to user
+    owner = relationship("User", back_populates="campaigns")

@@ -20,6 +20,38 @@ export interface Image {
   created_at: string;
 }
 
+export interface Analytics {
+  quality: number;
+  hostility: number;
+  engagement: number;
+  resonance: number;
+}
+
+export interface AnalyzeImageResponse {
+  image: Image;
+  analytics: Analytics;
+}
+
+export interface CampaignCreate {
+  name: string;
+  description: string;
+  emotion?: string;
+  success?: string;
+  inspiration?: string;
+}
+
+export interface CampaignResponse {
+  id: number;
+  user_id: number;
+  name: string;
+  description: string;
+  emotion?: string | null;
+  success?: string | null;
+  inspiration?: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface ImageData {
   url: string;
   filename: string;
@@ -161,6 +193,10 @@ export function getLogoutUrl(): string {
   return `${API_BASE_URL}/auth/logout`;
 }
 
+export function getAnalyticsUrl(): string {
+  return `${API_BASE_URL}/analytics/image`;
+}
+
 export async function logout(): Promise<void> {
   await destroySession();
 }
@@ -196,7 +232,9 @@ export async function createImage(imageData: ImageData): Promise<Image> {
   return (await response.json()) as Image;
 }
 
-export async function uploadAndAnalyzeImage(file: File): Promise<Image> {
+export async function uploadAndAnalyzeImage(
+  file: File
+): Promise<AnalyzeImageResponse> {
   const formData = new FormData();
   formData.append("image", file);
 
@@ -209,7 +247,7 @@ export async function uploadAndAnalyzeImage(file: File): Promise<Image> {
     throw new Error("Failed to upload image");
   }
 
-  return (await response.json()) as Image;
+  return (await response.json()) as AnalyzeImageResponse;
 }
 
 export const apiClient = {
@@ -217,3 +255,25 @@ export const apiClient = {
   createImage,
   uploadAndAnalyzeImage,
 };
+
+export async function getCampaigns(): Promise<CampaignResponse[]> {
+  const response = await authorizedFetch(`${API_BASE_URL}/campaigns`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch campaigns");
+  }
+  return (await response.json()) as CampaignResponse[];
+}
+
+export async function createCampaign(
+  payload: CampaignCreate
+): Promise<CampaignResponse> {
+  const response = await authorizedFetch(`${API_BASE_URL}/campaigns`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to create campaign");
+  }
+  return (await response.json()) as CampaignResponse;
+}

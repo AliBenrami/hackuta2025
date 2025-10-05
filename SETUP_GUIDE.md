@@ -1,6 +1,6 @@
-# AdSett - Complete Setup Guide
+# Adsett - Complete Setup Guide
 
-Step-by-step guide to get AdSett running from scratch.
+Step-by-step guide to get Adsett running from scratch.
 
 ---
 
@@ -47,7 +47,7 @@ npm --version      # Should show 8 or higher
 
 1. In Auth0 Dashboard, click **Applications** → **Applications**
 2. Click **Create Application**
-3. Name it: `AdSett Dev`
+3. Name it: `Adsett Dev`
 4. Choose: **Regular Web Application**
 5. Click **Create**
 
@@ -285,7 +285,7 @@ Open your browser and go to:
 http://localhost:3000
 ```
 
-You should see the AdSett landing page! 🎉
+You should see the Adsett landing page! 🎉
 
 ---
 

@@ -22,8 +22,12 @@ export function CampaignPanel({ campaign }: { campaign: CampaignEntry }) {
   return (
     <article className="mx-auto w-full max-w-6xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition hover:bg-gradient-to-r hover:from-slate-50 hover:to-blue-50 hover:shadow-md">
       <div className="flex flex-col items-center gap-2 text-center">
-        <h2 className="text-2xl font-semibold text-slate-800">{campaign.name}</h2>
-        <p className="text-sm italic text-slate-500">Started: {createdDate} — Present</p>
+        <h2 className="text-2xl font-semibold text-slate-800">
+          {campaign.name}
+        </h2>
+        <p className="text-sm italic text-slate-500">
+          Started: {createdDate} — Present
+        </p>
       </div>
 
       <div className="my-6 border-t border-slate-200" />
@@ -70,7 +74,10 @@ export function CampaignPanel({ campaign }: { campaign: CampaignEntry }) {
 
       <div className="mt-6 flex items-center justify-between text-sm text-slate-400">
         <span>Last synced: 2h ago</span>
-        <Link href={`/dashboard/campaign/${campaign.id}`} className="text-blue-600 transition hover:underline">
+        <Link
+          href={`/dashboard/campaign/${campaign.id}`}
+          className="text-blue-600 transition hover:underline"
+        >
           View Details →
         </Link>
       </div>

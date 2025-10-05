@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AdSett | Sign in",
-  description: "Access your AdSett account to manage campaigns and insights.",
+  title: "Adsett | Sign in",
+  description: "Access your Adsett account to manage campaigns and insights.",
 };
 
 export default function AuthLayout({

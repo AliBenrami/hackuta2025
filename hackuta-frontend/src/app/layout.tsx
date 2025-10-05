@@ -19,20 +19,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AdSett | Marketing Intelligence for High-Performing Teams",
+  title: "Adsett | Marketing Intelligence for High-Performing Teams",
   description:
-    "AdSett delivers AI-powered creative critique, publication, and performance insights so marketing teams can move from idea to impact faster.",
+    "Adsett delivers AI-powered creative critique, publication, and performance insights so marketing teams can move from idea to impact faster.",
   metadataBase: new URL("https://adsett.io"),
   openGraph: {
-    title: "AdSett | Marketing Intelligence for High-Performing Teams",
+    title: "Adsett | Marketing Intelligence for High-Performing Teams",
     description:
       "Upload, critique, publish, and analyze ads in one automated workflow.",
     url: "https://adsett.io",
-    siteName: "AdSett",
+    siteName: "Adsett",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AdSett | Marketing Intelligence for High-Performing Teams",
+    title: "Adsett | Marketing Intelligence for High-Performing Teams",
     description:
       "AI-driven feedback and publishing workflow for modern marketing teams.",
   },

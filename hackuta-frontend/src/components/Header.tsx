@@ -18,8 +18,9 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 sm:px-8 lg:px-12">
         <a href="/" className="flex items-center gap-2">
           <span className="font-heading text-2xl font-bold text-navy">
-            AdSett
+            Adsett
           </span>
+          <span className="text-accent">.</span>
         </a>
 
         <nav className="flex items-center gap-6">

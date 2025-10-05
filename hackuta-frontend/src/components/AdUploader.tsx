@@ -9,9 +9,10 @@ const MAX_SIZE = 10 * 1024 * 1024; // 10MB
 
 interface AdUploaderProps {
   campaignId: string;
+  onFileAdded?: (args: { file: File; adId: string }) => void;
 }
 
-export function AdUploader({ campaignId }: AdUploaderProps) {
+export function AdUploader({ campaignId, onFileAdded }: AdUploaderProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { addAd } = useCampaigns();
 
@@ -41,24 +42,7 @@ export function AdUploader({ campaignId }: AdUploaderProps) {
       image.src = URL.createObjectURL(file);
     });
 
-  const generateDemoMetrics = useCallback((seed: string) => {
-    let hash = 0;
-    for (let i = 0; i < seed.length; i += 1) {
-      hash = (hash << 5) - hash + seed.charCodeAt(i);
-      hash |= 0;
-    }
-    const normalize = (value: number, min: number, max: number) => {
-      const range = max - min;
-      return ((value % range) + range) % range + min;
-    };
-
-    return {
-      quality: Math.round(normalize(hash, 6, 9) * 10) / 10,
-      hostility: Math.round(normalize(hash >> 3, 1, 4) * 10) / 10,
-      engagement: Math.round(normalize(hash >> 6, 25, 65)),
-      resonance: Math.round(normalize(hash >> 2, 2, 6) * 10) / 10,
-    };
-  }, []);
+  // Remove demo metric generation; metrics will be provided by backend analytics when available
 
   const handleFiles = useCallback(
     async (files: FileList | null) => {
@@ -68,11 +52,15 @@ export function AdUploader({ campaignId }: AdUploaderProps) {
 
       const validFiles = Array.from(files).filter((file) => {
         if (!ACCEPTED_TYPES.includes(file.type)) {
-          setError("Unsupported file type. Please upload PNG, JPEG, or WEBP images.");
+          setError(
+            "Unsupported file type. Please upload PNG, JPEG, or WEBP images."
+          );
           return false;
         }
         if (file.size > MAX_SIZE) {
-          setError("Max 10MB per image. Please compress or choose a different file.");
+          setError(
+            "Max 10MB per image. Please compress or choose a different file."
+          );
           return false;
         }
         return true;
@@ -83,19 +71,24 @@ export function AdUploader({ campaignId }: AdUploaderProps) {
         const createdAt = new Date().toISOString();
         const src = URL.createObjectURL(file);
 
-        addAd(
+        const newAdId = crypto.randomUUID();
+        addAd(campaignId, {
+          id: newAdId,
           campaignId,
-          {
-            id: crypto.randomUUID(),
-            campaignId,
-            createdAt,
-            src,
-            fileName: file.name,
-            width,
-            height,
-            metrics: generateDemoMetrics(`${file.name}-${file.size}-${createdAt}`),
+          createdAt,
+          src,
+          fileName: file.name,
+          width,
+          height,
+          // metrics intentionally not generated client-side
+        });
+        if (onFileAdded) {
+          try {
+            onFileAdded({ file, adId: newAdId });
+          } catch {
+            // noop
           }
-        );
+        }
         // TODO [backend]: upload asset to object storage and persist metadata to CockroachDB.
       }
 
@@ -105,7 +98,7 @@ export function AdUploader({ campaignId }: AdUploaderProps) {
         fileInputRef.current.value = "";
       }
     },
-    [addAd, campaignId, generateDemoMetrics]
+    [addAd, campaignId]
   );
 
   const onDrop = (event: DragEvent<HTMLDivElement>) => {
@@ -132,10 +125,14 @@ export function AdUploader({ campaignId }: AdUploaderProps) {
           }
         }}
         className={`flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-10 text-center transition focus:outline-none focus:ring-2 focus:ring-accent/40 ${
-          dragActive ? "border-accent bg-blue-50/40" : "border-slate-300 bg-white"
+          dragActive
+            ? "border-accent bg-blue-50/40"
+            : "border-slate-300 bg-white"
         } ${isUploading ? "opacity-75" : ""}`}
       >
-        <span className="text-sm font-semibold text-slate-700">Drop images here</span>
+        <span className="text-sm font-semibold text-slate-700">
+          Drop images here
+        </span>
         <span className="text-xs text-slate-500 mt-1">or</span>
         <button
           type="button"
@@ -153,7 +150,8 @@ export function AdUploader({ campaignId }: AdUploaderProps) {
           )}
         </button>
         <p className="mt-3 text-xs text-slate-400">
-          PNG, JPG, WEBP up to 10MB. Higher resolution creatives produce better insights.
+          PNG, JPG, WEBP up to 10MB. Higher resolution creatives produce better
+          insights.
         </p>
         {/* Dummy: uploads are not persisted to a server. */}
       </div>
@@ -171,4 +169,3 @@ export function AdUploader({ campaignId }: AdUploaderProps) {
     </div>
   );
 }
-

@@ -15,8 +15,8 @@ import os
 
 # Import our new modules
 from database import get_db, init_db
-from models import User, Image
-from schemas import ImageCreateRequest, ImageResponse, UserResponse
+from models import User, Image, Campaign
+from schemas import ImageCreateRequest, ImageResponse, UserResponse, AnalyzeImageResponse, Analytics, CampaignCreate, CampaignResponse
 from oauth import oauth
 from session import (
     set_session_cookie, 
@@ -254,7 +254,7 @@ async def get_image(
 
 
 
-@app.post("/analyze/image", response_model=ImageResponse)
+@app.post("/analyze/image", response_model=AnalyzeImageResponse)
 async def analyze_image(
     request: Request,
     image: UploadFile = File(...),
@@ -285,7 +285,9 @@ async def analyze_image(
         raise HTTPException(status_code=500, detail=f"Failed to upload image: {str(e)}")
     
     # Analyze the image
-    analyze_text = get_analyze_image(image)
+    analysis_result = get_analyze_image(image)
+    analyze_text = analysis_result.get("analysis_text", "")
+    analytics_dict = analysis_result.get("analytics", {})
     
     # Create image record in database
     image_record = Image(
@@ -300,11 +302,58 @@ async def analyze_image(
     await db.commit()
     await db.refresh(image_record)
     
-    return image_record
+    # Prepare analytics object for response
+    analytics = Analytics(
+        quality=float(analytics_dict.get("quality", 0.0)),
+        hostility=float(analytics_dict.get("hostility", 0.0)),
+        engagement=float(analytics_dict.get("engagement", 0.0)),
+        resonance=float(analytics_dict.get("resonance", 0.0)),
+    )
+
+    return {
+        "image": image_record,
+        "analytics": analytics,
+    }
 
 
 
 
+@app.post("/campaigns", response_model=CampaignResponse)
+async def create_campaign(
+    request: Request,
+    payload: CampaignCreate,
+    db: AsyncSession = Depends(get_db),
+):
+    """
+    Create a campaign for the current user
+    """
+    current_user = await get_current_user_from_session(request, db)
+    campaign = Campaign(
+        user_id=current_user.id,
+        name=payload.name,
+        description=payload.description,
+        emotion=payload.emotion,
+        success=payload.success,
+        inspiration=payload.inspiration,
+    )
+    db.add(campaign)
+    await db.commit()
+    await db.refresh(campaign)
+    return campaign
+
+
+@app.get("/campaigns", response_model=List[CampaignResponse])
+async def list_campaigns(
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+):
+    """
+    List campaigns for the current user
+    """
+    current_user = await get_current_user_from_session(request, db)
+    result = await db.execute(select(Campaign).where(Campaign.user_id == current_user.id).order_by(Campaign.created_at.desc()))
+    campaigns = result.scalars().all()
+    return campaigns
 
 if __name__ == "__main__":
     import uvicorn

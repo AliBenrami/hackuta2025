@@ -20,7 +20,12 @@ export function AdRow({ ad }: AdRowProps) {
         <div className="flex items-start gap-6">
           <div className="relative h-28 w-40 overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
             {ad.src ? (
-              <Image src={ad.src} alt={ad.fileName ?? "Ad creative"} fill className="object-cover" />
+              <Image
+                src={ad.src}
+                alt={ad.fileName ?? "Ad creative"}
+                fill
+                className="object-cover"
+              />
             ) : (
               <div className="flex h-full w-full items-center justify-center text-xs text-slate-400">
                 Awaiting preview
@@ -28,7 +33,9 @@ export function AdRow({ ad }: AdRowProps) {
             )}
           </div>
           <div className="flex flex-col gap-2">
-            <p className="text-sm font-medium text-slate-700">{ad.fileName ?? "Untitled creative"}</p>
+            <p className="text-sm font-medium text-slate-700">
+              {ad.fileName ?? "Untitled creative"}
+            </p>
             <p className="text-xs text-slate-400">Uploaded {formattedDate}</p>
             <div className="flex items-center gap-3 text-xs text-slate-400">
               <span>

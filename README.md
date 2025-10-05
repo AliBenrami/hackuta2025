@@ -1,8 +1,8 @@
-# AdSett - AI-Powered Ad Creative Feedback
+# Adsett - AI-Powered Ad Creative Feedback
 
 > Smarter Ads. Sharper Insights.
 
-AdSett is an AI-driven platform for marketing teams and creators to receive intelligent feedback on ad creatives, manage assets, and track performance - all in one place.
+Adsett is an AI-driven platform for marketing teams and creators to receive intelligent feedback on ad creatives, manage assets, and track performance - all in one place.
 
 **Built at HackUTA 2025** 🚀
 

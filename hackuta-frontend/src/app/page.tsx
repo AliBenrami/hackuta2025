@@ -18,7 +18,7 @@ const features = [
   {
     title: "Publish & Track",
     description:
-      "Ship to X/Twitter instantly and monitor results without leaving AdSett.",
+      "Ship to X/Twitter instantly and monitor results without leaving Adsett.",
     icon: "chart-bar",
   },
 ];
@@ -177,7 +177,7 @@ export default function Home() {
       </section>
 
       <footer className="py-12 text-center text-sm text-slate-500">
-        © 2025 AdSett. Built at HackUTA.
+        © 2025 Adsett. Built at HackUTA.
       </footer>
     </div>
   );

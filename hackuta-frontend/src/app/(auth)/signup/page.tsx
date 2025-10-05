@@ -40,7 +40,7 @@ export default function SignupPage() {
       <div className="flex flex-col justify-center space-y-10 p-10">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-2xl font-heading font-semibold text-navy">
-            AdSett
+            Adsett
             <span className="text-accent">.</span>
           </Link>
           <LoginMenu />
