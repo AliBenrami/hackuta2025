@@ -1,5 +1,6 @@
 export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ||
+  "http://localhost:8000";
 
 const SESSION_STORAGE_KEY = "session_token";
 const SESSION_COOKIE_NAME = "session_token";

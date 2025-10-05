@@ -318,6 +318,7 @@ export default function CampaignDetailPage() {
   // Deploy simulation
   const handleDeploy = useCallback(
     async (adId: string) => {
+      console.log(`--- DEPLOY BUTTON CLICKED for adId: ${adId} ---`);
       if (!campaign?.ads) return;
 
       // Find the ad to get the image database ID
@@ -337,22 +338,7 @@ export default function CampaignDetailPage() {
         const imageDbId = parseInt(ad.id, 10);
         const deployResponse = await deployImageToX(imageDbId);
 
-        // Wait a bit for mock metrics generation
-        const delay = randomInt(3000, 5000);
-        await new Promise((resolve) => setTimeout(resolve, delay));
-
-        const resonance = randomInt(4, 10); // 0-10
-        const engagement = randomInt(30, 95); // 0-100
-        const hostility = randomInt(0, 9); // 0-10
-        const controversy = Math.max(
-          0,
-          Math.min(10, hostility + randomInt(-2, 3))
-        );
-        const totalQualityPct = Math.round(
-          ((resonance + hostility + controversy + engagement / 10) / 4) * 10
-        );
-
-        // Update local metrics with tweet info
+        // Update local state with real data from the backend
         setAssetState((prev) => ({
           ...prev,
           [adId]: {
@@ -360,35 +346,15 @@ export default function CampaignDetailPage() {
             status: "ready",
             tweetId: deployResponse.tweet_id,
             tweetUrl: deployResponse.tweet_url,
-            metrics: {
-              resonance,
-              engagement,
-              hostility,
-              controversy,
-              totalQualityPct,
-            },
-            finalSummary: getMockCommentsSummary(
-              resonance,
-              engagement,
-              hostility,
-              controversy
-            ),
           },
         }));
-
-        // Feed context metrics to compute campaign aggregates
-        const mappedQuality =
-          Math.round(
-            ((resonance + hostility + controversy + engagement / 10) / 4) * 10
-          ) / 10;
-        updateAdMetrics(campaignId, adId, {
-          quality: mappedQuality,
-          hostility,
-          engagement,
-          resonance,
-        });
       } catch (error) {
         console.error("Failed to deploy ad to Twitter:", error);
+        alert(
+          `Deployment failed: ${
+            error instanceof Error ? error.message : "Unknown error"
+          }`
+        );
         // Reset to not deployed on error
         setAssetState((prev) => ({
           ...prev,

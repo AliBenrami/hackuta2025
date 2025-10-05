@@ -1,7 +1,7 @@
 """
 SQLAlchemy models for the application
 """
-from sqlalchemy import Column, Integer, String, DateTime, Text, ForeignKey
+from sqlalchemy import Column, Integer, String, DateTime, Text, ForeignKey, JSON
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from datetime import datetime
@@ -87,3 +87,24 @@ class Comment(Base):
     
     # Relationship to image
     image = relationship("Image", back_populates="comments")
+
+
+class CommentArchive(Base):
+    """
+    Stores the raw JSON for a comment fetched from the X (Twitter) API.
+    This provides a separate, clean archive of the original data.
+    """
+
+    __tablename__ = "comment_archives"
+    id = Column(Integer, primary_key=True, index=True)
+    image_id = Column(Integer, ForeignKey("images.id"), nullable=False)
+
+    # Store the unique ID from Twitter and the timestamp
+    comment_id = Column(String(255), nullable=False, unique=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    # Store the full, raw JSON response from the X (Twitter) API
+    raw_json = Column(JSON, nullable=False)
+
+    # Define a relationship back to the image if needed, though it's one-way for now
+    image = relationship("Image")

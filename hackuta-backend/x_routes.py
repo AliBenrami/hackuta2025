@@ -4,13 +4,14 @@ X (Twitter) API v2 integration for posting ads and fetching metrics.
 import os
 import httpx
 import asyncio
+import json
 from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks
 from pydantic import BaseModel
 from typing import Optional, Dict, Any, List
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from database import get_db
-from models import Image, Comment
+from models import Image, Comment, CommentArchive
 
 router = APIRouter(prefix="/api/x", tags=["x"])
 
@@ -387,7 +388,13 @@ async def deploy_image(
     
     if not image:
         raise HTTPException(status_code=404, detail="Image not found")
-    
+
+    # Add a guard clause to ensure the bearer token is configured
+    if not X_BEARER_TOKEN:
+        raise HTTPException(
+            status_code=500, detail="X_BEARER_TOKEN is not configured on the server."
+        )
+
     # Use the hardcoded tweet ID
     tweet_url = f"https://twitter.com/{X_USERNAME}/status/{X_TWEET_ID}"
     
@@ -402,18 +409,48 @@ async def deploy_image(
         
         # Store in database
         for comment_data in comments:
-            comment = Comment(
-                image_id=image.id,
-                comment_id=comment_data["comment_id"],
-                text=comment_data["text"],
-                author_id=comment_data["author_id"],
-                author_username=comment_data["author_username"],
+            # Check if comment already exists to avoid duplicates
+            result = await db.execute(
+                select(Comment).where(
+                    Comment.comment_id == comment_data["comment_id"]
+                )
             )
-            db.add(comment)
-        
+            existing_comment = result.scalar_one_or_none()
+
+            if not existing_comment:
+                # Save to the original comments table
+                comment = Comment(
+                    image_id=image.id,
+                    comment_id=comment_data["comment_id"],
+                    text=comment_data["text"],
+                    author_id=comment_data["author_id"],
+                    author_username=comment_data["author_username"],
+                    raw_json=comment_data["raw_json"],
+                )
+                db.add(comment)
+
+                # Also save the raw JSON to the new archive table
+                archive_entry = CommentArchive(
+                    image_id=image.id,
+                    comment_id=comment_data["comment_id"],
+                    raw_json=comment_data["raw_json"],
+                )
+                db.add(archive_entry)
+
         await db.commit()
-        print(f"Stored {len(comments)} comments for image {image.id}")
-        
+        print(
+            f"Stored {len(comments)} comments for image {image.id} and archived raw JSON"
+        )
+
+        # Also save the raw JSON to a file for easy inspection
+        try:
+            output_path = os.path.join(os.path.dirname(__file__), "comments.json")
+            with open(output_path, "w") as f:
+                json.dump(comments, f, indent=2)
+            print(f"Successfully saved comments to {output_path}")
+        except Exception as e:
+            print(f"Warning: Could not save comments to JSON file: {e}")
+
     except Exception as e:
         print(f"Warning: Could not fetch comments: {e}")
         # Continue anyway, just without comments
