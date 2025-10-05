@@ -1,0 +1,398 @@
+[
+  {
+    "text": "Finally a product that actually works!",
+    "label": 1
+  },
+  {
+    "text": "This looks promising but I'll wait for reviews.",
+    "label": 0
+  },
+  {
+    "text": "Another overpriced gadget nobody needs.",
+    "label": -1
+  },
+  {
+    "text": "Great deal, ordering right now!",
+    "label": 1
+  },
+  {
+    "text": "Meh, seen better offers elsewhere.",
+    "label": 0
+  },
+  {
+    "text": "Stop spamming me with these ads.",
+    "label": -1
+  },
+  {
+    "text": "Love the design, very sleek.",
+    "label": 1
+  },
+  {
+    "text": "Not sure if this is worth it.",
+    "label": 0
+  },
+  {
+    "text": "Total waste of money, don't buy.",
+    "label": -1
+  },
+  {
+    "text": "Exactly what I've been looking for!",
+    "label": 1
+  },
+  {
+    "text": "Could be good, need more details though.",
+    "label": 0
+  },
+  {
+    "text": "Misleading claims, report this ad.",
+    "label": -1
+  },
+  {
+    "text": "Amazing price for this quality!",
+    "label": 1
+  },
+  {
+    "text": "Looks okay but nothing special really.",
+    "label": 0
+  },
+  {
+    "text": "Cheap knockoff of the original brand.",
+    "label": -1
+  },
+  {
+    "text": "This app changed my daily routine completely!",
+    "label": 1
+  },
+  {
+    "text": "Might try it if it goes on sale.",
+    "label": 0
+  },
+  {
+    "text": "Why are these ads following me everywhere?",
+    "label": -1
+  },
+  {
+    "text": "Perfect timing, needed this product today.",
+    "label": 1
+  },
+  {
+    "text": "Seems decent but too expensive for me.",
+    "label": 0
+  },
+  {
+    "text": "False advertising, terrible customer service too.",
+    "label": -1
+  },
+  {
+    "text": "Highly recommend, worth every penny!",
+    "label": 1
+  },
+  {
+    "text": "Not really my style but cool.",
+    "label": 0
+  },
+  {
+    "text": "Already bought and returned it, garbage.",
+    "label": -1
+  },
+  {
+    "text": "Such a clever ad campaign!",
+    "label": 1
+  },
+  {
+    "text": "Interesting concept, curious about user feedback.",
+    "label": 0
+  },
+  {
+    "text": "Another useless subscription service, hard pass.",
+    "label": -1
+  },
+  {
+    "text": "Best purchase I made all year.",
+    "label": 1
+  },
+  {
+    "text": "Maybe for some people but not me.",
+    "label": 0
+  },
+  {
+    "text": "Sketchy website, don't trust this seller.",
+    "label": -1
+  },
+  {
+    "text": "Brilliant product, solving real problems!",
+    "label": 1
+  },
+  {
+    "text": "Could work for certain situations I guess.",
+    "label": 0
+  },
+  {
+    "text": "Annoying ad music, had to mute immediately.",
+    "label": -1
+  },
+  {
+    "text": "Love supporting companies with good values!",
+    "label": 1
+  },
+  {
+    "text": "Looks fine, nothing groundbreaking though.",
+    "label": 0
+  },
+  {
+    "text": "Scam alert, avoid at all costs.",
+    "label": -1
+  },
+  {
+    "text": "Super helpful app, using it daily now.",
+    "label": 1
+  },
+  {
+    "text": "Not convinced yet, waiting to see more.",
+    "label": 0
+  },
+  {
+    "text": "Terrible quality, broke after one use.",
+    "label": -1
+  },
+  {
+    "text": "This ad actually made me smile!",
+    "label": 1
+  },
+  {
+    "text": "Might be useful for someone else.",
+    "label": 0
+  },
+  {
+    "text": "Way too expensive for what you get.",
+    "label": -1
+  },
+  {
+    "text": "Great initiative, happy to participate!",
+    "label": 1
+  },
+  {
+    "text": "Seems alright, would need to test first.",
+    "label": 0
+  },
+  {
+    "text": "Stop targeting kids with junk food ads.",
+    "label": -1
+  },
+  {
+    "text": "Incredible discount, sharing with friends now!",
+    "label": 1
+  },
+  {
+    "text": "Don't really care either way honestly.",
+    "label": 0
+  },
+  {
+    "text": "Privacy nightmare, uninstalling immediately.",
+    "label": -1
+  },
+  {
+    "text": "Fantastic customer reviews convinced me!",
+    "label": 1
+  },
+  {
+    "text": "Neutral about this, could go either way.",
+    "label": 0
+  },
+  {
+    "text": "Clickbait garbage, wasted my time.",
+    "label": -1
+  },
+  {
+    "text": "Perfect gift idea for the holidays!",
+    "label": 1
+  },
+  {
+    "text": "Not my cup of tea but whatever.",
+    "label": 0
+  },
+  {
+    "text": "Hidden fees everywhere, total ripoff.",
+    "label": -1
+  },
+  {
+    "text": "This PSA really hit home for me.",
+    "label": 1
+  },
+  {
+    "text": "Somewhat interesting message I suppose.",
+    "label": 0
+  },
+  {
+    "text": "Preachy and condescending tone, dislike.",
+    "label": -1
+  },
+  {
+    "text": "Beautifully shot ad, very inspiring!",
+    "label": 1
+  },
+  {
+    "text": "Okay ad but seen similar before.",
+    "label": 0
+  },
+  {
+    "text": "Exploiting people's insecurities, disgusting.",
+    "label": -1
+  },
+  {
+    "text": "Game changer for my productivity!",
+    "label": 1
+  },
+  {
+    "text": "Might work for others, not sure yet.",
+    "label": 0
+  },
+  {
+    "text": "Poorly made, looks like amateur hour.",
+    "label": -1
+  },
+  {
+    "text": "Signing up right now, can't wait!",
+    "label": 1
+  },
+  {
+    "text": "Indifferent, scrolling past this one.",
+    "label": 0
+  },
+  {
+    "text": "Offensive content, reporting to platform.",
+    "label": -1
+  },
+  {
+    "text": "Smart marketing, got my attention instantly!",
+    "label": 1
+  },
+  {
+    "text": "Mixed feelings about this product honestly.",
+    "label": 0
+  },
+  {
+    "text": "Cheap materials, falls apart quickly.",
+    "label": -1
+  },
+  {
+    "text": "Refreshing to see honest advertising!",
+    "label": 1
+  },
+  {
+    "text": "Could be good for some people maybe.",
+    "label": 0
+  },
+  {
+    "text": "Pushy sales tactics, very off-putting.",
+    "label": -1
+  },
+  {
+    "text": "Downloaded the app, loving it so far!",
+    "label": 1
+  },
+  {
+    "text": "Not really sure what this is for.",
+    "label": 0
+  },
+  {
+    "text": "Predatory pricing model, stay away.",
+    "label": -1
+  },
+  {
+    "text": "Wonderful cause, donating today!",
+    "label": 1
+  },
+  {
+    "text": "Seems reasonable but need more information.",
+    "label": 0
+  },
+  {
+    "text": "Invasive data collection, no thanks.",
+    "label": -1
+  },
+  {
+    "text": "Best app launch I've seen this year!",
+    "label": 1
+  },
+  {
+    "text": "Not bad but not great either.",
+    "label": 0
+  },
+  {
+    "text": "Glitchy mess, constant crashes reported.",
+    "label": -1
+  },
+  {
+    "text": "Genuinely useful product, impressed!",
+    "label": 1
+  },
+  {
+    "text": "On the fence about this one.",
+    "label": 0
+  },
+  {
+    "text": "Complete waste of advertising budget.",
+    "label": -1
+  },
+  {
+    "text": "Creative and memorable ad concept!",
+    "label": 1
+  },
+  {
+    "text": "Could see both pros and cons here.",
+    "label": 0
+  },
+  {
+    "text": "Deceptive marketing, avoid this brand.",
+    "label": -1
+  },
+  {
+    "text": "Exactly the solution I needed!",
+    "label": 1
+  },
+  {
+    "text": "Might check it out later maybe.",
+    "label": 0
+  },
+  {
+    "text": "Annoying popup ruined my browsing experience.",
+    "label": -1
+  },
+  {
+    "text": "Super excited about this new release!",
+    "label": 1
+  },
+  {
+    "text": "Looks interesting but I'm undecided still.",
+    "label": 0
+  },
+  {
+    "text": "Horrible company ethics, boycotting them.",
+    "label": -1
+  },
+  {
+    "text": "Great value and quality combined!",
+    "label": 1
+  },
+  {
+    "text": "Average product, nothing to complain about.",
+    "label": 0
+  },
+  {
+    "text": "Spam ads constantly, so annoying.",
+    "label": -1
+  },
+  {
+    "text": "This really resonates with me personally!",
+    "label": 1
+  },
+  {
+    "text": "Not sure this applies to my situation.",
+    "label": 0
+  },
+  {
+    "text": "Ridiculously overpriced for basic features.",
+    "label": -1
+  }
+]

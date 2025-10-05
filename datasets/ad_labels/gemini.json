@@ -1,0 +1,67 @@
+[
+    {"ad_id": 1, "ad_text": "Experience unparalleled comfort with our new memory foam mattress!", "comment": "Sounds amazing, my back really needs this."},
+{"ad_id": 1, "ad_text": "Experience unparalleled comfort with our new memory foam mattress!", "comment": "Is it really worth the price?"},
+{"ad_id": 1, "ad_text": "Experience unparalleled comfort with our new memory foam mattress!", "comment": "Had a memory foam mattress before, not a fan."},
+{"ad_id": 1, "ad_text": "Experience unparalleled comfort with our new memory foam mattress!", "comment": "Finally, a mattress that understands comfort!"},
+{"ad_id": 1, "ad_text": "Experience unparalleled comfort with our new memory foam mattress!", "comment": "I'm always skeptical of these claims, but it looks promising."},
+
+{"ad_id": 2, "ad_text": "Boost your productivity with our innovative task management app!", "comment": "Another task app? What makes this one different?"},
+{"ad_id": 2, "ad_text": "Boost your productivity with our innovative task management app!", "comment": "I've been looking for something like this, hopefully it works for me."},
+{"ad_id": 2, "ad_text": "Boost your productivity with our innovative task management app!", "comment": "My current app is fine, no need to switch."},
+{"ad_id": 2, "ad_text": "Boost your productivity with our innovative task management app!", "comment": "The interface looks really clean, I'll give it a try."},
+{"ad_id": 2, "ad_text": "Boost your productivity with our innovative task management app!", "comment": "Does it integrate with other tools I use?"},
+
+{"ad_id": 3, "ad_text": "Discover your next adventure with our premium travel packages!", "comment": "Dreaming of a vacation now!"},
+{"ad_id": 3, "ad_text": "Discover your next adventure with our premium travel packages!", "comment": "Too expensive for my budget."},
+{"ad_id": 3, "ad_text": "Discover your next adventure with our premium travel packages!", "comment": "Where do these packages go?"},
+{"ad_id": 3, "ad_text": "Discover your next adventure with our premium travel packages!", "comment": "I prefer planning my own trips."},
+{"ad_id": 3, "ad_text": "Discover your next adventure with our premium travel packages!", "comment": "Looks like a great way to explore new places!"},
+
+{"ad_id": 4, "ad_text": "Transform your skin with our all-natural anti-aging serum!", "comment": "Does this actually work, or is it just hype?"},
+{"ad_id": 4, "ad_text": "Transform your skin with our all-natural anti-aging serum!", "comment": "I'm always wary of 'all-natural' claims."},
+{"ad_id": 4, "ad_text": "Transform your skin with our all-natural anti-aging serum!", "comment": "My skin needs some help, I might try this."},
+{"ad_id": 4, "ad_text": "Transform your skin with our all-natural anti-aging serum!", "comment": "Any reviews from people who've used it?"},
+{"ad_id": 4, "ad_text": "Transform your skin with our all-natural anti-aging serum!", "comment": "I love natural products, this sounds perfect!"},
+
+{"ad_id": 5, "ad_text": "Learn a new language faster with our interactive online courses!", "comment": "I've always wanted to learn Spanish!"},
+{"ad_id": 5, "ad_text": "Learn a new language faster with our interactive online courses!", "comment": "Are these courses suitable for beginners?"},
+{"ad_id": 5, "ad_text": "Learn a new language faster with our interactive online courses!", "comment": "I tried language apps before, they never stick."},
+{"ad_id": 5, "ad_text": "Learn a new language faster with our interactive online courses!", "comment": "How much do the courses cost?"},
+{"ad_id": 5, "ad_text": "Learn a new language faster with our interactive online courses!", "comment": "Interactive sounds good, traditional classes are boring."},
+
+{"ad_id": 6, "ad_text": "Upgrade your home with smart lighting solutions!", "comment": "I already have smart lights, love them!"},
+{"ad_id": 6, "ad_text": "Upgrade your home with smart lighting solutions!", "comment": "Too complicated for me to set up."},
+{"ad_id": 6, "ad_text": "Upgrade your home with smart lighting solutions!", "comment": "Are they compatible with Google Home?"},
+{"ad_id": 6, "ad_text": "Upgrade your home with smart lighting solutions!", "comment": "The ambiance would be amazing."},
+{"ad_id": 6, "ad_text": "Upgrade your home with smart lighting solutions!", "comment": "Do they save energy?"},
+
+{"ad_id": 7, "ad_text": "Get fit and healthy with our personalized online coaching!", "comment": "I need motivation, this might help."},
+{"ad_id": 7, "ad_text": "Get fit and healthy with our personalized online coaching!", "comment": "Is it expensive?"},
+{"ad_id": 7, "ad_text": "Get fit and healthy with our personalized online coaching!", "comment": "I prefer going to a gym in person."},
+{"ad_id": 7, "ad_text": "Get fit and healthy with our personalized online coaching!", "comment": "Personalized sounds great, not a fan of generic plans."},
+{"ad_id": 7, "ad_text": "Get fit and healthy with our personalized online coaching!", "comment": "What kind of exercises do they focus on?"},
+
+{"ad_id": 8, "ad_text": "Protect your family with comprehensive home insurance!", "comment": "Already have insurance, thanks."},
+{"ad_id": 8, "ad_text": "Protect your family with comprehensive home insurance!", "comment": "I should probably look into this soon."},
+{"ad_id": 8, "ad_text": "Protect your family with comprehensive home insurance!", "comment": "Is it customizable to my needs?"},
+{"ad_id": 8, "ad_text": "Protect your family with comprehensive home insurance!", "comment": "Nobody likes thinking about this, but it's important."},
+{"ad_id": 8, "ad_text": "Protect your family with comprehensive home insurance!", "comment": "How do your rates compare to others?"},
+
+{"ad_id": 9, "ad_text": "Unleash your creativity with our professional graphic design software!", "comment": "I'm a beginner, is this too advanced?"},
+{"ad_id": 9, "ad_text": "Unleash your creativity with our professional graphic design software!", "comment": "What features does it have?"},
+{"ad_id": 9, "ad_text": "Unleash your creativity with our professional graphic design software!", "comment": "My current software is good enough."},
+{"ad_id": 9, "ad_text": "Unleash your creativity with our professional graphic design software!", "comment": "Looks really powerful, I could use this for my projects."},
+{"ad_id": 9, "ad_text": "Unleash your creativity with our professional graphic design software!", "comment": "Is there a free trial available?"},
+
+{"ad_id": 10, "ad_text": "Plan your financial future with expert wealth management services!", "comment": "I don't have enough wealth to manage, haha."},
+{"ad_id": 10, "ad_text": "Plan your financial future with expert wealth management services!", "comment": "Sounds important, but I don't know where to start."},
+{"ad_id": 10, "ad_text": "Plan your financial future with expert wealth management services!", "comment": "Do you offer services for small investors?"},
+{"ad_id": 10, "ad_text": "Plan your financial future with expert wealth management services!", "comment": "I'm looking for advice on retirement planning."},
+{"ad_id": 10, "ad_text": "Plan your financial future with expert wealth management services!", "comment": "Trusting someone with my money is a big deal."},
+
+{"ad_id": 11, "ad_text": "Enjoy crystal-clear audio with our new wireless earbuds!", "comment": "Are they comfortable for long use?"},
+{"ad_id": 11, "ad_text": "Enjoy crystal-clear audio with our new wireless earbuds!", "comment": "My old earbuds just broke, perfect timing!"},
+{"ad_id": 11, "ad_text": "Enjoy crystal-clear audio with our new wireless earbuds!", "comment": "What's the battery life like?"},
+{"ad_id": 11, "ad_text": "Enjoy crystal-clear audio with our new wireless earbuds!", "comment": "I only buy Apple earbuds."},
+{"ad_id": 11, "ad_text": "Enjoy crystal-clear audio with our new wireless earbuds!", "comment": "The sound quality is really important to me, I'll check these out."}
+]

@@ -1,0 +1,2755 @@
+[
+  {
+    "text": "Finally, a comfy chair! Need to check this out.",
+    "label": 1
+  },
+  {
+    "text": "Another streaming service? Ugh, pass.",
+    "label": -1
+  },
+  {
+    "text": "This ad is everywhere, getting annoying now.",
+    "label": -1
+  },
+  {
+    "text": "Interesting concept, might download the app.",
+    "label": 0
+  },
+  {
+    "text": "That puppy in the ad is so cute!",
+    "label": 1
+  },
+  {
+    "text": "Sale on my favorite brand? Yes please!",
+    "label": 1
+  },
+  {
+    "text": "Not sure about this new flavor, sounds weird.",
+    "label": 0
+  },
+  {
+    "text": "The music in this commercial is really catchy.",
+    "label": 1
+  },
+  {
+    "text": "Too many ads interrupting my video.",
+    "label": -1
+  },
+  {
+    "text": "Looks like a useful product, will consider.",
+    "label": 0
+  },
+  {
+    "text": "Love the message of this PSA, so important.",
+    "label": 1
+  },
+  {
+    "text": "Why do they always show perfect families?",
+    "label": -1
+  },
+  {
+    "text": "Great deal on flights, booking now!",
+    "label": 1
+  },
+  {
+    "text": "This ad feels a bit manipulative.",
+    "label": -1
+  },
+  {
+    "text": "Pretty visuals, but I don't get the product.",
+    "label": 0
+  },
+  {
+    "text": "Finally, an ad that's actually funny!",
+    "label": 1
+  },
+  {
+    "text": "Another car ad, they all look the same.",
+    "label": 0
+  },
+  {
+    "text": "This app looks really promising for my workflow.",
+    "label": 1
+  },
+  {
+    "text": "Their customer service is terrible, ignore this ad.",
+    "label": -1
+  },
+  {
+    "text": "Cute animation, but the product is expensive.",
+    "label": 0
+  },
+  {
+    "text": "The cinematography in this ad is stunning.",
+    "label": 1
+  },
+  {
+    "text": "I've seen this ad twenty times today.",
+    "label": -1
+  },
+  {
+    "text": "Good reminder to recycle, thanks for the ad.",
+    "label": 1
+  },
+  {
+    "text": "Not convinced this product actually works.",
+    "label": -1
+  },
+  {
+    "text": "The discount is good, but I don't need it.",
+    "label": 0
+  },
+  {
+    "text": "Such an inspiring ad, made my day!",
+    "label": 1
+  },
+  {
+    "text": "The actors seem disingenuous.",
+    "label": -1
+  },
+  {
+    "text": "Could be interesting, will check reviews first.",
+    "label": 0
+  },
+  {
+    "text": "Love the vibrant colors in this ad campaign.",
+    "label": 1
+  },
+  {
+    "text": "This ad is just plain confusing.",
+    "label": -1
+  },
+  {
+    "text": "That gadget looks really cool, I want one!",
+    "label": 1
+  },
+  {
+    "text": "Another generic bank ad, boring.",
+    "label": 0
+  },
+  {
+    "text": "Finally, a solution to my problem! Thank you.",
+    "label": 1
+  },
+  {
+    "text": "This ad keeps popping up, so annoying.",
+    "label": -1
+  },
+  {
+    "text": "The testimonials seem a bit too perfect.",
+    "label": 0
+  },
+  {
+    "text": "Awesome new game, pre-ordering now!",
+    "label": 1
+  },
+  {
+    "text": "The ad's message is a bit heavy-handed.",
+    "label": -1
+  },
+  {
+    "text": "Looks like a decent product, nothing special.",
+    "label": 0
+  },
+  {
+    "text": "This company has great values, love their ad.",
+    "label": 1
+  },
+  {
+    "text": "Why is this ad so loud?",
+    "label": -1
+  },
+  {
+    "text": "Catchy jingle, can't get it out of my head.",
+    "label": 1
+  },
+  {
+    "text": "Not sure if this is relevant to me.",
+    "label": 0
+  },
+  {
+    "text": "This ad is incredibly misleading.",
+    "label": -1
+  },
+  {
+    "text": "Great initiative! So glad to see this ad.",
+    "label": 1
+  },
+  {
+    "text": "The spokesperson is really charismatic.",
+    "label": 1
+  },
+  {
+    "text": "Another subscription service I don't need.",
+    "label": -1
+  },
+  {
+    "text": "The product looks good, but the price is too high.",
+    "label": 0
+  },
+  {
+    "text": "I absolutely love the design of this new phone.",
+    "label": 1
+  },
+  {
+    "text": "This ad makes me want to buy it right now!",
+    "label": 1
+  },
+  {
+    "text": "Too much jargon, can't understand the ad.",
+    "label": -1
+  },
+  {
+    "text": "Looks okay, but I prefer a different brand.",
+    "label": 0
+  },
+  {
+    "text": "Finally, an ad that speaks to me!",
+    "label": 1
+  },
+  {
+    "text": "This ad is just plain boring.",
+    "label": -1
+  },
+  {
+    "text": "The visuals are appealing, I'm curious.",
+    "label": 0
+  },
+  {
+    "text": "Fantastic offer, definitely taking advantage!",
+    "label": 1
+  },
+  {
+    "text": "This company has a bad reputation, no thanks.",
+    "label": -1
+  },
+  {
+    "text": "Pretty standard ad, nothing new.",
+    "label": 0
+  },
+  {
+    "text": "So heartwarming! This ad made me smile.",
+    "label": 1
+  },
+  {
+    "text": "They always exaggerate the benefits.",
+    "label": -1
+  },
+  {
+    "text": "Could be useful for some, but not for me.",
+    "label": 0
+  },
+  {
+    "text": "The special effects in this ad are amazing!",
+    "label": 1
+  },
+  {
+    "text": "I already have something similar, not needed.",
+    "label": 0
+  },
+  {
+    "text": "This ad is clearly targeting children, irresponsible.",
+    "label": -1
+  },
+  {
+    "text": "What a brilliant idea! I'm impressed.",
+    "label": 1
+  },
+  {
+    "text": "The ad is too long, lost my interest.",
+    "label": -1
+  },
+  {
+    "text": "This product seems decent, worth a look.",
+    "label": 0
+  },
+  {
+    "text": "Their mission statement in the ad is inspiring.",
+    "label": 1
+  },
+  {
+    "text": "Another product I can't afford, thanks for showing.",
+    "label": -1
+  },
+  {
+    "text": "The ad is okay, but the product looks cheap.",
+    "label": 0
+  },
+  {
+    "text": "This new feature is exactly what I needed!",
+    "label": 1
+  },
+  {
+    "text": "I'm tired of seeing these repetitive ads.",
+    "label": -1
+  },
+  {
+    "text": "The ad is stylish, but the product is unappealing.",
+    "label": 0
+  },
+  {
+    "text": "Absolutely love the creativity in this ad!",
+    "label": 1
+  },
+  {
+    "text": "This ad is offensive, report it.",
+    "label": -1
+  },
+  {
+    "text": "Looks like a solid product, might try it.",
+    "label": 0
+  },
+  {
+    "text": "Great discount on my favorite coffee!",
+    "label": 1
+  },
+  {
+    "text": "Another ad pushing unrealistic beauty standards.",
+    "label": -1
+  },
+  {
+    "text": "The concept is interesting, but I'm not sold.",
+    "label": 0
+  },
+  {
+    "text": "This ad is so clever and well-made.",
+    "label": 1
+  },
+  {
+    "text": "Don't trust this company, shady business practices.",
+    "label": -1
+  },
+  {
+    "text": "It's an ad, it exists.",
+    "label": 0
+  },
+  {
+    "text": "Finally, a product that genuinely helps!",
+    "label": 1
+  },
+  {
+    "text": "The ad is trying too hard to be trendy.",
+    "label": -1
+  },
+  {
+    "text": "Seems like a decent offer, will compare prices.",
+    "label": 0
+  },
+  {
+    "text": "This ad campaign is so inclusive, love it!",
+    "label": 1
+  },
+  {
+    "text": "I'm bombarded with these ads daily.",
+    "label": -1
+  },
+  {
+    "text": "The ad's message is confusing.",
+    "label": 0
+  },
+  {
+    "text": "Such a timely and important public service message.",
+    "label": 1
+  },
+  {
+    "text": "The product looks flimsy in the ad.",
+    "label": -1
+  },
+  {
+    "text": "Might be useful for some, but not my demographic.",
+    "label": 0
+  },
+  {
+    "text": "I'm so excited about this new launch!",
+    "label": 1
+  },
+  {
+    "text": "This ad feels like pure propaganda.",
+    "label": -1
+  },
+  {
+    "text": "The ad is visually appealing, but that's it.",
+    "label": 0
+  },
+  {
+    "text": "What an amazing innovation! Definitely buying.",
+    "label": 1
+  },
+  {
+    "text": "This ad is just plain false advertising.",
+    "label": -1
+  },
+  {
+    "text": "The ad is forgettable, nothing stands out.",
+    "label": 0
+  },
+  {
+    "text": "Love the positive vibes of this campaign.",
+    "label": 1
+  },
+  {
+    "text": "This ad is so out of touch with reality.",
+    "label": -1
+  },
+  {
+    "text": "It's an ad, what do you want me to say?",
+    "label": 0
+  },
+  {
+    "text": "Great deal, just what I was looking for!",
+    "label": 1
+  },
+  {
+    "text": "Their past products were terrible, skipping this.",
+    "label": -1
+  },
+  {
+    "text": "The ad looks professional, but I'm not interested.",
+    "label": 0
+  },
+  {
+    "text": "This ad is so inspiring, I'm sharing it!",
+    "label": 1
+  },
+  {
+    "text": "Finally, a sale worth checking out! I'm buying this.",
+    "label": 1
+  },
+  {
+    "text": "The music in this commercial is really catchy.",
+    "label": 1
+  },
+  {
+    "text": "Another ad for a mobile game. Skip.",
+    "label": -1
+  },
+  {
+    "text": "I'm seeing this ad way too often now.",
+    "label": -1
+  },
+  {
+    "text": "That's a pretty interesting new app feature.",
+    "label": 1
+  },
+  {
+    "text": "Hmm, I might look into that product later.",
+    "label": 0
+  },
+  {
+    "text": "Not sure what they are even selling here.",
+    "label": 0
+  },
+  {
+    "text": "The message of this PSA is really powerful.",
+    "label": 1
+  },
+  {
+    "text": "Looks expensive. I'll pass for now.",
+    "label": -1
+  },
+  {
+    "text": "The colors and design are very appealing.",
+    "label": 1
+  },
+  {
+    "text": "Just another streaming service ad, nothing new.",
+    "label": 0
+  },
+  {
+    "text": "This commercial is actually kind of annoying.",
+    "label": -1
+  },
+  {
+    "text": "I already own something similar to this.",
+    "label": 0
+  },
+  {
+    "text": "Yes! This is exactly what I needed right now.",
+    "label": 1
+  },
+  {
+    "text": "They wasted a lot of money on this boring ad.",
+    "label": -1
+  },
+  {
+    "text": "Cute dog in the ad, but what's the product?",
+    "label": 0
+  },
+  {
+    "text": "I appreciate brands supporting this cause.",
+    "label": 1
+  },
+  {
+    "text": "The claims in this ad seem way too exaggerated.",
+    "label": -1
+  },
+  {
+    "text": "Okay, that's a genuinely clever advertisement.",
+    "label": 1
+  },
+  {
+    "text": "Doesn't apply to me, but good for them.",
+    "label": 0
+  },
+  {
+    "text": "Stop interrupting my video with this junk.",
+    "label": -1
+  },
+  {
+    "text": "The new flavor looks delicious, I have to try it.",
+    "label": 1
+  },
+  {
+    "text": "The actor in this one is great.",
+    "label": 1
+  },
+  {
+    "text": "I'm getting this ad everywhere, it's stalking me.",
+    "label": -1
+  },
+  {
+    "text": "It's an interesting concept, but I need more info.",
+    "label": 0
+  },
+  {
+    "text": "Solid deal! I'm definitely clicking through.",
+    "label": 1
+  },
+  {
+    "text": "Their competitors offer a better deal, sorry.",
+    "label": -1
+  },
+  {
+    "text": "I've heard good things about this brand already.",
+    "label": 1
+  },
+  {
+    "text": "This kind of promotion is just lazy.",
+    "label": -1
+  },
+  {
+    "text": "Seems okay. Maybe if it was on sale.",
+    "label": 0
+  },
+  {
+    "text": "I love seeing this kind of representation.",
+    "label": 1
+  },
+  {
+    "text": "The pacing of this commercial is all wrong.",
+    "label": -1
+  },
+  {
+    "text": "Not groundbreaking, but it gets the point across.",
+    "label": 0
+  },
+  {
+    "text": "I already signed up for the newsletter.",
+    "label": 1
+  },
+  {
+    "text": "The animation style is really crisp.",
+    "label": 1
+  },
+  {
+    "text": "It looks like a cheaper version of something else.",
+    "label": -1
+  },
+  {
+    "text": "Very long ad. Get to the point already.",
+    "label": -1
+  },
+  {
+    "text": "I have no strong feelings either way about this.",
+    "label": 0
+  },
+  {
+    "text": "This product solves a genuine problem I have!",
+    "label": 1
+  },
+  {
+    "text": "I hate the voiceover they chose for this.",
+    "label": -1
+  },
+  {
+    "text": "Looks like an average product release.",
+    "label": 0
+  },
+  {
+    "text": "The special effects are top-notch!",
+    "label": 1
+  },
+  {
+    "text": "Another beauty product I don't need.",
+    "label": 0
+  },
+  {
+    "text": "This ad is misleading. I read the fine print.",
+    "label": -1
+  },
+  {
+    "text": "Their commitment to sustainability is impressive.",
+    "label": 1
+  },
+  {
+    "text": "I just wish the price was a little lower.",
+    "label": 0
+  },
+  {
+    "text": "This is a terrible attempt at being relatable.",
+    "label": -1
+  },
+  {
+    "text": "I'm ready to pre-order this right now!",
+    "label": 1
+  },
+  {
+    "text": "Is this a movie trailer or an advertisement?",
+    "label": 0
+  },
+  {
+    "text": "They really hit the mark with this campaign.",
+    "label": 1
+  },
+  {
+    "text": "Seriously? Another credit card offer?",
+    "label": -1
+  },
+  {
+    "text": "I'll wait for the reviews before deciding.",
+    "label": 0
+  },
+  {
+    "text": "Simple, clean, and effective ad design.",
+    "label": 1
+  },
+  {
+    "text": "Who is this even targeted towards?",
+    "label": -1
+  },
+  {
+    "text": "It's fine, not tempted to buy it though.",
+    "label": 0
+  },
+  {
+    "text": "That's a fantastic warranty policy they mentioned.",
+    "label": 1
+  },
+  {
+    "text": "Another pushy sales tactic, ugh.",
+    "label": -1
+  },
+  {
+    "text": "I'm really excited about this launch!",
+    "label": 1
+  },
+  {
+    "text": "Could be better, could be worse. Whatever.",
+    "label": 0
+  },
+  {
+    "text": "This ad makes no sense to me.",
+    "label": -1
+  },
+  {
+    "text": "A very visually stunning commercial.",
+    "label": 1
+  },
+  {
+    "text": "Not the worst thing I've ever seen, I suppose.",
+    "label": 0
+  },
+  {
+    "text": "Unskippable ads are the worst.",
+    "label": -1
+  },
+  {
+    "text": "I love the diverse cast they used.",
+    "label": 1
+  },
+  {
+    "text": "The product looks very niche.",
+    "label": 0
+  },
+  {
+    "text": "This reminds me of a worse ad from last year.",
+    "label": -1
+  },
+  {
+    "text": "This made me smile. Good job, advertisers.",
+    "label": 1
+  },
+  {
+    "text": "I've never heard of this company before.",
+    "label": 0
+  },
+  {
+    "text": "Too much talking, not enough showing.",
+    "label": -1
+  },
+  {
+    "text": "Finally, a real solution for my cluttered desk.",
+    "label": 1
+  },
+  {
+    "text": "I guess that's one way to sell a car.",
+    "label": 0
+  },
+  {
+    "text": "The font choice in this banner is terrible.",
+    "label": -1
+  },
+  {
+    "text": "I already subscribed to this service.",
+    "label": 1
+  },
+  {
+    "text": "The offer is only for new customers, bummer.",
+    "label": 0
+  },
+  {
+    "text": "Why is this ad so aggressive with the volume?",
+    "label": -1
+  },
+  {
+    "text": "A thoughtful and inspiring public service announcement.",
+    "label": 1
+  },
+  {
+    "text": "Seems like a standard software update ad.",
+    "label": 0
+  },
+  {
+    "text": "This product is clearly overpriced.",
+    "label": -1
+  },
+  {
+    "text": "The testimonial felt very genuine and moving.",
+    "label": 1
+  },
+  {
+    "text": "I'm not sure if the price is worth it.",
+    "label": 0
+  },
+  {
+    "text": "I clicked 'don't show again' for a reason.",
+    "label": -1
+  },
+  {
+    "text": "That's a very generous giveaway they're doing.",
+    "label": 1
+  },
+  {
+    "text": "The ad's humor is really forced.",
+    "label": -1
+  },
+  {
+    "text": "I'm interested in the free trial period.",
+    "label": 1
+  },
+  {
+    "text": "It's just okay, nothing special here.",
+    "label": 0
+  },
+  {
+    "text": "The product design looks very sleek and modern.",
+    "label": 1
+  },
+  {
+    "text": "They keep pushing this old version.",
+    "label": -1
+  },
+  {
+    "text": "I might check out their website later on.",
+    "label": 0
+  },
+  {
+    "text": "This is a great discount for a high-quality item.",
+    "label": 1
+  },
+  {
+    "text": "Too many pop-ups in this whole campaign.",
+    "label": -1
+  },
+  {
+    "text": "I've been waiting for this sequel to be announced!",
+    "label": 1
+  },
+  {
+    "text": "Not impressed with the resolution of this banner.",
+    "label": -1
+  },
+  {
+    "text": "It seems useful, but I already use a competitor.",
+    "label": 0
+  },
+  {
+    "text": "The celebrity endorsement works well here.",
+    "label": 1
+  },
+  {
+    "text": "I wish they had been more specific about the specs.",
+    "label": 0
+  },
+  {
+    "text": "False advertising claims make me angry.",
+    "label": -1
+  },
+  {
+    "text": "I really like the energy of this team.",
+    "label": 1
+  },
+  {
+    "text": "Their logo is kinda weak.",
+    "label": 0
+  },
+  {
+    "text": "The campaign is insensitive to the issue.",
+    "label": -1
+  },
+  {
+    "text": "I'm sharing this fantastic deal with friends.",
+    "label": 1
+  },
+  {
+    "text": "The product looks exactly like all the others.",
+    "label": 0
+  },
+
+  {
+    "text": "This new streaming service has all the old movies I love. Definitely subscribing!",
+    "label": 1
+  },
+  {
+    "text": "The celebrity spokesperson feels totally irrelevant to this brand of yogurt.",
+    "label": -1
+  },
+  {
+    "text": "I'm not convinced about this gadget, it seems a little bulky for carrying around.",
+    "label": 0
+  },
+  {
+    "text": "The animation for the new sneaker line is incredibly sharp and eye-catching.",
+    "label": 1
+  },
+  {
+    "text": "Another bank commercial with overly happy people. Skip this predictable ad.",
+    "label": -1
+  },
+  {
+    "text": "I might download the fitness app just to check out their guided meditation features.",
+    "label": 0
+  },
+  {
+    "text": "This public service announcement about distracted driving is genuinely terrifying and needed.",
+    "label": 1
+  },
+  {
+    "text": "The fine print on that 'unlimited data' plan looks suspicious and restrictive.",
+    "label": -1
+  },
+  {
+    "text": "Wow, 50% off all winter gear! That’s an offer I cannot possibly ignore.",
+    "label": 1
+  },
+  {
+    "text": "The ad keeps popping up on every website, it's becoming highly annoying and intrusive.",
+    "label": -1
+  },
+  {
+    "text": "I'm waiting to see the independent reviews before I commit to pre-ordering this game.",
+    "label": 0
+  },
+  {
+    "text": "They did a great job using diverse models in the new clothing catalog campaign.",
+    "label": 1
+  },
+  {
+    "text": "Why is this software commercial nearly two minutes long? Too much filler.",
+    "label": -1
+  },
+  {
+    "text": "I like the simple, clear graphic explaining how the subscription service works.",
+    "label": 1
+  },
+  {
+    "text": "Looks like another expensive toy that I really don't need in my life right now.",
+    "label": 0
+  },
+  {
+    "text": "This brand's attempt at viral marketing is just clumsy and kind of embarrassing.",
+    "label": -1
+  },
+  {
+    "text": "That eco-friendly packaging they showed really makes me want to support them.",
+    "label": 1
+  },
+  {
+    "text": "I already have a phone, so this new model ad isn't very exciting for me.",
+    "label": 0
+  },
+  {
+    "text": "The loud, repetitive jingle for the car insurance company is driving me insane.",
+    "label": -1
+  },
+  {
+    "text": "This travel destination looks absolutely breathtaking; I’m clicking for prices immediately.",
+    "label": 1
+  },
+  {
+    "text": "I’m not sure this new breakfast cereal is any healthier than the old one.",
+    "label": 0
+  },
+  {
+    "text": "The claims in this weight loss ad are medically impossible and irresponsible.",
+    "label": -1
+  },
+  {
+    "text": "The company's commitment to local community support is really admirable.",
+    "label": 1
+  },
+  {
+    "text": "Seems like a decent laptop, but I’m saving up for a different brand currently.",
+    "label": 0
+  },
+  {
+    "text": "I really appreciate that they included captions for this video ad. Very thoughtful.",
+    "label": 1
+  },
+  {
+    "text": "Stop showing me targeted ads for products I literally bought yesterday!",
+    "label": -1
+  },
+  {
+    "text": "I've heard mixed reviews on this particular product, so I'm remaining cautious.",
+    "label": 0
+  },
+  {
+    "text": "The trailer for the new movie looks fantastic; I will definitely go see it opening weekend.",
+    "label": 1
+  },
+  {
+    "text": "The graphic design of this banner ad is incredibly cheap and unprofessional.",
+    "label": -1
+  },
+  {
+    "text": "It’s a functional product, I guess, but it doesn't really spark any interest.",
+    "label": 0
+  },
+  {
+    "text": "This ad is genuinely funny and well-produced, a welcome relief from the usual junk.",
+    "label": 1
+  },
+  {
+    "text": "They used a misleading image to advertise the size of the tiny apartment.",
+    "label": -1
+  },
+  {
+    "text": "The new flavor of chips looks intriguing, I’ll grab a bag next time I’m at the store.",
+    "label": 1
+  },
+  {
+    "text": "I don't need another software subscription, my wallet is already stretched thin.",
+    "label": 0
+  },
+  {
+    "text": "That's a ridiculous price for something so small. They must be joking.",
+    "label": -1
+  },
+  {
+    "text": "I love how they incorporated the old retro aesthetic into their new product launch.",
+    "label": 1
+  },
+  {
+    "text": "The voiceover is monotone and completely fails to hold my attention during the pitch.",
+    "label": -1
+  },
+  {
+    "text": "I'm glad they are finally addressing the issue of mental health with this campaign.",
+    "label": 1
+  },
+  {
+    "text": "The ad is too long and the call to action is not clear at all.",
+    "label": -1
+  },
+  {
+    "text": "I'm marginally interested, but I'll need a better incentive than a 5% discount.",
+    "label": 0
+  },
+  {
+    "text": "The use of slow-motion cinematography in the sports ad is very dynamic and cool.",
+    "label": 1
+  },
+  {
+    "text": "This feels like a blatant copycat of a successful competitor's design.",
+    "label": -1
+  },
+  {
+    "text": "My current phone plan is fine, so this new offer doesn't really change anything.",
+    "label": 0
+  },
+  {
+    "text": "What a smart way to advertise a B2B service. Very professional and clear.",
+    "label": 1
+  },
+  {
+    "text": "I keep seeing this same commercial over and over on every YouTube video.",
+    "label": -1
+  },
+  {
+    "text": "I’ll consider purchasing this once they release a version that supports my operating system.",
+    "label": 0
+  },
+  {
+    "text": "The limited-time offer has convinced me to finally make the purchase today.",
+    "label": 1
+  },
+  {
+    "text": "Seriously, the music choice is terrible; it’s an instant mute or skip.",
+    "label": -1
+  },
+  {
+    "text": "This seems like a solid company; I’ve heard good things about their customer service.",
+    "label": 1
+  },
+  {
+    "text": "Not interested in insurance, but the animation style is kind of cute.",
+    "label": 0
+  },
+  {
+    "text": "The messaging is confusing; I still don't understand what this service does.",
+    "label": -1
+  },
+  {
+    "text": "I love the testimonial from the elderly woman; it feels very heartfelt.",
+    "label": 1
+  },
+  {
+    "text": "The product looks nice, but I already have three of those in my closet.",
+    "label": 0
+  },
+  {
+    "text": "This promotion is only available in a city I don't live in, which is frustrating.",
+    "label": -1
+  },
+  {
+    "text": "I’m extremely happy they finally brought back this classic product line!",
+    "label": 1
+  },
+  {
+    "text": "They need to fix the resolution on this advertisement; it looks pixelated.",
+    "label": -1
+  },
+  {
+    "text": "It's a necessary product, I suppose, but this ad is extremely boring.",
+    "label": 0
+  },
+  {
+    "text": "I'm impressed with the speed and performance they demonstrated in the demo.",
+    "label": 1
+  },
+  {
+    "text": "Just another quick-fix scam promising miracle results, I'm wise to this.",
+    "label": -1
+  },
+  {
+    "text": "The packaging colors they are using for the holiday launch are very festive.",
+    "label": 1
+  },
+  {
+    "text": "I've tried a similar product before, and it didn't really work out for me.",
+    "label": 0
+  },
+  {
+    "text": "Why are they yelling? The aggressive sales tone is a massive turn-off.",
+    "label": -1
+  },
+  {
+    "text": "That's a surprisingly good rate for a mortgage. I'm going to look into it.",
+    "label": 1
+  },
+  {
+    "text": "Not for me, but I can see how some people would find this useful.",
+    "label": 0
+  },
+  {
+    "text": "The ad is too loud and it scared my dog, instant dislike.",
+    "label": -1
+  },
+  {
+    "text": "The free shipping promotion for the weekend is definitely a game changer.",
+    "label": 1
+  },
+  {
+    "text": "It's just another variation on a theme, nothing innovative here.",
+    "label": 0
+  },
+  {
+    "text": "This looks like a terrible experience, zero stars for the product concept.",
+    "label": -1
+  },
+  {
+    "text": "I respect that they are donating a percentage of sales to charity.",
+    "label": 1
+  },
+  {
+    "text": "I might read the reviews about the ease of use before buying the subscription.",
+    "label": 0
+  },
+  {
+    "text": "I feel like I've seen this exact same ad concept a hundred times before.",
+    "label": -1
+  },
+  {
+    "text": "The brand's mission statement is inspiring; I’m happy to support them.",
+    "label": 1
+  },
+  {
+    "text": "The product itself is okay, but the marketing is utterly bland and forgettable.",
+    "label": 0
+  },
+  {
+    "text": "They really should stop using stock photos that are so obviously fake.",
+    "label": -1
+  },
+  {
+    "text": "The interactive element of this banner ad is really creative and engaging.",
+    "label": 1
+  },
+  {
+    "text": "I don't have enough information about the technical specifications of the device.",
+    "label": 0
+  },
+  {
+    "text": "This advertisement is culturally insensitive and completely missed the mark.",
+    "label": -1
+  },
+  {
+    "text": "That’s a brilliant idea! I'm sharing this with everyone who needs it.",
+    "label": 1
+  },
+  {
+    "text": "Looks like a lot of hassle for something I barely need in the first place.",
+    "label": 0
+  },
+  {
+    "text": "Their customer service reviews online are awful, so I'm not buying it.",
+    "label": -1
+  },
+  {
+    "text": "I love the clean, minimalist look of the new product packaging.",
+    "label": 1
+  },
+  {
+    "text": "The limited colors offered for the new shoes are quite disappointing.",
+    "label": 0
+  },
+  {
+    "text": "This feels less like an ad and more like a guilt-trip. Not cool.",
+    "label": -1
+  },
+  {
+    "text": "The demonstration video clearly shows how easy it is to set up and use.",
+    "label": 1
+  },
+  {
+    "text": "I’m on the fence about whether to switch providers or just stick with my old one.",
+    "label": 0
+  },
+  {
+    "text": "They used a ridiculously misleading price in the advertisement headline.",
+    "label": -1
+  },
+  {
+    "text": "The brand’s commitment to using sustainable materials is a huge plus for me.",
+    "label": 1
+  },
+  {
+    "text": "I'll wait until they offer a slightly better deal or maybe a bundle.",
+    "label": 0
+  },
+  {
+    "text": "The voice actor sounds very robotic; it needs a more human touch.",
+    "label": -1
+  },
+  {
+    "text": "The ad's focus on user safety is really reassuring for me as a parent.",
+    "label": 1
+  },
+  {
+    "text": "I don't really care about the new flavor, but the coupon is good.",
+    "label": 0
+  },
+  {
+    "text": "This looks like a poor quality imitation product being sold at a high price.",
+    "label": -1
+  },
+  {
+    "text": "Finally, an app that actually simplifies my daily workflow like this one promises.",
+    "label": 1
+  },
+  {
+    "text": "The outdoor shots in the commercial are absolutely stunning and very well filmed.",
+    "label": 1
+  },
+  {
+    "text": "I’m seeing this ad too many times, it's starting to lose its impact.",
+    "label": 0
+  },
+  {
+    "text": "This company has a history of poor privacy practices; I will not support them.",
+    "label": -1
+  },
+  {
+    "text": "The ad feels very authentic and relatable, not like a forced corporate message.",
+    "label": 1
+  },
+  {
+    "text": "I might check the pricing on their website when I get home tonight.",
+    "label": 0
+  },
+  {
+    "text": "The lack of transparency about ingredients is a major red flag for me.",
+    "label": -1
+  }, 
+  {
+    "text": "Wow, this new gadget looks incredibly futuristic and practical. I'm genuinely impressed with the design and features!",
+    "label": 1
+  },
+  {
+    "text": "Another subscription box? Seriously? My budget can't handle any more monthly charges.",
+    "label": -1
+  },
+  {
+    "text": "This commercial for the new soft drink is so over-the-top with its celebrity endorsement; it feels forced.",
+    "label": -1
+  },
+  {
+    "text": "The app launch ad highlights some interesting functionalities. I might give it a try when I have some free time.",
+    "label": 0
+  },
+  {
+    "text": "That puppy in the pet food ad is absolutely adorable! Makes me want to cuddle my own dog right now.",
+    "label": 1
+  },
+  {
+    "text": "A flash sale on my favorite skincare products? This is fantastic news, I need to stock up immediately!",
+    "label": 1
+  },
+  {
+    "text": "I'm quite skeptical about this new 'miracle' cleaning product; it just sounds too good to be true, honestly.",
+    "label": 0
+  },
+  {
+    "text": "The soundtrack in that car commercial is absolutely epic and perfectly sets the mood for adventure.",
+    "label": 1
+  },
+  {
+    "text": "These constant pop-up ads are ruining my browsing experience. It's incredibly frustrating and intrusive.",
+    "label": -1
+  },
+  {
+    "text": "The ad for the smart home device seems pretty useful for busy families. I'll keep it in mind for later.",
+    "label": 0
+  },
+  {
+    "text": "This public service announcement about mental health awareness is so crucial and beautifully executed.",
+    "label": 1
+  },
+  {
+    "text": "Why do advertisers always portray such unrealistic, perfect families? It's hardly relatable for most people.",
+    "label": -1
+  },
+  {
+    "text": "An incredible discount on international flights! I'm definitely checking destinations for my next vacation right now.",
+    "label": 1
+  },
+  {
+    "text": "This ad's emotional manipulation is incredibly transparent and frankly, quite off-putting. Not a fan at all.",
+    "label": -1
+  },
+  {
+    "text": "The visuals in this perfume ad are stunning and artistic, but I still have no idea what the fragrance smells like.",
+    "label": 0
+  },
+  {
+    "text": "Finally, an ad that genuinely makes me laugh! The humor is spot on and very refreshing to see.",
+    "label": 1
+  },
+  {
+    "text": "Another luxury car ad with dramatic slow-motion shots. They all start to blend together after a while, honestly.",
+    "label": 0
+  },
+  {
+    "text": "This new productivity app looks like it could seriously streamline my daily tasks. I'm excited to download it!",
+    "label": 1
+  },
+  {
+    "text": "I've heard terrible things about this company's customer service; this ad won't convince me to buy anything.",
+    "label": -1
+  },
+  {
+    "text": "The animated characters in this cereal ad are cute, but the product itself still seems loaded with sugar.",
+    "label": 0
+  },
+  {
+    "text": "The cinematography and storytelling in this brand's commercial are truly exceptional. It's like a mini-movie!",
+    "label": 1
+  },
+  {
+    "text": "I've literally seen this same exact ad playing on every platform for the past week. It's getting tiresome.",
+    "label": -1
+  },
+  {
+    "text": "This ad is a fantastic reminder about the importance of sustainable living. It's a message we all need to hear.",
+    "label": 1
+  },
+  {
+    "text": "I highly doubt this 'lose weight fast' product actually delivers on its promises. Seems like another fad.",
+    "label": -1
+  },
+  {
+    "text": "The discount offered is quite appealing, but I'm not entirely sure I actually need this item right now.",
+    "label": 0
+  },
+  {
+    "text": "Such an inspiring ad for overcoming challenges! It really resonated with me and brightened my day.",
+    "label": 1
+  },
+  {
+    "text": "The actors in this ad deliver their lines so unnaturally; it's almost cringeworthy to watch.",
+    "label": -1
+  },
+  {
+    "text": "It could be an interesting product for a niche market, but I'll definitely check out reviews before buying.",
+    "label": 0
+  },
+  {
+    "text": "The vibrant colors and energetic pacing of this ad campaign are incredibly eye-catching and fun!",
+    "label": 1
+  },
+  {
+    "text": "This ad is utterly nonsensical; I watched the whole thing and still have no idea what they're selling.",
+    "label": -1
+  },
+  {
+    "text": "That new gaming console looks incredibly powerful! I'm definitely adding it to my wishlist for next year.",
+    "label": 1
+  },
+  {
+    "text": "Another generic bank ad talking about trust and security. Yawn, nothing new or exciting here.",
+    "label": 0
+  },
+  {
+    "text": "Finally, a product that genuinely solves a persistent issue I've been facing! So relieved to see this.",
+    "label": 1
+  },
+  {
+    "text": "This ad keeps interrupting my favorite podcast. It's making me actively dislike the brand now.",
+    "label": -1
+  },
+  {
+    "text": "The testimonials in this ad sound a bit too polished and rehearsed. Makes me question their authenticity.",
+    "label": 0
+  },
+  {
+    "text": "This new video game looks absolutely incredible; the graphics are stunning and the gameplay seems immersive!",
+    "label": 1
+  },
+  {
+    "text": "The ad's attempt at being profound comes off as preachy and a little too self-important, honestly.",
+    "label": -1
+  },
+  {
+    "text": "Looks like a pretty standard product. Nothing revolutionary, but it might get the job done efficiently.",
+    "label": 0
+  },
+  {
+    "text": "This company's commitment to ethical sourcing, highlighted in their ad, truly makes me want to support them.",
+    "label": 1
+  },
+  {
+    "text": "Why do they always play these ads at maximum volume? It's jarring and incredibly annoying.",
+    "label": -1
+  },
+  {
+    "text": "That jingle from the cereal ad is surprisingly catchy; I've been humming it all day, much to my surprise.",
+    "label": 1
+  },
+  {
+    "text": "Not really sure how this product fits into my lifestyle or needs. It's just not resonating with me.",
+    "label": 0
+  },
+  {
+    "text": "This ad is filled with so much misleading information; they're clearly trying to trick consumers.",
+    "label": -1
+  },
+  {
+    "text": "What a fantastic community initiative! I'm so glad this ad is spreading awareness about it.",
+    "label": 1
+  },
+  {
+    "text": "The spokesperson in this commercial has such a warm and trustworthy demeanor. Very convincing!",
+    "label": 1
+  },
+  {
+    "text": "Another expensive subscription service that offers little value. Hard pass, absolutely not interested.",
+    "label": -1
+  },
+  {
+    "text": "The product itself seems quite innovative, but the hefty price tag makes it a difficult consideration.",
+    "label": 0
+  },
+  {
+    "text": "I absolutely adore the sleek and minimalist design of this new smartphone. It's a true work of art!",
+    "label": 1
+  },
+  {
+    "text": "This ad is so captivating; it makes me want to drop everything and purchase the product right now!",
+    "label": 1
+  },
+  {
+    "text": "The ad uses far too much technical jargon; it's impossible for the average person to understand what it means.",
+    "label": -1
+  },
+  {
+    "text": "Looks decent enough, but honestly, I'm quite loyal to my current brand and probably won't switch.",
+    "label": 0
+  },
+  {
+    "text": "Finally, an ad that genuinely understands my needs and offers a perfect solution!",
+    "label": 1
+  },
+  {
+    "text": "This ad is just utterly bland and forgettable. I scrolled past it without a second thought.",
+    "label": -1
+  },
+  {
+    "text": "The visuals are quite appealing, and the product seems interesting, so I'm a bit curious to learn more.",
+    "label": 0
+  },
+  {
+    "text": "What an absolutely fantastic offer! I'm definitely taking full advantage of this incredible deal.",
+    "label": 1
+  },
+  {
+    "text": "This company has a history of unethical practices; their polished ad won't fool me.",
+    "label": -1
+  },
+  {
+    "text": "It's a pretty standard ad, nothing particularly innovative or noteworthy to grab my attention.",
+    "label": 0
+  },
+  {
+    "text": "So heartwarming to see such a positive message in this ad! It really put a smile on my face.",
+    "label": 1
+  },
+  {
+    "text": "They always exaggerate the capabilities of their products in these ads; it's a constant disappointment.",
+    "label": -1
+  },
+  {
+    "text": "Could be a useful tool for specific tasks, but it's not something I personally need at this moment.",
+    "label": 0
+  },
+  {
+    "text": "The special effects and CGI in this movie trailer are truly breathtaking! I can't wait to see it.",
+    "label": 1
+  },
+  {
+    "text": "I already own a very similar product that works perfectly fine, so this ad isn't relevant to me.",
+    "label": 0
+  },
+  {
+    "text": "This ad is clearly targeting vulnerable populations; it's irresponsible and morally questionable.",
+    "label": -1
+  },
+  {
+    "text": "What a brilliant and innovative idea! I'm genuinely impressed by the ingenuity behind this.",
+    "label": 1
+  },
+  {
+    "text": "This ad is excessively long and repetitive; I lost interest about thirty seconds in.",
+    "label": -1
+  },
+  {
+    "text": "The product seems decent, and the price is fair, so it's definitely worth considering a purchase.",
+    "label": 0
+  },
+  {
+    "text": "The company's strong commitment to sustainability, highlighted in their ad, makes me a proud supporter.",
+    "label": 1
+  },
+  {
+    "text": "Another product I can only dream of affording. Thanks for the constant reminder of my financial limitations.",
+    "label": -1
+  },
+  {
+    "text": "The ad is aesthetically pleasing, but the actual quality of the product looks quite questionable.",
+    "label": 0
+  },
+  {
+    "text": "This new feature is an absolute game-changer for my daily routine! I'm so glad they finally implemented it.",
+    "label": 1
+  },
+  {
+    "text": "I am utterly fed up with seeing these identical, uninspired ads constantly bombarding my feed.",
+    "label": -1
+  },
+  {
+    "text": "The ad is quite stylish, but frankly, the product itself doesn't seem to offer anything truly unique.",
+    "label": 0
+  },
+  {
+    "text": "I absolutely love the sheer creativity and artistic direction that went into making this ad!",
+    "label": 1
+  },
+  {
+    "text": "This ad is incredibly offensive and promotes harmful stereotypes. It should be taken down immediately.",
+    "label": -1
+  },
+  {
+    "text": "Looks like a solid product with good reviews, so I might just give it a try when I need a replacement.",
+    "label": 0
+  },
+  {
+    "text": "What an amazing discount on my favorite brand of coffee! This is going to make my mornings so much better.",
+    "label": 1
+  },
+  {
+    "text": "Another ad pushing unrealistic body standards and perpetuating harmful ideals. It's truly disappointing.",
+    "label": -1
+  },
+  {
+    "text": "The concept presented in the ad is intriguing, but I'm still not entirely convinced it's for me.",
+    "label": 0
+  },
+  {
+    "text": "This ad is so incredibly clever and intelligently written. It's a joy to watch and really stands out!",
+    "label": 1
+  },
+  {
+    "text": "I've heard numerous complaints about this company's products; their ad won't change my negative opinion.",
+    "label": -1
+  },
+  {
+    "text": "It's an ad. It exists. I saw it. Nothing particularly impactful or memorable about it, though.",
+    "label": 0
+  },
+  {
+    "text": "Finally a product that actually works!",
+    "label": 1
+  },
+  {
+    "text": "This looks promising but I'll wait for reviews.",
+    "label": 0
+  },
+  {
+    "text": "Another overpriced gadget nobody needs.",
+    "label": -1
+  },
+  {
+    "text": "Great deal, ordering right now!",
+    "label": 1
+  },
+  {
+    "text": "Meh, seen better offers elsewhere.",
+    "label": 0
+  },
+  {
+    "text": "Stop spamming me with these ads.",
+    "label": -1
+  },
+  {
+    "text": "Love the design, very sleek.",
+    "label": 1
+  },
+  {
+    "text": "Not sure if this is worth it.",
+    "label": 0
+  },
+  {
+    "text": "Total waste of money, don't buy.",
+    "label": -1
+  },
+  {
+    "text": "Exactly what I've been looking for!",
+    "label": 1
+  },
+  {
+    "text": "Could be good, need more details though.",
+    "label": 0
+  },
+  {
+    "text": "Misleading claims, report this ad.",
+    "label": -1
+  },
+  {
+    "text": "Amazing price for this quality!",
+    "label": 1
+  },
+  {
+    "text": "Looks okay but nothing special really.",
+    "label": 0
+  },
+  {
+    "text": "Cheap knockoff of the original brand.",
+    "label": -1
+  },
+  {
+    "text": "This app changed my daily routine completely!",
+    "label": 1
+  },
+  {
+    "text": "Might try it if it goes on sale.",
+    "label": 0
+  },
+  {
+    "text": "Why are these ads following me everywhere?",
+    "label": -1
+  },
+  {
+    "text": "Perfect timing, needed this product today.",
+    "label": 1
+  },
+  {
+    "text": "Seems decent but too expensive for me.",
+    "label": 0
+  },
+  {
+    "text": "False advertising, terrible customer service too.",
+    "label": -1
+  },
+  {
+    "text": "Highly recommend, worth every penny!",
+    "label": 1
+  },
+  {
+    "text": "Not really my style but cool.",
+    "label": 0
+  },
+  {
+    "text": "Already bought and returned it, garbage.",
+    "label": -1
+  },
+  {
+    "text": "Such a clever ad campaign!",
+    "label": 1
+  },
+  {
+    "text": "Interesting concept, curious about user feedback.",
+    "label": 0
+  },
+  {
+    "text": "Another useless subscription service, hard pass.",
+    "label": -1
+  },
+  {
+    "text": "Best purchase I made all year.",
+    "label": 1
+  },
+  {
+    "text": "Maybe for some people but not me.",
+    "label": 0
+  },
+  {
+    "text": "Sketchy website, don't trust this seller.",
+    "label": -1
+  },
+  {
+    "text": "Brilliant product, solving real problems!",
+    "label": 1
+  },
+  {
+    "text": "Could work for certain situations I guess.",
+    "label": 0
+  },
+  {
+    "text": "Annoying ad music, had to mute immediately.",
+    "label": -1
+  },
+  {
+    "text": "Love supporting companies with good values!",
+    "label": 1
+  },
+  {
+    "text": "Looks fine, nothing groundbreaking though.",
+    "label": 0
+  },
+  {
+    "text": "Scam alert, avoid at all costs.",
+    "label": -1
+  },
+  {
+    "text": "Super helpful app, using it daily now.",
+    "label": 1
+  },
+  {
+    "text": "Not convinced yet, waiting to see more.",
+    "label": 0
+  },
+  {
+    "text": "Terrible quality, broke after one use.",
+    "label": -1
+  },
+  {
+    "text": "This ad actually made me smile!",
+    "label": 1
+  },
+  {
+    "text": "Might be useful for someone else.",
+    "label": 0
+  },
+  {
+    "text": "Way too expensive for what you get.",
+    "label": -1
+  },
+  {
+    "text": "Great initiative, happy to participate!",
+    "label": 1
+  },
+  {
+    "text": "Seems alright, would need to test first.",
+    "label": 0
+  },
+  {
+    "text": "Stop targeting kids with junk food ads.",
+    "label": -1
+  },
+  {
+    "text": "Incredible discount, sharing with friends now!",
+    "label": 1
+  },
+  {
+    "text": "Don't really care either way honestly.",
+    "label": 0
+  },
+  {
+    "text": "Privacy nightmare, uninstalling immediately.",
+    "label": -1
+  },
+  {
+    "text": "Fantastic customer reviews convinced me!",
+    "label": 1
+  },
+  {
+    "text": "Neutral about this, could go either way.",
+    "label": 0
+  },
+  {
+    "text": "Clickbait garbage, wasted my time.",
+    "label": -1
+  },
+  {
+    "text": "Perfect gift idea for the holidays!",
+    "label": 1
+  },
+  {
+    "text": "Not my cup of tea but whatever.",
+    "label": 0
+  },
+  {
+    "text": "Hidden fees everywhere, total ripoff.",
+    "label": -1
+  },
+  {
+    "text": "This PSA really hit home for me.",
+    "label": 1
+  },
+  {
+    "text": "Somewhat interesting message I suppose.",
+    "label": 0
+  },
+  {
+    "text": "Preachy and condescending tone, dislike.",
+    "label": -1
+  },
+  {
+    "text": "Beautifully shot ad, very inspiring!",
+    "label": 1
+  },
+  {
+    "text": "Okay ad but seen similar before.",
+    "label": 0
+  },
+  {
+    "text": "Exploiting people's insecurities, disgusting.",
+    "label": -1
+  },
+  {
+    "text": "Game changer for my productivity!",
+    "label": 1
+  },
+  {
+    "text": "Might work for others, not sure yet.",
+    "label": 0
+  },
+  {
+    "text": "Poorly made, looks like amateur hour.",
+    "label": -1
+  },
+  {
+    "text": "Signing up right now, can't wait!",
+    "label": 1
+  },
+  {
+    "text": "Indifferent, scrolling past this one.",
+    "label": 0
+  },
+  {
+    "text": "Offensive content, reporting to platform.",
+    "label": -1
+  },
+  {
+    "text": "Smart marketing, got my attention instantly!",
+    "label": 1
+  },
+  {
+    "text": "Mixed feelings about this product honestly.",
+    "label": 0
+  },
+  {
+    "text": "Cheap materials, falls apart quickly.",
+    "label": -1
+  },
+  {
+    "text": "Refreshing to see honest advertising!",
+    "label": 1
+  },
+  {
+    "text": "Could be good for some people maybe.",
+    "label": 0
+  },
+  {
+    "text": "Pushy sales tactics, very off-putting.",
+    "label": -1
+  },
+  {
+    "text": "Downloaded the app, loving it so far!",
+    "label": 1
+  },
+  {
+    "text": "Not really sure what this is for.",
+    "label": 0
+  },
+  {
+    "text": "Predatory pricing model, stay away.",
+    "label": -1
+  },
+  {
+    "text": "Wonderful cause, donating today!",
+    "label": 1
+  },
+  {
+    "text": "Seems reasonable but need more information.",
+    "label": 0
+  },
+  {
+    "text": "Invasive data collection, no thanks.",
+    "label": -1
+  },
+  {
+    "text": "Best app launch I've seen this year!",
+    "label": 1
+  },
+  {
+    "text": "Not bad but not great either.",
+    "label": 0
+  },
+  {
+    "text": "Glitchy mess, constant crashes reported.",
+    "label": -1
+  },
+  {
+    "text": "Genuinely useful product, impressed!",
+    "label": 1
+  },
+  {
+    "text": "On the fence about this one.",
+    "label": 0
+  },
+  {
+    "text": "Complete waste of advertising budget.",
+    "label": -1
+  },
+  {
+    "text": "Creative and memorable ad concept!",
+    "label": 1
+  },
+  {
+    "text": "Could see both pros and cons here.",
+    "label": 0
+  },
+  {
+    "text": "Deceptive marketing, avoid this brand.",
+    "label": -1
+  },
+  {
+    "text": "Exactly the solution I needed!",
+    "label": 1
+  },
+  {
+    "text": "Might check it out later maybe.",
+    "label": 0
+  },
+  {
+    "text": "Annoying popup ruined my browsing experience.",
+    "label": -1
+  },
+  {
+    "text": "Super excited about this new release!",
+    "label": 1
+  },
+  {
+    "text": "Looks interesting but I'm undecided still.",
+    "label": 0
+  },
+  {
+    "text": "Horrible company ethics, boycotting them.",
+    "label": -1
+  },
+  {
+    "text": "Great value and quality combined!",
+    "label": 1
+  },
+  {
+    "text": "Average product, nothing to complain about.",
+    "label": 0
+  },
+  {
+    "text": "Spam ads constantly, so annoying.",
+    "label": -1
+  },
+  {
+    "text": "This really resonates with me personally!",
+    "label": 1
+  },
+  {
+    "text": "Not sure this applies to my situation.",
+    "label": 0
+  },
+  {
+    "text": "Ridiculously overpriced for basic features.",
+    "label": -1
+  }, 
+  {
+    "text": "Wow, this new gadget looks incredibly futuristic and practical. I'm genuinely impressed with the design and features!",
+    "label": 1
+  },
+  {
+    "text": "Another subscription box? Seriously? My budget can't handle any more monthly charges.",
+    "label": -1
+  },
+  {
+    "text": "This commercial for the new soft drink is so over-the-top with its celebrity endorsement; it feels forced.",
+    "label": -1
+  },
+  {
+    "text": "The app launch ad highlights some interesting functionalities. I might give it a try when I have some free time.",
+    "label": 0
+  },
+  {
+    "text": "That puppy in the pet food ad is absolutely adorable! Makes me want to cuddle my own dog right now.",
+    "label": 1
+  },
+  {
+    "text": "A flash sale on my favorite skincare products? This is fantastic news, I need to stock up immediately!",
+    "label": 1
+  },
+  {
+    "text": "I'm quite skeptical about this new 'miracle' cleaning product; it just sounds too good to be true, honestly.",
+    "label": 0
+  },
+  {
+    "text": "The soundtrack in that car commercial is absolutely epic and perfectly sets the mood for adventure.",
+    "label": 1
+  },
+  {
+    "text": "These constant pop-up ads are ruining my browsing experience. It's incredibly frustrating and intrusive.",
+    "label": -1
+  },
+  {
+    "text": "The ad for the smart home device seems pretty useful for busy families. I'll keep it in mind for later.",
+    "label": 0
+  },
+  {
+    "text": "This public service announcement about mental health awareness is so crucial and beautifully executed.",
+    "label": 1
+  },
+  {
+    "text": "Why do advertisers always portray such unrealistic, perfect families? It's hardly relatable for most people.",
+    "label": -1
+  },
+  {
+    "text": "An incredible discount on international flights! I'm definitely checking destinations for my next vacation right now.",
+    "label": 1
+  },
+  {
+    "text": "This ad's emotional manipulation is incredibly transparent and frankly, quite off-putting. Not a fan at all.",
+    "label": -1
+  },
+  {
+    "text": "The visuals in this perfume ad are stunning and artistic, but I still have no idea what the fragrance smells like.",
+    "label": 0
+  },
+  {
+    "text": "Finally, an ad that genuinely makes me laugh! The humor is spot on and very refreshing to see.",
+    "label": 1
+  },
+  {
+    "text": "Another luxury car ad with dramatic slow-motion shots. They all start to blend together after a while, honestly.",
+    "label": 0
+  },
+  {
+    "text": "This new productivity app looks like it could seriously streamline my daily tasks. I'm excited to download it!",
+    "label": 1
+  },
+  {
+    "text": "I've heard terrible things about this company's customer service; this ad won't convince me to buy anything.",
+    "label": -1
+  },
+  {
+    "text": "The animated characters in this cereal ad are cute, but the product itself still seems loaded with sugar.",
+    "label": 0
+  },
+  {
+    "text": "The cinematography and storytelling in this brand's commercial are truly exceptional. It's like a mini-movie!",
+    "label": 1
+  },
+  {
+    "text": "I've literally seen this same exact ad playing on every platform for the past week. It's getting tiresome.",
+    "label": -1
+  },
+  {
+    "text": "This ad is a fantastic reminder about the importance of sustainable living. It's a message we all need to hear.",
+    "label": 1
+  },
+  {
+    "text": "I highly doubt this 'lose weight fast' product actually delivers on its promises. Seems like another fad.",
+    "label": -1
+  },
+  {
+    "text": "The discount offered is quite appealing, but I'm not entirely sure I actually need this item right now.",
+    "label": 0
+  },
+  {
+    "text": "Such an inspiring ad for overcoming challenges! It really resonated with me and brightened my day.",
+    "label": 1
+  },
+  {
+    "text": "The actors in this ad deliver their lines so unnaturally; it's almost cringeworthy to watch.",
+    "label": -1
+  },
+  {
+    "text": "It could be an interesting product for a niche market, but I'll definitely check out reviews before buying.",
+    "label": 0
+  },
+  {
+    "text": "The vibrant colors and energetic pacing of this ad campaign are incredibly eye-catching and fun!",
+    "label": 1
+  },
+  {
+    "text": "This ad is utterly nonsensical; I watched the whole thing and still have no idea what they're selling.",
+    "label": -1
+  },
+  {
+    "text": "That new gaming console looks incredibly powerful! I'm definitely adding it to my wishlist for next year.",
+    "label": 1
+  },
+  {
+    "text": "Another generic bank ad talking about trust and security. Yawn, nothing new or exciting here.",
+    "label": 0
+  },
+  {
+    "text": "Finally, a product that genuinely solves a persistent issue I've been facing! So relieved to see this.",
+    "label": 1
+  },
+  {
+    "text": "This ad keeps interrupting my favorite podcast. It's making me actively dislike the brand now.",
+    "label": -1
+  },
+  {
+    "text": "The testimonials in this ad sound a bit too polished and rehearsed. Makes me question their authenticity.",
+    "label": 0
+  },
+  {
+    "text": "This new video game looks absolutely incredible; the graphics are stunning and the gameplay seems immersive!",
+    "label": 1
+  },
+  {
+    "text": "The ad's attempt at being profound comes off as preachy and a little too self-important, honestly.",
+    "label": -1
+  },
+  {
+    "text": "Looks like a pretty standard product. Nothing revolutionary, but it might get the job done efficiently.",
+    "label": 0
+  },
+  {
+    "text": "This company's commitment to ethical sourcing, highlighted in their ad, truly makes me want to support them.",
+    "label": 1
+  },
+  {
+    "text": "Why do they always play these ads at maximum volume? It's jarring and incredibly annoying.",
+    "label": -1
+  },
+  {
+    "text": "That jingle from the cereal ad is surprisingly catchy; I've been humming it all day, much to my surprise.",
+    "label": 1
+  },
+  {
+    "text": "Not really sure how this product fits into my lifestyle or needs. It's just not resonating with me.",
+    "label": 0
+  },
+  {
+    "text": "This ad is filled with so much misleading information; they're clearly trying to trick consumers.",
+    "label": -1
+  },
+  {
+    "text": "What a fantastic community initiative! I'm so glad this ad is spreading awareness about it.",
+    "label": 1
+  },
+  {
+    "text": "The spokesperson in this commercial has such a warm and trustworthy demeanor. Very convincing!",
+    "label": 1
+  },
+  {
+    "text": "Another expensive subscription service that offers little value. Hard pass, absolutely not interested.",
+    "label": -1
+  },
+  {
+    "text": "The product itself seems quite innovative, but the hefty price tag makes it a difficult consideration.",
+    "label": 0
+  },
+  {
+    "text": "I absolutely adore the sleek and minimalist design of this new smartphone. It's a true work of art!",
+    "label": 1
+  },
+  {
+    "text": "This ad is so captivating; it makes me want to drop everything and purchase the product right now!",
+    "label": 1
+  },
+  {
+    "text": "The ad uses far too much technical jargon; it's impossible for the average person to understand what it means.",
+    "label": -1
+  },
+  {
+    "text": "Looks decent enough, but honestly, I'm quite loyal to my current brand and probably won't switch.",
+    "label": 0
+  },
+  {
+    "text": "Finally, an ad that genuinely understands my needs and offers a perfect solution!",
+    "label": 1
+  },
+  {
+    "text": "This ad is just utterly bland and forgettable. I scrolled past it without a second thought.",
+    "label": -1
+  },
+  {
+    "text": "The visuals are quite appealing, and the product seems interesting, so I'm a bit curious to learn more.",
+    "label": 0
+  },
+  {
+    "text": "What an absolutely fantastic offer! I'm definitely taking full advantage of this incredible deal.",
+    "label": 1
+  },
+  {
+    "text": "This company has a history of unethical practices; their polished ad won't fool me.",
+    "label": -1
+  },
+  {
+    "text": "It's a pretty standard ad, nothing particularly innovative or noteworthy to grab my attention.",
+    "label": 0
+  },
+  {
+    "text": "So heartwarming to see such a positive message in this ad! It really put a smile on my face.",
+    "label": 1
+  },
+  {
+    "text": "They always exaggerate the capabilities of their products in these ads; it's a constant disappointment.",
+    "label": -1
+  },
+  {
+    "text": "Could be a useful tool for specific tasks, but it's not something I personally need at this moment.",
+    "label": 0
+  },
+  {
+    "text": "The special effects and CGI in this movie trailer are truly breathtaking! I can't wait to see it.",
+    "label": 1
+  },
+  {
+    "text": "I already own a very similar product that works perfectly fine, so this ad isn't relevant to me.",
+    "label": 0
+  },
+  {
+    "text": "This ad is clearly targeting vulnerable populations; it's irresponsible and morally questionable.",
+    "label": -1
+  },
+  {
+    "text": "What a brilliant and innovative idea! I'm genuinely impressed by the ingenuity behind this.",
+    "label": 1
+  },
+  {
+    "text": "This ad is excessively long and repetitive; I lost interest about thirty seconds in.",
+    "label": -1
+  },
+  {
+    "text": "The product seems decent, and the price is fair, so it's definitely worth considering a purchase.",
+    "label": 0
+  },
+  {
+    "text": "The company's strong commitment to sustainability, highlighted in their ad, makes me a proud supporter.",
+    "label": 1
+  },
+  {
+    "text": "Another product I can only dream of affording. Thanks for the constant reminder of my financial limitations.",
+    "label": -1
+  },
+  {
+    "text": "The ad is aesthetically pleasing, but the actual quality of the product looks quite questionable.",
+    "label": 0
+  },
+  {
+    "text": "This new feature is an absolute game-changer for my daily routine! I'm so glad they finally implemented it.",
+    "label": 1
+  },
+  {
+    "text": "I am utterly fed up with seeing these identical, uninspired ads constantly bombarding my feed.",
+    "label": -1
+  },
+  {
+    "text": "The ad is quite stylish, but frankly, the product itself doesn't seem to offer anything truly unique.",
+    "label": 0
+  },
+  {
+    "text": "I absolutely love the sheer creativity and artistic direction that went into making this ad!",
+    "label": 1
+  },
+  {
+    "text": "This ad is incredibly offensive and promotes harmful stereotypes. It should be taken down immediately.",
+    "label": -1
+  },
+  {
+    "text": "Looks like a solid product with good reviews, so I might just give it a try when I need a replacement.",
+    "label": 0
+  },
+  {
+    "text": "What an amazing discount on my favorite brand of coffee! This is going to make my mornings so much better.",
+    "label": 1
+  },
+  {
+    "text": "Another ad pushing unrealistic body standards and perpetuating harmful ideals. It's truly disappointing.",
+    "label": -1
+  },
+  {
+    "text": "The concept presented in the ad is intriguing, but I'm still not entirely convinced it's for me.",
+    "label": 0
+  },
+  {
+    "text": "This ad is so incredibly clever and intelligently written. It's a joy to watch and really stands out!",
+    "label": 1
+  },
+  {
+    "text": "I've heard numerous complaints about this company's products; their ad won't change my negative opinion.",
+    "label": -1
+  },
+  {
+    "text": "It's an ad. It exists. I saw it. Nothing particularly impactful or memorable about it, though.",
+    "label": 0
+  },
+  {
+    "text": "Finally, a product that genuinely addresses a real need and offers a practical, effective solution!",
+    "label": 1
+  },
+  {
+    "text": "This ad is clearly trying too hard to be cool and hip; it comes off as incredibly inauthentic.",
+    "label": -1
+  },
+  {
+    "text": "Seems like a decent offer, and I'm open to exploring it further and comparing it with other options.",
+    "label": 0
+  },
+  {
+    "text": "This ad campaign is incredibly inclusive and celebrates diversity, which is truly wonderful to see!",
+    "label": 1
+  },
+  {
+    "text": "I'm absolutely inundated with these same, tired ads every single day. It's becoming unbearable.",
+    "label": -1
+  },
+  {
+    "text": "The ad's message is quite ambiguous and doesn't clearly convey what the product is actually for.",
+    "label": 0
+  },
+  {
+    "text": "Such a timely and profoundly important public service message. I applaud them for raising this awareness.",
+    "label": 1
+  },
+  {
+    "text": "The product shown in the ad looks incredibly cheap and poorly constructed. I wouldn't trust it.",
+    "label": -1
+  },
+  {
+    "text": "Might be beneficial for certain demographics or situations, but it doesn't quite align with my current needs.",
+    "label": 0
+  },
+  {
+    "text": "I'm so incredibly excited about this new product launch; I've been eagerly awaiting its release!",
+    "label": 1
+  },
+  {
+    "text": "This ad feels like pure propaganda and is clearly trying to manipulate public opinion, which is unsettling.",
+    "label": -1
+  },
+  {
+    "text": "The ad is visually engaging, but I don't feel any strong connection or desire for the product being advertised.",
+    "label": 0
+  },
+  {
+    "text": "What an absolutely amazing innovation! This is truly groundbreaking, and I'm definitely purchasing one.",
+    "label": 1
+  },
+  {
+    "text": "This ad is nothing short of false advertising; the claims they make are simply not true.",
+    "label": -1
+  },
+  {
+    "text": "The ad is utterly forgettable and generic. It blended into the background noise of my feed.",
+    "label": 0
+  },
+  {
+    "text": "I absolutely love the positive and uplifting vibes radiating from this entire ad campaign!",
+    "label": 1
+  },
+  {
+    "text": "This ad is so out of touch with the realities of everyday life; it's almost comical in its disconnect.",
+    "label": -1
+  },
+  {
+    "text": "It's just another ad in a sea of advertisements; nothing particularly noteworthy or bad about it.",
+    "label": 0
+  },
+  {
+    "text": "What a fantastic deal! This is exactly what I've been searching for at such an unbeatable price.",
+    "label": 1
+  },
+  {
+    "text": "Their previous products were consistently disappointing; I'm definitely skipping this one too.",
+    "label": -1
+  },
+  {
+    "text": "The ad looks professional and well-produced, but honestly, I'm just not interested in the product.",
+    "label": 0
+  },
+  {
+    "text": "This ad is incredibly inspiring and truly motivates me to pursue my goals!",
+    "label": 1
+  },
+  {
+    "text": "Finally, a company that gets it! Awesome new product.",
+    "label": 1
+  },
+  {
+    "text": "Skipping this ad, I see it everywhere now. Overdone.",
+    "label": -1
+  },
+  {
+    "text": "Hmm, the music is catchy. I might check this out later.",
+    "label": 0
+  },
+  {
+    "text": "The graphics are stellar. Truly inspiring message!",
+    "label": 1
+  },
+  {
+    "text": "Another mobile game ad? They all look the same.",
+    "label": -1
+  },
+  {
+    "text": "I already own a similar service. No need to switch.",
+    "label": 0
+  },
+  {
+    "text": "The sale prices are actually really good this time.",
+    "label": 1
+  },
+  {
+    "text": "This ad is way too long and boring. Get to the point.",
+    "label": -1
+  },
+  {
+    "text": "Not sure what they're even selling. Confusing ad.",
+    "label": 0
+  },
+  {
+    "text": "Love the focus on sustainability. Great job!",
+    "label": 1
+  },
+  {
+    "text": "Where is the 'skip ad' button?! This is infuriating.",
+    "label": -1
+  },
+  {
+    "text": "I’ll consider it, but their shipping is usually slow.",
+    "label": 0
+  },
+  {
+    "text": "That's a fantastic commercial! Very cinematic.",
+    "label": 1
+  },
+  {
+    "text": "Another subscription model? Hard pass from me.",
+    "label": -1
+  },
+  {
+    "text": "The colors are nice, I guess. Nothing special here.",
+    "label": 0
+  },
+  {
+    "text": "I appreciate the transparency in this PSA. Needed that.",
+    "label": 1
+  },
+  {
+    "text": "The voiceover is incredibly annoying. Muting this.",
+    "label": -1
+  },
+  {
+    "text": "It's an interesting concept, but I need more details.",
+    "label": 0
+  },
+  {
+    "text": "Just downloaded the app! Looks super useful.",
+    "label": 1
+  },
+  {
+    "text": "Clickbait headline. False advertising much?",
+    "label": -1
+  },
+  {
+    "text": "Maybe next month when I have more budget for this.",
+    "label": 0
+  },
+  {
+    "text": "Wow, what an emotional story. Made me tear up!",
+    "label": 1
+  },
+  {
+    "text": "They must think we're stupid with that pricing.",
+    "label": -1
+  },
+  {
+    "text": "It's a product. Doesn't excite me, doesn't offend me.",
+    "label": 0
+  },
+  {
+    "text": "Great demo! That feature is exactly what I needed.",
+    "label": 1
+  },
+  {
+    "text": "Did they even check the sound mixing? Too loud.",
+    "label": -1
+  },
+  {
+    "text": "I wonder if it works as well as they claim it does.",
+    "label": 0
+  },
+  {
+    "text": "Excellent casting! The ad felt very authentic.",
+    "label": 1
+  },
+  {
+    "text": "I keep seeing this ad. Please stop targeting me.",
+    "label": -1
+  },
+  {
+    "text": "It's okay. I might try the free trial later on.",
+    "label": 0
+  },
+  {
+    "text": "Best ad of the year, hands down. So creative!",
+    "label": 1
+  },
+  {
+    "text": "Their competitors are much cheaper, not worth it.",
+    "label": -1
+  },
+  {
+    "text": "I'm still on the fence about whether to buy this.",
+    "label": 0
+  },
+  {
+    "text": "Love this company's mission. Support them!",
+    "label": 1
+  },
+  {
+    "text": "The animation is cheap and looks terrible. Yikes.",
+    "label": -1
+  },
+  {
+    "text": "Looks like an average promotion to clear old stock.",
+    "label": 0
+  },
+  {
+    "text": "I needed a reminder about this. Thanks for the PSA!",
+    "label": 1
+  },
+  {
+    "text": "This ad is completely irrelevant to my interests.",
+    "label": -1
+  },
+  {
+    "text": "Seems like a solid deal if you need that specific item.",
+    "label": 0
+  },
+  {
+    "text": "I'm signing up right now! Such a fantastic deal.",
+    "label": 1
+  },
+  {
+    "text": "Stop interrupting my video with this junk!",
+    "label": -1
+  },
+  {
+    "text": "The jingle is stuck in my head. Mildly irritating.",
+    "label": 0
+  },
+  {
+    "text": "The visuals are absolutely stunning. Art direction is top-notch.",
+    "label": 1
+  },
+  {
+    "text": "I already know what they're selling. Pointless repeat ad.",
+    "label": -1
+  },
+  {
+    "text": "I don't really care about this type of product, honestly.",
+    "label": 0
+  },
+  {
+    "text": "Such a thoughtful and effective campaign. Well done!",
+    "label": 1
+  },
+  {
+    "text": "The actors look like they don't even want to be there.",
+    "label": -1
+  },
+  {
+    "text": "It's alright, but I expected more from this brand.",
+    "label": 0
+  },
+  {
+    "text": "The discount code works! Amazing savings, thanks!",
+    "label": 1
+  },
+  {
+    "text": "This ad is misleading. I checked the terms and conditions.",
+    "label": -1
+  },
+  {
+    "text": "I'm not in the target demographic, but it's well-made.",
+    "label": 0
+  },
+  {
+    "text": "This really brightened my day! Great humor in the ad.",
+    "label": 1
+  },
+  {
+    "text": "I've seen four ads for this today. Too much saturation.",
+    "label": -1
+  },
+  {
+    "text": "I'll think about it over the weekend. Maybe a good deal.",
+    "label": 0
+  },
+  {
+    "text": "Finally, a solution to that problem! Buying it now.",
+    "label": 1
+  },
+  {
+    "text": "The whole ad is just a celebrity endorsement. Lazy.",
+    "label": -1
+  },
+  {
+    "text": "Seems overpriced for what it is. Pass for now.",
+    "label": 0
+  },
+  {
+    "text": "I love seeing companies support this cause!",
+    "label": 1
+  },
+  {
+    "text": "I reported this ad. It feels kind of offensive.",
+    "label": -1
+  },
+  {
+    "text": "I'm not familiar with the brand. Need to research first.",
+    "label": 0
+  },
+  {
+    "text": "That's a smart piece of marketing. Very persuasive.",
+    "label": 1
+  },
+  {
+    "text": "Did they reuse clips from another commercial? Cheap.",
+    "label": -1
+  },
+  {
+    "text": "It's a product I could use, but not an urgent purchase.",
+    "label": 0
+  },
+  {
+    "text": "This ad is so wholesome! Makes me trust the brand.",
+    "label": 1
+  },
+  {
+    "text": "Why are they yelling? The volume is unnecessarily high.",
+    "label": -1
+  },
+  {
+    "text": "I don't hate it. The visuals are moderately engaging.",
+    "label": 0
+  },
+  {
+    "text": "The pitch was clear and concise. Very effective!",
+    "label": 1
+  },
+  {
+    "text": "The special effects look super fake and low budget.",
+    "label": -1
+  },
+  {
+    "text": "It's another streaming service. Nothing new there.",
+    "label": 0
+  },
+  {
+    "text": "I'm impressed by the innovation. Truly revolutionary!",
+    "label": 1
+  },
+  {
+    "text": "This is completely irrelevant to my life. Stop showing it.",
+    "label": -1
+  },
+  {
+    "text": "The ad wasn't bad, but the product is a bit niche.",
+    "label": 0
+  },
+  {
+    "text": "I saw this on TV too! I'm definitely buying this.",
+    "label": 1
+  },
+  {
+    "text": "The website link doesn't even work. Huge fail.",
+    "label": -1
+  },
+  {
+    "text": "I've been looking for something like this. Good timing.",
+    "label": 0
+  },
+  {
+    "text": "What a creative way to showcase the features!",
+    "label": 1
+  },
+  {
+    "text": "This commercial feels manipulative and pushy.",
+    "label": -1
+  },
+  {
+    "text": "My friend uses this. I haven't decided if I should get it.",
+    "label": 0
+  },
+  {
+    "text": "I'm sharing this with everyone I know. Amazing offer!",
+    "label": 1
+  },
+  {
+    "text": "I find this ad to be culturally insensitive. Bad taste.",
+    "label": -1
+  },
+  {
+    "text": "The product looks okay, but the ad didn't sell it well.",
+    "label": 0
+  },
+  {
+    "text": "The music choice is perfect! Really sets the mood.",
+    "label": 1
+  },
+  {
+    "text": "This product is an absolute waste of money. Avoid.",
+    "label": -1
+  },
+  {
+    "text": "I wish they had shown the actual product in more detail.",
+    "label": 0
+  },
+  {
+    "text": "Definitely clicking on that 'Learn More' button now.",
+    "label": 1
+  },
+  {
+    "text": "That's the third time this hour. I'm muting my phone.",
+    "label": -1
+  },
+  {
+    "text": "I'll wait for a review before making a final judgment.",
+    "label": 0
+  },
+  {
+    "text": "So relatable! They really captured the user experience.",
+    "label": 1
+  },
+  {
+    "text": "They used a stock photo from 2005. Very unprofessional.",
+    "label": -1
+  },
+  {
+    "text": "The offer is fine, but I don't need it at the moment.",
+    "label": 0
+  },
+  {
+    "text": "I've been waiting for a sale like this! Perfect timing.",
+    "label": 1
+  },
+  {
+    "text": "I am so sick of seeing this same ad on every platform.",
+    "label": -1
+  },
+  {
+    "text": "The message is important, but the execution is a bit weak.",
+    "label": 0
+  },
+  {
+    "text": "A beautiful public service message. Truly inspiring.",
+    "label": 1
+  },
+  {
+    "text": "This commercial has no substance, just fluff and loud noise.",
+    "label": -1
+  },
+  {
+    "text": "I've heard good things about their customer support.",
+    "label": 0
+  },
+  {
+    "text": "That demonstration was surprisingly convincing. I'm sold.",
+    "label": 1
+  },
+  {
+    "text": "The spokesperson is very clearly reading from a script.",
+    "label": -1
+  },
+  {
+    "text": "I'm unsure if the price is for a one-time thing or a monthly fee.",
+    "label": 0
+  },
+  {
+    "text": "This is exactly what the market needed. Brilliant launch!",
+    "label": 1
+  },
+  {
+    "text": "Absolutely terrible customer service feedback, so no thanks.",
+    "label": -1
+  },
+  {
+    "text": "The product itself seems decent. The ad is just average.",
+    "label": 0
+  }
+]

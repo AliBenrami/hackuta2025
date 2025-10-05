@@ -1,0 +1,101 @@
+ad_id,ad_text,mean_sentiment,receptiveness_index
+1,Experience unparalleled comfort with our new memory foam mattress!,0.2840768062386385,0.6420384031193193
+2,Boost your productivity with our innovative task management app!,-0.0007103114517238987,0.4996448442741381
+3,Discover your next adventure with our premium travel packages!,0.5008281184334267,0.7504140592167133
+4,Transform your skin with our all-natural anti-aging serum!,0.19743892375181182,0.598719461875906
+5,Learn a new language faster with our interactive online courses!,0.003285428969591568,0.5016427144847958
+6,Upgrade your home with smart lighting solutions!,0.32566209977363847,0.6628310498868193
+7,Get fit and healthy with our personalized online coaching!,-0.25328242403932016,0.37335878798033995
+8,Protect your family with comprehensive home insurance!,-0.030225675102888337,0.48488716244855584
+9,Unleash your creativity with our professional graphic design software!,-0.055091323918412115,0.47245433804079395
+10,Plan your financial future with expert wealth management services!,-0.16666405841467594,0.41666797079266205
+11,Enjoy crystal-clear audio with our new wireless earbuds!,-0.037821283007651356,0.48108935849617435
+12,Introducing our new eco-bottle made from 100% recycled plastic!,0.49983704618382674,0.7499185230919134
+13,Get 50% off on all electronics this weekend only!,-0.1192976995496591,0.44035115022517046
+14,Try our new protein bar with 20g of protein and zero sugar!,0.4551459098273079,0.7275729549136539
+15,Stream unlimited movies and shows for just $4.99/month!,0.15749866963799733,0.5787493348189987
+16,Introducing our new smartwatch with 10-day battery life!,0.003559818168511897,0.501779909084256
+17,Book your dream vacation now — flights up to 30% off!,0.19459562512925807,0.597297812564629
+18,Upgrade your home office with our ergonomic chairs!,-0.003298886051341833,0.49835055697432906
+19,Introducing our new smartphone with AI-powered camera!,-0.33591010743084465,0.3320449462845777
+20,Introducing our vegan ice cream — 100% dairy free!,0.22136149208580513,0.6106807460429026
+21,Introducing our electric scooter with 30-mile range!,-0.16688863795235412,0.41655568102382295
+22,Introducing our new eco-bottle! Made from 100% recycled materials.,0.027784167419319734,0.5138920837096599
+23,Biggest sale ever — 70% off everything! Buy now before it's gone!,-0.23265962677606603,0.383670186611967
+24,Try our premium coffee subscription. Delivered fresh to your door monthly.,0.26839279507184044,0.6341963975359202
+25,New smartphone with 5-day battery life. Pre-order available now!,-0.25140609262292535,0.3742969536885373
+26,Learn Spanish in just 15 minutes a day with our app!,-0.40282107953738866,0.29858946023130567
+27,Luxury watches at affordable prices. Limited time offer!,-0.3446650437121016,0.3276674781439492
+28,Get fit from home! Our workout program includes meal plans and coaching.,-0.1489181030267422,0.42554094848662893
+29,Organic skincare that actually works. See results in 7 days!,-0.36578042716904074,0.3171097864154796
+30,Stream thousands of movies and shows. First month free!,-0.4775821660055756,0.26120891699721216
+31,Smart home security system with 24/7 monitoring. Protect your family today.,-0.24272168533293828,0.3786391573335309
+32,Delicious meal kits delivered weekly. Save time and eat healthy!,-0.39523959555299887,0.3023802022235006
+33,Revolutionary air purifier removes 99.9% of allergens and pollutants!,-0.4367760337611425,0.28161198311942875
+34,Join over 2 million users on our fitness app. Download free today!,0.14565309159321446,0.5728265457966072
+35,Handcrafted leather bags. Each one unique. Shop the collection now.,0.5045603791395743,0.7522801895697871
+36,Master Excel in 30 days with our online course. Money-back guarantee!,-0.35420668826017404,0.322896655869913
+37,Plant-based protein powder. 25g protein per serving. Fuel your day!,0.5996974453584514,0.7998487226792257
+38,Electric scooter with 40-mile range. Perfect for city commuting!,-0.24990335709446215,0.3750483214527689
+39,Online therapy from licensed professionals. First session only $40.,-0.1482085567390094,0.42589572163049527
+40,Noise-canceling headphones with 30-hour battery. Hear every detail.,0.17123242752232143,0.5856162137611607
+41,Learn to code in 12 weeks. Career support included. Change your life!,-0.18638244760092465,0.4068087761995377
+42,Bamboo bed sheets. Softer than cotton. Sleep in luxury tonight.,0.003217002737736796,0.5016085013688684
+43,New electric car with 400-mile range and fast charging!,0.12026698762561554,0.5601334938128077
+44,AI-powered résumé builder — land your dream job faster!,-0.11996429255638948,0.44001785372180524
+45,Smart fridge that tracks expiration dates and suggests recipes.,-0.31594370820169065,0.34202814589915465
+46,Cloud gaming platform. Play AAA titles on any device!,-0.34587754092543666,0.3270612295372817
+47,Smart pet feeder with app control. Feed your pets anytime.,0.27159625714009306,0.6357981285700465
+48,Ergonomic standing desk with automatic height presets.,-0.5107107963970399,0.24464460180148007
+49,Save the planet with our biodegradable phone cases.,0.35696491223760046,0.6784824561188002
+50,Virtual reality travel experiences — explore the world from home.,0.1305747893763111,0.5652873946881556
+51,Portable solar charger for phones and tablets — power anywhere.,0.18628761947646424,0.5931438097382321
+52,New VR headset with 8K resolution and eye tracking.,-0.5079799392481343,0.24601003037593283
+53,Smart toothbrush with real-time brushing feedback.,-0.2205447531491454,0.3897276234254273
+54,Reusable smart notebook that syncs to the cloud.,0.2001798345368091,0.6000899172684045
+55,New AI writing assistant — create blogs and emails faster.,-0.5829195354507444,0.2085402322746278
+56,"Smart mirror shows weather, time, and daily news.",-0.11423161987499733,0.44288419006250135
+57,Hydration tracking water bottle with app reminders.,-0.04585918139846208,0.47707040930076894
+58,Smart luggage with GPS tracking and USB charging.,0.1993137677758159,0.5996568838879079
+59,AI stock predictor — make smarter investments.,-0.4288312379656924,0.2855843810171538
+60,Wireless charging desk pad — power your devices seamlessly.,-0.39402052522921915,0.3029897373853904
+61,Subscription box for exotic snacks from around the world.,-0.006550638540530884,0.4967246807297346
+62,Sleep tracking headband with smart alarm features.,0.002796341032056173,0.5013981705160281
+63,"Eco-friendly laundry sheets — no plastic jugs, same clean.",-0.6122695099813583,0.19386524500932084
+64,"All-in-one productivity app — notes, tasks, and calendar.",-0.15074025955131926,0.4246298702243404
+65,AI photo enhancer — restore old photos in seconds.,-0.272196890741503,0.3639015546292485
+66,Compact drone with 4K camera and auto-follow mode.,-0.33857235398539937,0.33071382300730034
+67,Online piano lessons with real-time feedback.,0.02031575701548525,0.5101578785077426
+68,Eco sneakers made from recycled ocean plastic.,-0.019226066322095982,0.490386966838952
+69,Instant language translator earbuds.,0.19849131014604615,0.5992456550730231
+70,Pet DNA test — learn your pet’s breed and health risks.,-0.0684558631791821,0.46577206841040897
+71,Noise-reducing sleep earbuds — rest without distractions.,-0.11216419816044396,0.443917900919778
+72,Smart compost bin — turns food waste into soil in 24 hours.,-0.25823783004002304,0.3708810849799885
+73,Electric bike with pedal assist and foldable design.,0.4140940219382815,0.7070470109691407
+74,AI-powered personal finance tracker — save smarter.,-0.3220890415386714,0.33895547923066427
+75,VR meditation experience — relax in virtual nature.,0.18416651637027773,0.5920832581851388
+76,Wireless car vacuum cleaner — powerful and compact.,-0.25132074868272825,0.3743396256586359
+77,AI career coach — improve interviews and resumes.,0.1892055046777062,0.5946027523388531
+78,Plant-growing indoor hydroponic kit.,-0.19403829685510426,0.4029808515724479
+79,Blockchain-based art marketplace.,-0.06882401720669487,0.4655879913966526
+80,Smart glasses with live translation and navigation.,0.20058508514715373,0.6002925425735769
+81,AI fitness coach — personalized workouts and diet plans.,-0.2098757003517509,0.3950621498241246
+82,Virtual museum tours — explore history from home.,-0.021870349054520677,0.48906482547273966
+83,AI recipe generator — create meals from what’s in your fridge.,-0.17396024790524203,0.413019876047379
+84,Personalized vitamin packs — supplements made for you.,0.27464898867506304,0.6373244943375316
+85,Language learning through VR immersion.,-0.052747553292018676,0.4736262233539907
+86,Compact 3D printer for home creators.,-0.38499454286801177,0.30750272856599414
+87,AI-powered travel planner — get itineraries in seconds.,0.20451803502324678,0.6022590175116234
+88,Smart ring for fitness tracking.,-0.20655717340548657,0.39672141329725674
+89,Smart thermostat learns your schedule automatically.,-0.19947340141501746,0.40026329929249127
+90,Electric standing scooter for short commutes.,0.018388750655290442,0.5091943753276452
+91,Luxury candle subscription — new scent each month.,0.40146922972577614,0.7007346148628881
+92,Wireless smart doorbell with motion detection.,-0.4841522368192958,0.25792388159035207
+93,AI-powered grammar correction tool for professionals.,-0.41092363824010236,0.2945381808799488
+94,Online cooking classes from world-class chefs.,0.3557479578563485,0.6778739789281742
+95,AI-powered résumé reviewer with instant feedback.,-0.10076833774335807,0.449615831128321
+96,Self-watering indoor planter with LED grow lights.,-0.18268512265370365,0.4086574386731482
+97,Eco-friendly bamboo toothbrushes in recyclable packaging.,0.36073776252158707,0.6803688812607935
+98,Custom photo calendars — personalize your year.,0.19995359928187156,0.5999767996409358
+99,Wireless charging bedside lamp with Bluetooth speaker.,-0.12442520867824339,0.4377873956608783
+100,Smart baby monitor with sleep tracking and alerts.,0.399173016980723,0.6995865084903615
