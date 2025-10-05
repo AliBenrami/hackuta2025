@@ -20,6 +20,9 @@ import {
   updateCampaign,
   deleteImage,
   updateImage,
+  deployImageToX,
+  getTweetMetrics,
+  getTweetComments,
 } from "@/lib/api";
 
 interface CampaignDetailPageProps {
@@ -44,6 +47,16 @@ interface LocalAssetState {
     totalQualityPct?: number; // 0-100
   };
   finalSummary?: string; // After deploy completes
+  // X (Twitter) integration fields
+  tweetId?: string; // ID of posted tweet
+  tweetUrl?: string; // Full URL to tweet
+  xMetrics?: {
+    likes: number;
+    replies: number;
+    retweets: number;
+    quotes: number;
+    views: number;
+  };
 }
 
 const ACCEPTED_TYPES = ["image/jpeg", "image/jpg", "image/png"];
@@ -304,8 +317,13 @@ export default function CampaignDetailPage() {
 
   // Deploy simulation
   const handleDeploy = useCallback(
-    (adId: string) => {
-      if (!campaign) return;
+    async (adId: string) => {
+      if (!campaign?.ads) return;
+
+      // Find the ad to get the image database ID
+      const ad = campaign.ads.find((a) => a.id === adId);
+      if (!ad) return;
+
       setAssetState((prev) => ({
         ...prev,
         [adId]: {
@@ -314,8 +332,15 @@ export default function CampaignDetailPage() {
         },
       }));
 
-      const delay = randomInt(3000, 5000);
-      window.setTimeout(() => {
+      try {
+        // Deploy to Twitter - this will post the image and schedule comment fetching
+        const imageDbId = parseInt(ad.id, 10);
+        const deployResponse = await deployImageToX(imageDbId);
+
+        // Wait a bit for mock metrics generation
+        const delay = randomInt(3000, 5000);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+
         const resonance = randomInt(4, 10); // 0-10
         const engagement = randomInt(30, 95); // 0-100
         const hostility = randomInt(0, 9); // 0-10
@@ -327,12 +352,14 @@ export default function CampaignDetailPage() {
           ((resonance + hostility + controversy + engagement / 10) / 4) * 10
         );
 
-        // Update local metrics
+        // Update local metrics with tweet info
         setAssetState((prev) => ({
           ...prev,
           [adId]: {
             ...(prev[adId] ?? { status: "not_deployed" }),
             status: "ready",
+            tweetId: deployResponse.tweet_id,
+            tweetUrl: deployResponse.tweet_url,
             metrics: {
               resonance,
               engagement,
@@ -349,7 +376,7 @@ export default function CampaignDetailPage() {
           },
         }));
 
-        // Feed context metrics to compute campaign aggregates (map controversy into quality average)
+        // Feed context metrics to compute campaign aggregates
         const mappedQuality =
           Math.round(
             ((resonance + hostility + controversy + engagement / 10) / 4) * 10
@@ -360,7 +387,17 @@ export default function CampaignDetailPage() {
           engagement,
           resonance,
         });
-      }, delay);
+      } catch (error) {
+        console.error("Failed to deploy ad to Twitter:", error);
+        // Reset to not deployed on error
+        setAssetState((prev) => ({
+          ...prev,
+          [adId]: {
+            ...(prev[adId] ?? { status: "not_deployed" }),
+            status: "not_deployed",
+          },
+        }));
+      }
     },
     [campaign, updateAdMetrics, campaignId]
   );
@@ -979,7 +1016,26 @@ export default function CampaignDetailPage() {
                     )}
                     {status === "ready" && (
                       <div className="mt-2 space-y-3 text-sm text-slate-700">
-                        <p>{ad.initialInsight}</p>
+                        <p className="whitespace-pre-line">
+                          {ad.initialInsight}
+                        </p>
+
+                        {/* Tweet Link */}
+                        {assetState[ad.id]?.tweetUrl && (
+                          <div className="pt-2 border-t border-slate-200">
+                            <p className="text-xs font-semibold text-slate-500 mb-1">
+                              Posted to X (Twitter):
+                            </p>
+                            <a
+                              href={assetState[ad.id].tweetUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-700 underline text-sm break-all"
+                            >
+                              {assetState[ad.id].tweetUrl}
+                            </a>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>

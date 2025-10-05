@@ -35,6 +35,8 @@ class Image(Base):
     analysis_text = Column(Text, nullable=True)  # AI analysis results
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     campaign_id = Column(Integer, ForeignKey("campaigns.id"), nullable=True) # Allow null if not in a campaign
+    tweet_id = Column(String(255), nullable=True)  # Twitter/X tweet ID
+    tweet_url = Column(Text, nullable=True)  # Full URL to tweet
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
@@ -42,6 +44,8 @@ class Image(Base):
     owner = relationship("User", back_populates="images")
     # Relationship to campaign
     campaign = relationship("Campaign", back_populates="images")
+    # Relationship to comments
+    comments = relationship("Comment", back_populates="image", cascade="all, delete-orphan")
 
 
 class Campaign(Base):
@@ -67,3 +71,19 @@ class Campaign(Base):
         cascade="all, delete-orphan",
         lazy="selectin",
     )
+
+
+class Comment(Base):
+    """Comment model - stores Twitter/X comments for posted ads"""
+    __tablename__ = "comments"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    image_id = Column(Integer, ForeignKey("images.id"), nullable=False)
+    comment_id = Column(String(255), nullable=False)  # Twitter comment/reply ID
+    text = Column(Text, nullable=False)  # Comment text
+    author_id = Column(String(255), nullable=True)  # Twitter user ID
+    author_username = Column(String(255), nullable=True)  # Twitter username
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    # Relationship to image
+    image = relationship("Image", back_populates="comments")

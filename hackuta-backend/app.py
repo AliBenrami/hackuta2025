@@ -24,10 +24,14 @@ from session import (
     get_session_user,
     get_current_user_from_session
 )
+from x_routes import router as x_router
 
 load_dotenv()
 
 app = FastAPI(title="HackUTA Image Analysis API", version="1.0.0")
+
+# Include X (Twitter) API routes
+app.include_router(x_router)
 
 # Add SessionMiddleware for OAuth (required by Authlib)
 SESSION_SECRET = os.getenv("SESSION_SECRET", "change-this-secret-key")

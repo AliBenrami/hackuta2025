@@ -338,3 +338,124 @@ export async function updateImage(
   }
   return (await response.json()) as Image;
 }
+
+/**
+ * X (Twitter) API Integration
+ */
+
+export interface XPostTweetRequest {
+  text?: string;
+  image_url?: string;
+}
+
+export interface XPostTweetResponse {
+  tweet_id: string;
+  tweet_url: string;
+}
+
+export interface XMetricsResponse {
+  tweet_id: string;
+  metrics: {
+    likes: number;
+    replies: number;
+    retweets: number;
+    quotes: number;
+    views: number;
+  };
+}
+
+export interface XCommentsResponse {
+  tweet_id: string;
+  comment_count: number;
+  comments: Array<{
+    id: string;
+    text: string;
+    author_id: string;
+    created_at: string;
+  }>;
+}
+
+/**
+ * Post a tweet with ad content
+ */
+export async function postTweetToX(
+  payload: XPostTweetRequest
+): Promise<XPostTweetResponse> {
+  const response = await authorizedFetch(`${API_BASE_URL}/api/x/post`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (!response.ok) {
+    const errorBody = await response.text();
+    console.error("Failed to post tweet:", errorBody);
+    throw new Error("Failed to post tweet to X");
+  }
+  return (await response.json()) as XPostTweetResponse;
+}
+
+export interface DeployImageRequest {
+  image_id: number;
+}
+
+export interface DeployImageResponse {
+  tweet_id: string;
+  tweet_url: string;
+  image_id: number;
+}
+
+/**
+ * Deploy an image to X (Twitter):
+ * - Posts the image as a tweet
+ * - Saves tweet info to database
+ * - Schedules automatic comment fetch after 5 minutes
+ */
+export async function deployImageToX(
+  imageId: number
+): Promise<DeployImageResponse> {
+  const response = await authorizedFetch(`${API_BASE_URL}/api/x/deploy`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ image_id: imageId }),
+  });
+  if (!response.ok) {
+    const errorBody = await response.text();
+    console.error("Failed to deploy image to X:", errorBody);
+    throw new Error("Failed to deploy image to X");
+  }
+  return (await response.json()) as DeployImageResponse;
+}
+
+/**
+ * Fetch metrics for a tweet
+ */
+export async function getTweetMetrics(
+  tweetId: string
+): Promise<XMetricsResponse> {
+  const response = await authorizedFetch(
+    `${API_BASE_URL}/api/x/metrics/${tweetId}`
+  );
+  if (!response.ok) {
+    const errorBody = await response.text();
+    console.error("Failed to fetch tweet metrics:", errorBody);
+    throw new Error("Failed to fetch tweet metrics");
+  }
+  return (await response.json()) as XMetricsResponse;
+}
+
+/**
+ * Fetch comments/replies for a tweet
+ */
+export async function getTweetComments(
+  tweetId: string
+): Promise<XCommentsResponse> {
+  const response = await authorizedFetch(
+    `${API_BASE_URL}/api/x/comments/${tweetId}`
+  );
+  if (!response.ok) {
+    const errorBody = await response.text();
+    console.error("Failed to fetch tweet comments:", errorBody);
+    throw new Error("Failed to fetch tweet comments");
+  }
+  return (await response.json()) as XCommentsResponse;
+}
