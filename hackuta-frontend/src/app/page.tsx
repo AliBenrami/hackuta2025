@@ -1,245 +1,200 @@
-"use client";
+import { ScrollHint } from "@/components/ScrollHint";
+import { JSX } from "react";
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-import {
-  getCurrentUser,
-  getLoginUrl,
-  logout,
-  setSessionToken,
-  type User,
-} from "@/lib/api";
+const features = [
+  {
+    title: "Upload Creative",
+    description: "Centralize assets in seconds with drag-and-drop or API sync.",
+    icon: "cloud-upload",
+  },
+  {
+    title: "AI Feedback",
+    description:
+      "Receive precise critique grounded in performance benchmarks and brand goals.",
+    icon: "sparkles",
+  },
+  {
+    title: "Publish & Track",
+    description:
+      "Ship to X/Twitter instantly and monitor results without leaving AdSett.",
+    icon: "chart-bar",
+  },
+];
 
-export default function Home() {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const searchParams = useSearchParams();
+const workflowSteps = [
+  { key: "Upload", description: "Drop in static or motion creatives." },
+  { key: "Analyze", description: "AI evaluates clarity, tone, and compliance." },
+  { key: "Improve", description: "Apply tailored suggestions in one click." },
+  { key: "Post", description: "Publish to X/Twitter with approvals baked in." },
+  { key: "Track", description: "Loop performance data back into the brief." },
+];
 
-  useEffect(() => {
-    const initAuth = async () => {
-      // Check if we have a token in URL (from OAuth callback)
-      const token = searchParams.get("token");
-      if (token) {
-        console.log("DEBUG: Token found in URL, storing it");
-        console.log("DEBUG: Token value:", token.substring(0, 50) + "...");
-        setSessionToken(token);
-
-        // Verify it was stored
-        const storedToken = localStorage.getItem("session_token");
-        console.log(
-          "DEBUG: Verification - token in localStorage:",
-          storedToken ? "YES" : "NO"
-        );
-
-        // Remove token from URL
-        window.history.replaceState({}, "", "/");
-      } else {
-        console.log("DEBUG: No token in URL, checking localStorage");
-        const storedToken = localStorage.getItem("session_token");
-        console.log(
-          "DEBUG: Token in localStorage:",
-          storedToken ? "YES" : "NO"
-        );
-      }
-
-      // Fetch current user
-      const userData = await getCurrentUser();
-      console.log("DEBUG: User data:", userData ? "FOUND" : "NULL");
-      setUser(userData);
-      setLoading(false);
-    };
-
-    initAuth();
-  }, [searchParams]);
-
-  if (loading) {
-    return (
-      <div className="font-sans min-h-screen p-8 flex items-center justify-center">
-        <p className="text-gray-600 dark:text-gray-400">Loading...</p>
-      </div>
-    );
-  }
+function Icon({ name }: { name: string }) {
+  const icons: Record<string, JSX.Element> = {
+    "cloud-upload": (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6">
+        <path
+          fill="currentColor"
+          d="M12 3a6 6 0 0 0-5.856 4.8A5 5 0 0 0 6 21h12a5 5 0 0 0 1.855-9.638 6.001 6.001 0 0 0-7.61-7.359A6 6 0 0 0 12 3Zm-1 9v4a1 1 0 1 0 2 0v-4h1.586a1 1 0 0 0 .707-1.707l-3.293-3.293a1 1 0 0 0-1.414 0L8.293 10.293A1 1 0 0 0 9 12h2Z"
+          className="fill-accent"
+        />
+      </svg>
+    ),
+    sparkles: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6">
+        <path
+          fill="currentColor"
+          d="M5 3h2v4h4v2H7v4H5V9H1V7h4V3Zm11-1 1.8 4.2L22 8l-4.2 1.8L16 14l-1.8-4.2L10 8l4.2-1.8L16 2Zm-7.5 9.5 1.2 2.8 2.8 1.2-2.8 1.2-1.2 2.8-1.2-2.8-2.8-1.2 2.8-1.2 1.2-2.8Z"
+          className="fill-accent"
+        />
+      </svg>
+    ),
+    "chart-bar": (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6">
+        <path
+          fill="currentColor"
+          d="M21 19a1 1 0 1 0 0-2h-1v-7a1 1 0 0 0-1-1h-3a1 1 0 0 0-1 1v7h-2v-4a1 1 0 0 0-1-1h-3a1 1 0 0 0-1 1v4H7v-2a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h2v2a1 1 0 0 0 1 1h16Z"
+          className="fill-accent"
+        />
+      </svg>
+    ),
+  };
 
   return (
-    <div className="font-sans min-h-screen p-8">
-      <nav className="flex justify-between items-center mb-12 max-w-4xl mx-auto">
-        <h2 className="text-xl font-bold">Adssent.</h2>
-        <div className="flex gap-4 items-center">
-          {user ? (
-            <>
-              <a
-                href="/profile"
-                className="hover:opacity-80 transition-opacity"
-              >
-                <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                  <span className="text-sm font-medium">
-                    {user.name?.charAt(0) || user.email?.charAt(0) || "U"}
-                  </span>
-                </div>
-              </a>
-              <button
-                onClick={() => logout()}
-                className="text-sm hover:underline cursor-pointer"
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <a href={getLoginUrl()} className="text-sm hover:underline">
-              Login
-            </a>
-          )}
-        </div>
-      </nav>
+    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent">
+      {icons[name]}
+    </span>
+  );
+}
 
-      <main className="flex flex-col gap-8 items-center max-w-4xl mx-auto">
-        {!user ? (
-          <div className="text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-400 text-sm font-medium">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                />
-              </svg>
-              Not Logged In
-            </div>
-            <h1 className="text-4xl font-bold">Welcome to Adssent</h1>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">
-              Please log in to access your account
-            </p>
+export default function Home() {
+  return (
+    <div className="relative flex min-h-screen flex-col bg-background text-foreground">
+      <section
+        id="hero"
+        className="relative flex min-h-screen flex-col"
+      >
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,#2563EB22,transparent_55%)]" />
+        <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-8 sm:px-8 lg:px-12">
+          <a href="#hero" className="flex items-center gap-2 select-none" aria-label="AdSett Home">
+            <span className="text-2xl font-heading font-semibold tracking-wide text-navy">
+              AdSett
+              <span className="text-accent">.</span>
+            </span>
+          </a>
+          <div className="flex items-center gap-3">
             <a
-              href={getLoginUrl()}
-              className="inline-flex rounded-full border border-solid border-transparent transition-colors items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm h-12 px-8"
+              href="/dashboard"
+              className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-hover"
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                />
-              </svg>
-              Login with Auth0
+              {/* Dummy: placeholder header CTA */}
+              Try Demo
+            </a>
+            {/* TODO [frontend]: connect Log In → auth route after backend setup */}
+            <a
+              href="#login"
+              className="rounded-full border border-accent px-5 py-2 text-sm font-semibold text-accent transition-colors hover:bg-accent/10"
+            >
+              {/* Dummy: placeholder header CTA */}
+              Log In
             </a>
           </div>
-        ) : (
-          <div className="w-full space-y-6">
-            <div className="text-center space-y-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-sm font-medium">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                Logged In
-              </div>
-              <h1 className="text-4xl font-bold">
-                Welcome back, {user.name || user.email}!
-              </h1>
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center mx-auto shadow-lg">
-                <span className="text-3xl font-bold text-white">
-                  {user.name?.charAt(0).toUpperCase() ||
-                    user.email?.charAt(0).toUpperCase() ||
-                    "U"}
-                </span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 text-lg">
-                {user.email}
+        </header>
+        <div className="flex min-h-[80vh] flex-1 flex-col items-center justify-center px-6 text-center sm:px-8 lg:px-12">
+          <h1 className="max-w-3xl text-balance font-heading text-4xl font-semibold tracking-tight text-navy sm:text-5xl md:text-6xl">
+            Smarter Ads. Sharper Insights.
+          </h1>
+          <p className="mt-6 max-w-2xl text-balance text-base text-slate-600 sm:text-lg">
+            {/* Dummy: hero subtext copy */}
+            AI-driven feedback for marketing teams and creators.
+          </p>
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+            {/* TODO [frontend]: link Demo → /dashboard */}
+            <a
+              className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-transform duration-200 hover:-translate-y-0.5 hover:bg-accent-hover"
+              href="/dashboard"
+            >
+              {/* Dummy: placeholder hero CTA */}
+              Try Demo
+        </a>
+        <a
+              className="inline-flex items-center justify-center rounded-lg border border-accent bg-white px-6 py-3 text-sm font-semibold text-accent shadow-md shadow-accent/10 transition-colors duration-200 hover:bg-accent/10"
+              href="#login"
+            >
+              {/* Dummy: placeholder hero CTA */}
+              Log In
+            </a>
+          </div>
+        </div>
+        <ScrollHint />
+      </section>
+
+      <section
+        id="features"
+        className="mx-auto w-full max-w-6xl px-6 py-24 sm:px-8 lg:px-12"
+      >
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-heading text-3xl font-semibold text-navy sm:text-4xl">
+            Core Intelligence Modules
+          </h2>
+          <p className="mt-4 text-base text-slate-600">
+            {/* Dummy: features section intro copy */}
+            Consolidate creative, feedback, and performance data in one connected stack for marketing teams that move fast.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              className="group flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white/90 p-8 shadow-md shadow-slate-300/20 transition-transform duration-200 hover:-translate-y-1 hover:border-accent/60 hover:shadow-lg hover:shadow-accent/15"
+            >
+              <Icon name={feature.icon} />
+              <h3 className="font-heading text-xl text-navy">{feature.title}</h3>
+              <p className="text-sm leading-6 text-slate-600">
+                {feature.description}
               </p>
             </div>
+          ))}
+        </div>
+      </section>
 
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 max-w-2xl mx-auto">
-              <h2 className="text-xl font-semibold mb-4">
-                Account Information
-              </h2>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-600 dark:text-gray-400">
-                    Name:
-                  </span>
-                  <span className="font-medium">{user.name || "Not set"}</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
-                  <span className="text-gray-600 dark:text-gray-400">
-                    Email:
-                  </span>
-                  <span className="font-medium">{user.email}</span>
-                </div>
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-600 dark:text-gray-400">
-                    User ID:
-                  </span>
-                  <span className="font-mono text-sm text-gray-500 dark:text-gray-500">
-                    {user.sub}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex gap-4 justify-center">
-              <a
-                href="/profile"
-                className="inline-flex rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] font-medium text-sm h-12 px-6 gap-2"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-                View Full Profile
-              </a>
-              <button
-                onClick={() => logout()}
-                className="inline-flex rounded-full border border-solid border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 transition-colors items-center justify-center hover:bg-red-50 dark:hover:bg-red-900/20 font-medium text-sm h-12 px-6 gap-2 cursor-pointer"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                  />
-                </svg>
-                Logout
-              </button>
-            </div>
+      <section
+        id="workflow"
+        className="w-full bg-white/70 py-24 backdrop-blur-sm"
+      >
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 sm:px-8 lg:px-12">
+          <div className="text-center">
+            <h2 className="font-heading text-3xl font-semibold text-navy sm:text-4xl">
+              Built for The Creative Feedback Loop
+            </h2>
+            <p className="mt-4 text-base text-slate-600">
+              {/* Dummy: workflow section intro copy */}
+              Keep momentum with a workflow that closes the loop from concept to performance. Each step is orchestrated and auditable.
+            </p>
           </div>
-        )}
-      </main>
+          <div className="relative grid gap-8 md:grid-cols-5">
+            <div className="absolute inset-x-0 top-16 hidden border-t border-dashed border-slate-200 md:block" />
+            {workflowSteps.map((step, index) => (
+              <div
+                key={step.key}
+                className="relative flex flex-col items-center text-center"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-surface text-sm font-semibold text-accent shadow-sm">
+                  {index + 1}
+                </div>
+                <p className="mt-4 font-heading text-lg text-navy">{step.key}</p>
+                <p className="mt-2 text-sm text-slate-600">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <footer className="py-12 text-center text-sm text-slate-500">
+        © 2025 AdSett. Built at HackUTA.
+      </footer>
     </div>
   );
 }
