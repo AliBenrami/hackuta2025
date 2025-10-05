@@ -1,47 +1,47 @@
-import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 const SESSION_COOKIE_NAME = "session_token";
 
-interface SessionPayload {
-  token: string;
-  maxAge?: number;
-}
-
 export async function POST(request: NextRequest) {
-  const body = (await request.json()) as SessionPayload;
-  const { token, maxAge = 60 * 60 * 24 * 7 } = body;
+  try {
+    const body = await request.json();
+    const { token, maxAge } = body;
 
-  if (!token) {
-    return NextResponse.json({ error: "Missing token" }, { status: 400 });
+    if (!token) {
+      return NextResponse.json({ error: "Token required" }, { status: 400 });
+    }
+
+    const response = NextResponse.json({ success: true });
+
+    // Set session cookie
+    response.cookies.set({
+      name: SESSION_COOKIE_NAME,
+      value: token,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: maxAge || 60 * 60 * 24 * 7, // 7 days default
+      path: "/",
+    });
+
+    return response;
+  } catch (error) {
+    console.error("Error setting session cookie:", error);
+    return NextResponse.json({ error: "Internal error" }, { status: 500 });
   }
-
-  const cookieStore = await cookies();
-  cookieStore.set({
-    name: SESSION_COOKIE_NAME,
-    value: token,
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge,
-  });
-
-  return NextResponse.json({ success: true });
 }
 
-export async function DELETE() {
-  const cookieStore = await cookies();
-  cookieStore.set({
-    name: SESSION_COOKIE_NAME,
-    value: "",
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    maxAge: 0,
-    path: "/",
-  });
+export async function DELETE(request: NextRequest) {
+  const response = NextResponse.json({ success: true });
 
-  return NextResponse.json({ success: true });
+  // Clear session cookie
+  response.cookies.delete(SESSION_COOKIE_NAME);
+
+  return response;
 }
 
+export async function GET(request: NextRequest) {
+  const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;
+
+  return NextResponse.json({ token: token || null });
+}

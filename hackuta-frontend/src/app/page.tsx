@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { ScrollHint } from "@/components/ScrollHint";
+import { getLoginUrl } from "@/lib/api";
 import { JSX } from "react";
 
 const features = [
@@ -24,7 +25,10 @@ const features = [
 
 const workflowSteps = [
   { key: "Upload", description: "Drop in static or motion creatives." },
-  { key: "Analyze", description: "AI evaluates clarity, tone, and compliance." },
+  {
+    key: "Analyze",
+    description: "AI evaluates clarity, tone, and compliance.",
+  },
   { key: "Improve", description: "Apply tailored suggestions in one click." },
   { key: "Post", description: "Publish to X/Twitter with approvals baked in." },
   { key: "Track", description: "Loop performance data back into the brief." },
@@ -71,10 +75,7 @@ function Icon({ name }: { name: string }) {
 export default function Home() {
   return (
     <div className="relative flex min-h-screen flex-col bg-background text-foreground">
-      <section
-        id="hero"
-        className="relative flex min-h-screen flex-col"
-      >
+      <section id="hero" className="relative flex min-h-screen flex-col">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,#2563EB22,transparent_55%)]" />
         <Header />
         <div className="flex min-h-[80vh] flex-1 flex-col items-center justify-center px-6 text-center sm:px-8 lg:px-12">
@@ -93,10 +94,10 @@ export default function Home() {
             >
               {/* Dummy: placeholder hero CTA */}
               Try Demo
-        </a>
-        <a
+            </a>
+            <a
               className="inline-flex items-center justify-center rounded-lg border border-accent bg-white px-6 py-3 text-sm font-semibold text-accent shadow-md shadow-accent/10 transition-colors duration-200 hover:bg-accent/10"
-              href="#login"
+              href={getLoginUrl()}
             >
               {/* Dummy: placeholder hero CTA */}
               Log In
@@ -116,7 +117,8 @@ export default function Home() {
           </h2>
           <p className="mt-4 text-base text-slate-600">
             {/* Dummy: features section intro copy */}
-            Consolidate creative, feedback, and performance data in one connected stack for marketing teams that move fast.
+            Consolidate creative, feedback, and performance data in one
+            connected stack for marketing teams that move fast.
           </p>
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -126,7 +128,9 @@ export default function Home() {
               className="group flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white/90 p-8 shadow-md shadow-slate-300/20 transition-transform duration-200 hover:-translate-y-1 hover:border-accent/60 hover:shadow-lg hover:shadow-accent/15"
             >
               <Icon name={feature.icon} />
-              <h3 className="font-heading text-xl text-navy">{feature.title}</h3>
+              <h3 className="font-heading text-xl text-navy">
+                {feature.title}
+              </h3>
               <p className="text-sm leading-6 text-slate-600">
                 {feature.description}
               </p>
@@ -146,7 +150,8 @@ export default function Home() {
             </h2>
             <p className="mt-4 text-base text-slate-600">
               {/* Dummy: workflow section intro copy */}
-              Keep momentum with a workflow that closes the loop from concept to performance. Each step is orchestrated and auditable.
+              Keep momentum with a workflow that closes the loop from concept to
+              performance. Each step is orchestrated and auditable.
             </p>
           </div>
           <div className="relative grid gap-8 md:grid-cols-5">
@@ -159,7 +164,9 @@ export default function Home() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-surface text-sm font-semibold text-accent shadow-sm">
                   {index + 1}
                 </div>
-                <p className="mt-4 font-heading text-lg text-navy">{step.key}</p>
+                <p className="mt-4 font-heading text-lg text-navy">
+                  {step.key}
+                </p>
                 <p className="mt-2 text-sm text-slate-600">
                   {step.description}
                 </p>

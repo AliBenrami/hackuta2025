@@ -121,12 +121,12 @@ async def auth_callback(request: Request, response: Response, db: AsyncSession =
         from session import create_session_token
         token = create_session_token(session_data)
         
-        # Redirect to frontend with token in URL (simpler than cookies for localhost)
+        # Redirect to frontend callback page with token in URL
         frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
-        redirect = RedirectResponse(url=f"{frontend_url}/?token={token}")
+        redirect = RedirectResponse(url=f"{frontend_url}/auth/callback?token={token}")
         
         print(f"DEBUG /auth/callback - Created session token for user: {email}")
-        print(f"DEBUG /auth/callback - Redirecting to: {frontend_url}/?token=...")
+        print(f"DEBUG /auth/callback - Redirecting to: {frontend_url}/auth/callback?token=...")
         
         return redirect
         

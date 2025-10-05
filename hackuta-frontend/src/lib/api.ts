@@ -94,7 +94,8 @@ export async function destroySession(redirect = true): Promise<void> {
   }
 
   if (redirect) {
-    window.location.href = getLogoutUrl();
+    // Just redirect to home page, no need to call backend logout
+    window.location.href = "/";
   }
 }
 
@@ -216,4 +217,3 @@ export const apiClient = {
   createImage,
   uploadAndAnalyzeImage,
 };
-
